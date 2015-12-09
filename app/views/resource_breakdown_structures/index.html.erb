@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Resource Breakdown Structures</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>P</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @resource_breakdown_structures.each do |resource_breakdown_structure| %>
+      <tr>
+        <td><%= resource_breakdown_structure.p_id %></td>
+        <td><%= link_to 'Show', resource_breakdown_structure %></td>
+        <td><%= link_to 'Edit', edit_resource_breakdown_structure_path(resource_breakdown_structure) %></td>
+        <td><%= link_to 'Destroy', resource_breakdown_structure, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Resource breakdown structure', new_resource_breakdown_structure_path %>

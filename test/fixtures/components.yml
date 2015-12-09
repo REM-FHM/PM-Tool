@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cName: MyString
+  cNumber: 1
+  m_id: 1
+
+two:
+  cName: MyString
+  cNumber: 1
+  m_id: 1

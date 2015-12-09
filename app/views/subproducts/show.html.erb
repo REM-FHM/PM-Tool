@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Spname:</strong>
+  <%= @subproduct.spName %>
+</p>
+
+<p>
+  <strong>Spnumber:</strong>
+  <%= @subproduct.spNumber %>
+</p>
+
+<p>
+  <strong>Pbs:</strong>
+  <%= @subproduct.pbs_id %>
+</p>
+
+<%= link_to 'Edit', edit_subproduct_path(@subproduct) %> |
+<%= link_to 'Back', subproducts_path %>

@@ -1,0 +1,29 @@
+<%= form_for(@workpackage) do |f| %>
+  <% if @workpackage.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@workpackage.errors.count, "error") %> prohibited this workpackage from being saved:</h2>
+
+      <ul>
+      <% @workpackage.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :wpNumber %><br>
+    <%= f.number_field :wpNumber %>
+  </div>
+  <div class="field">
+    <%= f.label :wpName %><br>
+    <%= f.text_field :wpName %>
+  </div>
+  <div class="field">
+    <%= f.label :st_id %><br>
+    <%= f.number_field :st_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

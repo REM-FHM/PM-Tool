@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  reNumber: 1
+  reQualification: MyString
+  reExperience: MyString
+  reQuantity: 9.99
+  ro_id: 1
+
+two:
+  reNumber: 1
+  reQualification: MyString
+  reExperience: MyString
+  reQuantity: 9.99
+  ro_id: 1

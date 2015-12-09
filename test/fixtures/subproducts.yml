@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  spName: MyString
+  spNumber: 1
+  pbs_id: 1
+
+two:
+  spName: MyString
+  spNumber: 1
+  pbs_id: 1

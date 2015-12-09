@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Wpnumber:</strong>
+  <%= @workpackage.wpNumber %>
+</p>
+
+<p>
+  <strong>Wpname:</strong>
+  <%= @workpackage.wpName %>
+</p>
+
+<p>
+  <strong>St:</strong>
+  <%= @workpackage.st_id %>
+</p>
+
+<%= link_to 'Edit', edit_workpackage_path(@workpackage) %> |
+<%= link_to 'Back', workpackages_path %>

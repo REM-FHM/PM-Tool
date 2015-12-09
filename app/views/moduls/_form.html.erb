@@ -1,0 +1,29 @@
+<%= form_for(@modul) do |f| %>
+  <% if @modul.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@modul.errors.count, "error") %> prohibited this modul from being saved:</h2>
+
+      <ul>
+      <% @modul.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mName %><br>
+    <%= f.text_field :mName %>
+  </div>
+  <div class="field">
+    <%= f.label :mNumber %><br>
+    <%= f.number_field :mNumber %>
+  </div>
+  <div class="field">
+    <%= f.label :sp_id %><br>
+    <%= f.number_field :sp_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

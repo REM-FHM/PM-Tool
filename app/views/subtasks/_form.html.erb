@@ -1,0 +1,29 @@
+<%= form_for(@subtask) do |f| %>
+  <% if @subtask.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@subtask.errors.count, "error") %> prohibited this subtask from being saved:</h2>
+
+      <ul>
+      <% @subtask.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :stNumber %><br>
+    <%= f.number_field :stNumber %>
+  </div>
+  <div class="field">
+    <%= f.label :stName %><br>
+    <%= f.text_field :stName %>
+  </div>
+  <div class="field">
+    <%= f.label :t_id %><br>
+    <%= f.number_field :t_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
