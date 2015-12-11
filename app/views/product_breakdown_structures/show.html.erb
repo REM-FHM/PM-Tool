@@ -24,27 +24,27 @@
 	<tr class="info">
 		<% subproductNumber = subproductNumber+1 %>
 	    <td><%=subproductNumber %></td>
-	    <td><%=subproduct.spName %></td>
+	    <td><%=subproduct.name %></td>
 	    <td colspan="2"></td>
 	</tr>
-	<% moduls = Modul.where(sp_id: subproduct.id) %>
+	<% moduls = Modul.where(subproduct_id: subproduct.id) %>
 	<% modulNumber = 0 %>
 	<% moduls.each do |modul| %>
 	<tr class="warning">
 		<% modulNumber = modulNumber+1 %>
 	    <td></td>
 	    <td><%=subproductNumber.to_s+'.'+modulNumber.to_s %></td>
-	    <td><%=modul.mName %></td>
+	    <td><%=modul.name %></td>
 	    <td colspan="1"></td>
 	</tr>
-	    <% components = Component.where(m_id: modul.id) %>
+	    <% components = Component.where(modul_id: modul.id) %>
 	    <% componentNumber = 0 %>
 	    <% components.each do |component| %>
 	<tr>
 		<% componentNumber = componentNumber+1 %>
 		<td colspan="2"></td>
 	    <td><%=subproductNumber.to_s+'.'+modulNumber.to_s+'.'+componentNumber.to_s %></td>
-	    <td><%=component.cName %></td>
+	    <td><%=component.name %></td>
 	  </td>
 	</tr>
 	<% end %>
