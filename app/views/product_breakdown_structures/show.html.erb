@@ -1,4 +1,6 @@
 <p id="notice"><%= notice %></p>
+<%project = Project.find_by_id(@product_breakdown_structure.p_id) %>
+<h1><%= project.name+'-PBS' %></h1>
 
 <table class="table">
   <thead>
@@ -13,7 +15,7 @@
 
   </tbody>
   <tr class="success">
-	    <td><%=Project.find_by_id(@product_breakdown_structure.p_id).name %></td>
+	    <td><%=project.name %></td>
 	    <td colspan="3"></td>
 	</tr>
 	<% subproducts = Subproduct.where(pbs_id: @product_breakdown_structure.id) %>
@@ -42,7 +44,8 @@
 	<% end %>
 	<% end %>
 	<% end %>
-</tbody>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_product_breakdown_structure_path(@product_breakdown_structure) %> |
 <%= link_to 'Back', product_breakdown_structures_path %>
