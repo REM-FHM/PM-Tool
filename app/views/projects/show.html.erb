@@ -5,5 +5,15 @@
   <%= @project.name %>
 </p>
 
+<table class="table">
+  <tbody>
+    <tr>
+      <td><%= link_to 'PBS', ProductBreakdownStructure.find_by(p_id: @project.id) %></td>
+      <td><%= link_to 'WBS', WorkBreakdownStructure.find_by(p_id: @project.id) %></td>
+      <td><%= link_to 'RBS', ResourceBreakdownStructure.find_by(p_id: @project.id) %></td>
+    </tr>
+  </tbody>
+</table>
+
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
