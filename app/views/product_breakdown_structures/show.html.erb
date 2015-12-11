@@ -1,9 +1,48 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>P:</strong>
-  <%= @product_breakdown_structure.p_id %>
-</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Produkt</th>
+      <th>Teilprodukt</th>
+      <th>Modul</th>
+      <th>Komponente</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  </tbody>
+  <tr class="success">
+	    <td><%=Project.find_by_id(@product_breakdown_structure.p_id).name %></td>
+	    <td colspan="3"></td>
+	</tr>
+	<% subproducts = Subproduct.where(pbs_id: @product_breakdown_structure.id) %>
+	<% subproducts.each do |subproduct| %>
+	<tr class="info">
+	    <td><%=subproduct.spNumber.to_s %></td>
+	    <td><%=subproduct.spName %></td>
+	    <td colspan="2"></td>
+	</tr>
+	<% moduls = Modul.where(sp_id: subproduct.id) %>
+	<% moduls.each do |modul| %>
+	<tr class="warning">
+	    <td></td>
+	    <td><%=subproduct.spNumber.to_s+'.'+modul.mNumber.to_s %></td>
+	    <td><%=modul.mName %></td>
+	    <td colspan="1"></td>
+	</tr>
+	    <% components = Component.where(m_id: modul.id) %>
+	    <% components.each do |component| %>
+	<tr>
+		<td colspan="2"></td>
+	    <td><%=subproduct.spNumber.to_s+'.'+modul.mNumber.to_s+'.'+component.cNumber.to_s %></td>
+	    <td><%=component.cName %></td>
+	  </td>
+	</tr>
+	<% end %>
+	<% end %>
+	<% end %>
+</tbody>
 
 <%= link_to 'Edit', edit_product_breakdown_structure_path(@product_breakdown_structure) %> |
 <%= link_to 'Back', product_breakdown_structures_path %>
