@@ -18,7 +18,7 @@ class ComponentsControllerTest < ActionController::TestCase
 
   test "should create component" do
     assert_difference('Component.count') do
-      post :create, component: { cName: @component.cName, cNumber: @component.cNumber, m_id: @component.m_id }
+      post :create, component: { modul_id: @component.modul_id, name: @component.name }
     end
 
     assert_redirected_to component_path(assigns(:component))
@@ -35,7 +35,7 @@ class ComponentsControllerTest < ActionController::TestCase
   end
 
   test "should update component" do
-    patch :update, id: @component, component: { cName: @component.cName, cNumber: @component.cNumber, m_id: @component.m_id }
+    patch :update, id: @component, component: { modul_id: @component.modul_id, name: @component.name }
     assert_redirected_to component_path(assigns(:component))
   end
 

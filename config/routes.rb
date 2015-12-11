@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
+  resources :components
+  resources :moduls
+  resources :subproducts
   resources :resources
   resources :resource_breakdown_structures
   resources :roles
   resources :types
   resources :product_breakdown_structures
-  resources :subproducts
-  resources :moduls
-  resources :components
   resources :work_breakdown_structures
   resources :tasks
   resources :subtasks

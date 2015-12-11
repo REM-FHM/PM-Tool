@@ -18,7 +18,7 @@ class SubproductsControllerTest < ActionController::TestCase
 
   test "should create subproduct" do
     assert_difference('Subproduct.count') do
-      post :create, subproduct: { pbs_id: @subproduct.pbs_id, spName: @subproduct.spName, spNumber: @subproduct.spNumber }
+      post :create, subproduct: { name: @subproduct.name, pbs_id: @subproduct.pbs_id }
     end
 
     assert_redirected_to subproduct_path(assigns(:subproduct))
@@ -35,7 +35,7 @@ class SubproductsControllerTest < ActionController::TestCase
   end
 
   test "should update subproduct" do
-    patch :update, id: @subproduct, subproduct: { pbs_id: @subproduct.pbs_id, spName: @subproduct.spName, spNumber: @subproduct.spNumber }
+    patch :update, id: @subproduct, subproduct: { name: @subproduct.name, pbs_id: @subproduct.pbs_id }
     assert_redirected_to subproduct_path(assigns(:subproduct))
   end
 

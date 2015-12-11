@@ -69,6 +69,6 @@ class ModulsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def modul_params
-      params.require(:modul).permit(:mName, :mNumber, :sp_id)
+      params.require(:modul).permit(:name, :subproduct_id)
     end
 end

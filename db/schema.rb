@@ -11,22 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151209130027) do
+ActiveRecord::Schema.define(version: 20151211194132) do
 
   create_table "components", force: :cascade do |t|
-    t.string   "cName"
-    t.integer  "cNumber"
-    t.integer  "m_id"
+    t.string   "name"
+    t.integer  "modul_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "moduls", force: :cascade do |t|
-    t.string   "mName"
-    t.integer  "mNumber"
-    t.integer  "sp_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name"
+    t.integer  "subproduct_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "product_breakdown_structures", force: :cascade do |t|
@@ -66,8 +64,7 @@ ActiveRecord::Schema.define(version: 20151209130027) do
   end
 
   create_table "subproducts", force: :cascade do |t|
-    t.string   "spName"
-    t.integer  "spNumber"
+    t.string   "name"
     t.integer  "pbs_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

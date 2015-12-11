@@ -69,6 +69,6 @@ class SubproductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subproduct_params
-      params.require(:subproduct).permit(:spName, :spNumber, :pbs_id)
+      params.require(:subproduct).permit(:name, :pbs_id)
     end
 end

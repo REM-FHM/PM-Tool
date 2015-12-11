@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+puts "Seed wird eingelesen"
+
+
+Project.create(name: 'Web-Shop', id: 1)
+ProductBreakdownStructure.
+
+
+
+puts "Seed abgeschlossen!"
