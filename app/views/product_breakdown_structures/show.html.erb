@@ -19,25 +19,31 @@
 	    <td colspan="3"></td>
 	</tr>
 	<% subproducts = Subproduct.where(pbs_id: @product_breakdown_structure.id) %>
+	<% subproductNumber = 0 %>
 	<% subproducts.each do |subproduct| %>
 	<tr class="info">
-	    <td><%=subproduct.spNumber.to_s %></td>
+		<% subproductNumber = subproductNumber+1 %>
+	    <td><%=subproductNumber %></td>
 	    <td><%=subproduct.spName %></td>
 	    <td colspan="2"></td>
 	</tr>
 	<% moduls = Modul.where(sp_id: subproduct.id) %>
+	<% modulNumber = 0 %>
 	<% moduls.each do |modul| %>
 	<tr class="warning">
+		<% modulNumber = modulNumber+1 %>
 	    <td></td>
-	    <td><%=subproduct.spNumber.to_s+'.'+modul.mNumber.to_s %></td>
+	    <td><%=subproductNumber.to_s+'.'+modulNumber.to_s %></td>
 	    <td><%=modul.mName %></td>
 	    <td colspan="1"></td>
 	</tr>
 	    <% components = Component.where(m_id: modul.id) %>
+	    <% componentNumber = 0 %>
 	    <% components.each do |component| %>
 	<tr>
+		<% componentNumber = componentNumber+1 %>
 		<td colspan="2"></td>
-	    <td><%=subproduct.spNumber.to_s+'.'+modul.mNumber.to_s+'.'+component.cNumber.to_s %></td>
+	    <td><%=subproductNumber.to_s+'.'+modulNumber.to_s+'.'+componentNumber.to_s %></td>
 	    <td><%=component.cName %></td>
 	  </td>
 	</tr>
