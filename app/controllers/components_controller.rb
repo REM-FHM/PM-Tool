@@ -56,7 +56,7 @@ class ComponentsController < ApplicationController
   def destroy
     @component.destroy
     respond_to do |format|
-      format.html { redirect_to components_url, notice: 'Component was successfully destroyed.' }
+      format.html { redirect_to '/product_breakdown_structures/'+Subproduct.find_by(id: Modul.find_by(id: @component.modul_id).subproduct_id).pbs_id.to_s, notice: 'Component was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

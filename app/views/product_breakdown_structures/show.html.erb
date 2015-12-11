@@ -9,6 +9,7 @@
       <th>Teilprodukt</th>
       <th>Modul</th>
       <th>Komponente</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -16,7 +17,7 @@
   </tbody>
   <tr class="success">
 	    <td><%=project.name %></td>
-	    <td colspan="3"></td>
+	    <td colspan="4"></td>
 	</tr>
 	<% subproducts = Subproduct.where(pbs_id: @product_breakdown_structure.id) %>
 	<% subproductNumber = 0 %>
@@ -26,6 +27,7 @@
 	    <td><%=subproductNumber %></td>
 	    <td><%=subproduct.name %></td>
 	    <td colspan="2"></td>
+	    <td><%= link_to 'Löschen', subproduct, method: :delete, data: { confirm: 'Sind Sie sicher?' }, :class=> 'btn btn-xs btn-danger' %></td>
 	</tr>
 	<% moduls = Modul.where(subproduct_id: subproduct.id) %>
 	<% modulNumber = 0 %>
@@ -36,6 +38,7 @@
 	    <td><%=subproductNumber.to_s+'.'+modulNumber.to_s %></td>
 	    <td><%=modul.name %></td>
 	    <td colspan="1"></td>
+	    <td><%= link_to 'Löschen', modul, method: :delete, data: { confirm: 'Sind Sie sicher?' }, :class=> 'btn btn-xs btn-danger' %></td>
 	</tr>
 	    <% components = Component.where(modul_id: modul.id) %>
 	    <% componentNumber = 0 %>
@@ -45,6 +48,7 @@
 		<td colspan="2"></td>
 	    <td><%=subproductNumber.to_s+'.'+modulNumber.to_s+'.'+componentNumber.to_s %></td>
 	    <td><%=component.name %></td>
+	    <td><%= link_to 'Löschen', component, method: :delete, data: { confirm: 'Sind Sie sicher?' }, :class=> 'btn btn-xs btn-danger' %></td>
 	  </td>
 	</tr>
 	<% end %>

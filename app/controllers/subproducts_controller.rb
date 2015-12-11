@@ -56,7 +56,7 @@ class SubproductsController < ApplicationController
   def destroy
     @subproduct.destroy
     respond_to do |format|
-      format.html { redirect_to subproducts_url, notice: 'Subproduct was successfully destroyed.' }
+      format.html { redirect_to '/product_breakdown_structures/'+@subproduct.pbs_id.to_s, notice: 'Subproduct was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
