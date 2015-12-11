@@ -28,7 +28,7 @@ class SubproductsController < ApplicationController
 
     respond_to do |format|
       if @subproduct.save
-        format.html { redirect_to @subproduct, notice: 'Subproduct was successfully created.' }
+        format.html { redirect_to '/product_breakdown_structures/'+@subproduct.pbs_id.to_s, notice: 'Subproduct was successfully created.' }
         format.json { render :show, status: :created, location: @subproduct }
       else
         format.html { render :new }
