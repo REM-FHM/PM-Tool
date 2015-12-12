@@ -18,7 +18,7 @@ class WorkpackagesControllerTest < ActionController::TestCase
 
   test "should create workpackage" do
     assert_difference('Workpackage.count') do
-      post :create, workpackage: { st_id: @workpackage.st_id, wpName: @workpackage.wpName, wpNumber: @workpackage.wpNumber }
+      post :create, workpackage: { name: @workpackage.name }
     end
 
     assert_redirected_to workpackage_path(assigns(:workpackage))
@@ -35,7 +35,7 @@ class WorkpackagesControllerTest < ActionController::TestCase
   end
 
   test "should update workpackage" do
-    patch :update, id: @workpackage, workpackage: { st_id: @workpackage.st_id, wpName: @workpackage.wpName, wpNumber: @workpackage.wpNumber }
+    patch :update, id: @workpackage, workpackage: { name: @workpackage.name }
     assert_redirected_to workpackage_path(assigns(:workpackage))
   end
 

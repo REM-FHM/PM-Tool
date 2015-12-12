@@ -1,1 +1,1 @@
-json.extract! @workpackage, :id, :wpNumber, :wpName, :st_id, :created_at, :updated_at
+json.extract! @workpackage, :id, :name, :created_at, :updated_at

@@ -69,6 +69,6 @@ class SubtasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subtask_params
-      params.require(:subtask).permit(:stNumber, :stName, :t_id)
+      params.require(:subtask).permit(:name)
     end
 end

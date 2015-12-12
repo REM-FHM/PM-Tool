@@ -1,9 +1,7 @@
 class CreateWorkpackages < ActiveRecord::Migration
   def change
     create_table :workpackages do |t|
-      t.integer :wpNumber
-      t.string :wpName
-      t.integer :st_id
+      t.string :name
 
       t.timestamps null: false
     end

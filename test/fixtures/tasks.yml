@@ -1,11 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  tNumber: 1
-  tName: MyString
-  wbs_id: 1
+  name: MyString
 
 two:
-  tNumber: 1
-  tName: MyString
-  wbs_id: 1
+  name: MyString

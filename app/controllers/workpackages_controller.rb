@@ -69,6 +69,6 @@ class WorkpackagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def workpackage_params
-      params.require(:workpackage).permit(:wpNumber, :wpName, :st_id)
+      params.require(:workpackage).permit(:name)
     end
 end
