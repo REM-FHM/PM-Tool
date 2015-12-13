@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :tasks
   resources :subtasks
   resources :workpackages
+  resources :tasks
   resources :components
   resources :moduls
   resources :subproducts

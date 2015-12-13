@@ -2,6 +2,8 @@
 
 one:
   name: MyString
+  subtask_id: 1
 
 two:
   name: MyString
+  subtask_id: 1

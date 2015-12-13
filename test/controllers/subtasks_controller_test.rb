@@ -18,7 +18,7 @@ class SubtasksControllerTest < ActionController::TestCase
 
   test "should create subtask" do
     assert_difference('Subtask.count') do
-      post :create, subtask: { name: @subtask.name }
+      post :create, subtask: { name: @subtask.name, task_id: @subtask.task_id }
     end
 
     assert_redirected_to subtask_path(assigns(:subtask))
@@ -35,7 +35,7 @@ class SubtasksControllerTest < ActionController::TestCase
   end
 
   test "should update subtask" do
-    patch :update, id: @subtask, subtask: { name: @subtask.name }
+    patch :update, id: @subtask, subtask: { name: @subtask.name, task_id: @subtask.task_id }
     assert_redirected_to subtask_path(assigns(:subtask))
   end
 

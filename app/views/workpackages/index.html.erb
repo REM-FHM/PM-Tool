@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Subtask</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,6 +15,7 @@
     <% @workpackages.each do |workpackage| %>
       <tr>
         <td><%= workpackage.name %></td>
+        <td><%= workpackage.subtask_id %></td>
         <td><%= link_to 'Show', workpackage %></td>
         <td><%= link_to 'Edit', edit_workpackage_path(workpackage) %></td>
         <td><%= link_to 'Destroy', workpackage, method: :delete, data: { confirm: 'Are you sure?' } %></td>

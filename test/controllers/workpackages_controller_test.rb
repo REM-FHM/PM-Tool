@@ -18,7 +18,7 @@ class WorkpackagesControllerTest < ActionController::TestCase
 
   test "should create workpackage" do
     assert_difference('Workpackage.count') do
-      post :create, workpackage: { name: @workpackage.name }
+      post :create, workpackage: { name: @workpackage.name, subtask_id: @workpackage.subtask_id }
     end
 
     assert_redirected_to workpackage_path(assigns(:workpackage))
@@ -35,7 +35,7 @@ class WorkpackagesControllerTest < ActionController::TestCase
   end
 
   test "should update workpackage" do
-    patch :update, id: @workpackage, workpackage: { name: @workpackage.name }
+    patch :update, id: @workpackage, workpackage: { name: @workpackage.name, subtask_id: @workpackage.subtask_id }
     assert_redirected_to workpackage_path(assigns(:workpackage))
   end
 
