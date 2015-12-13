@@ -9,6 +9,8 @@
       <th>Art</th>
       <th>Rolle</th>
       <th>Qualifikation</th>
+      <th>Erfahrung</th>
+      <th>Vollzeitäquivalenz</th>
       <th></th>
     </tr>
   </thead>
@@ -34,7 +36,7 @@
 				<% end %>
 			</div>
 	    </td>
-	    <td colspan="3"></td>
+	    <td colspan="5"></td>
 	</tr>
 	<% types = Type.where(rbs_id: @resource_breakdown_structure.id) %>
 	<% typeNumber = 0 %>
@@ -60,47 +62,42 @@
 				<% end %>
 			</div>
 	    </td>
-	    <td colspan="1"></td>
+	    <td colspan="3"></td>
 	    <td><%= link_to 'Löschen', type, method: :delete, data: { confirm: 'Sind Sie sicher?' }, :class=> 'btn btn-xs btn-danger' %></td>
 	</tr>
 	<% roles = Role.where(type_id: type.id) %>
 	<% roleNumber = 0 %>
 	<% roles.each do |role| %>
-	<tr class="warning">
+	<tr>
 		<% roleNumber = roleNumber+1 %>
 	    <td></td>
-	    <td><%=typeNumber.to_s+'.'+roleNumber.to_s %></td>
-	    <td><%=role.name %></td>
-	    <td><% @resource = Resource.new %>
-	    	<div class = "form-inline">
-	    		<%= form_for(@resource) do |f| %>
-  				<%= f.hidden_field :role_id, :value => role.id %> 
-  				<div class="form-group">
-	  				<div class="field">
-	    				<%= f.text_field :qualification, :class => "form-control input-sm"%>
-	  				</div>
-  				</div>
-	  			<div class="form-group">
-	  				<div class="actions">
-	  					<%= f.submit "Anlegen", class: "btn btn-xs btn-success" %>
-	  				</div>
-  				</div>
-				<% end %>
-			</div>
-		</td>
+	    <td class="warning"><%=typeNumber.to_s+'.'+roleNumber.to_s %></td>
+	    <td class="warning"><%=role.name %></td>
+	    <td><% @resource = Resource.new %> </td>
+	    	
+	    	<% resources = Resource.where(role_id: role.id) %>
+	    	<% resourceNumber = 0 %>
+	    	<% resourceCounter = 0 %>
+	    	<% resources.each do |resource| %>
+	    	<% if resource.role_id = role.id
+	    		resourceCounter = resourceCounter+1	    		
+	    		end %>
+	    	<% if resourceCounter = 1 %>
+	    		<td><%=resource.qualification %></td>
+	    	<% else %>
+	    		<tr>
+					<% resourceNumber = resourceNumber+1 %>
+					<td colspan="4"></td>
+				    <td><%=typeNumber.to_s+'.'+roleNumber.to_s+'.'+resourceNumber.to_s %></td>
+				    <td><%=resource.qualification %></td>
+				    <td><%= link_to 'Löschen', resource, method: :delete, data: { confirm: 'Sind Sie sicher?' }, :class=> 'btn btn-xs btn-danger' %></td>
+	  				
+				</tr>
+        	<% end %>
 	    <td><%= link_to 'Löschen', role, method: :delete, data: { confirm: 'Sind Sie sicher?' }, :class=> 'btn btn-xs btn-danger' %></td>
 	</tr>
-	    <% resources = Resource.where(role_id: role.id) %>
-	    <% resourceNumber = 0 %>
-	    <% resources.each do |resource| %>
-	<tr>
-		<% resourceNumber = resourceNumber+1 %>
-		<td colspan="2"></td>
-	    <td><%=typeNumber.to_s+'.'+roleNumber.to_s+'.'+resourceNumber.to_s %></td>
-	    <td><%=resource.qualification %></td>
-	    <td><%= link_to 'Löschen', resource, method: :delete, data: { confirm: 'Sind Sie sicher?' }, :class=> 'btn btn-xs btn-danger' %></td>
-	  </td>
-	</tr>
+	    
+	
 	<% end %>
 	<% end %>
 	<% end %>
