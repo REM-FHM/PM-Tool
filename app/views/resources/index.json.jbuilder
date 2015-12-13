@@ -1,4 +1,4 @@
 json.array!(@resources) do |resource|
-  json.extract! resource, :id, :reNumber, :reQualification, :reExperience, :reQuantity, :ro_id
+  json.extract! resource, :id, :role_id, :qualification, :experience, :quantitiy
   json.url resource_url(resource, format: :json)
 end

@@ -1,11 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  roNumber: 1
-  roName: MyString
-  t_id: 1
+  name: MyString
+  type_id: 1
 
 two:
-  roNumber: 1
-  roName: MyString
-  t_id: 1
+  name: MyString
+  type_id: 1
