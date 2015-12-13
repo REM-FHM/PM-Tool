@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151213103306) do
+ActiveRecord::Schema.define(version: 20151213204246) do
 
   create_table "components", force: :cascade do |t|
     t.string   "name"
@@ -46,19 +46,17 @@ ActiveRecord::Schema.define(version: 20151213103306) do
   end
 
   create_table "resources", force: :cascade do |t|
-    t.integer  "reNumber"
-    t.string   "reQualification"
-    t.string   "reExperience"
-    t.decimal  "reQuantity"
-    t.integer  "ro_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "role_id"
+    t.string   "qualification"
+    t.string   "experience"
+    t.decimal  "quantitiy"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "roles", force: :cascade do |t|
-    t.integer  "roNumber"
-    t.string   "roName"
-    t.integer  "t_id"
+    t.string   "name"
+    t.integer  "type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -85,8 +83,7 @@ ActiveRecord::Schema.define(version: 20151213103306) do
   end
 
   create_table "types", force: :cascade do |t|
-    t.integer  "tNumber"
-    t.string   "tName"
+    t.string   "name"
     t.integer  "rbs_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

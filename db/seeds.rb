@@ -39,4 +39,18 @@ Subtask.create(id: 3, name: 'Funktionale Architektur', task_id: 2)
 Workpackage.create(id: 5, name: 'Funtionen- und GUI-Modellierung', subtask_id: 3)
 Workpackage.create(id: 6, name: 'Prozess- und Datenmodellierung', subtask_id: 3)
 
+puts "ResourceBreakdownStructure wird eingelesen"
+ResourceBreakdownStructure.create(id: 1, p_id: 1)
+Type.create(id: 1, name: 'Intern', rbs_id: 1)
+Role.create(id: 1, name: 'Projektleiter', type_id: 1)
+Resource.create(id: 1, qualification: 'PMP', experience: '>3 Projektleitung', quantitiy: '1', role_id: 1)
+Role.create(id: 2, name: 'Projektcontroller', type_id: 1)
+Resource.create(id: 2, qualification: 'Project MGMT', experience: 'Junior', quantitiy: '1', role_id: 2)
+Role.create(id: 3, name: 'Geschäftsanalytiker', type_id: 1)
+Resource.create(id: 3, qualification: 'Business Analyst', experience: '>3 Jahre Management', quantitiy: '1', role_id: 3)
+Type.create(id: 2, name: 'Extern', rbs_id: 1)
+Role.create(id: 4, name: 'Datenbankentwickler', type_id: 2)
+Resource.create(id: 4, qualification: 'Level 200', experience: '', quantitiy: '2', role_id: 4)
+Resource.create(id: 5, qualification: 'Level 300', experience: '>3 Jahre', quantitiy: '2', role_id: 4)
+
 puts "Seed abgeschlossen!"
