@@ -28,7 +28,7 @@ class WorkpackagesController < ApplicationController
 
     respond_to do |format|
       if @workpackage.save
-        format.html { redirect_to @workpackage, notice: 'Workpackage was successfully created.' }
+        format.html { redirect_to '/work_breakdown_structures/'+Task.find_by(id: Subtask.find_by(id: @workpackage.subtask_id).task_id).wbs_id.to_s, notice: 'Workpackage was successfully created.' }
         format.json { render :show, status: :created, location: @workpackage }
       else
         format.html { render :new }
@@ -56,7 +56,7 @@ class WorkpackagesController < ApplicationController
   def destroy
     @workpackage.destroy
     respond_to do |format|
-      format.html { redirect_to workpackages_url, notice: 'Workpackage was successfully destroyed.' }
+      format.html { redirect_to '/work_breakdown_structures/'+Task.find_by(id: Subtask.find_by(id: @workpackage.subtask_id).task_id).wbs_id.to_s, notice: 'Workpackage was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
