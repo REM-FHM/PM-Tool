@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<%project = Project.find_by_id(@wresource_breakdown_structure.p_id) %>
+<%project = Project.find_by_id(@resource_breakdown_structure.p_id) %>
 <h1><%= project.name+'-RBS' %></h1>
 
 <table class="table">
@@ -9,8 +9,7 @@
       <th>Art</th>
       <th>Rolle</th>
       <th>Qualifikation</th>
-      <th>Erfahrung</th>
-      <th>Vollzeitäquivalente</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -67,21 +66,18 @@
 	<% roles = Role.where(type_id: type.id) %>
 	<% roleNumber = 0 %>
 	<% roles.each do |role| %>
-	
-
-
-	<!-- <tr class="warning">
+	<tr class="warning">
 		<% roleNumber = roleNumber+1 %>
 	    <td></td>
 	    <td><%=typeNumber.to_s+'.'+roleNumber.to_s %></td>
 	    <td><%=role.name %></td>
-	    <td><% @resource = Workpackage.new %>
+	    <td><% @resource = Resource.new %>
 	    	<div class = "form-inline">
 	    		<%= form_for(@resource) do |f| %>
   				<%= f.hidden_field :role_id, :value => role.id %> 
   				<div class="form-group">
 	  				<div class="field">
-	    				<%= f.text_field :name, :class => "form-control input-sm"%>
+	    				<%= f.text_field :qualification, :class => "form-control input-sm"%>
 	  				</div>
   				</div>
 	  			<div class="form-group">
@@ -94,15 +90,14 @@
 		</td>
 	    <td><%= link_to 'Löschen', role, method: :delete, data: { confirm: 'Sind Sie sicher?' }, :class=> 'btn btn-xs btn-danger' %></td>
 	</tr>
-	!-->
-	    <% resources = Workpackage.where(role_id: role.id) %>
+	    <% resources = Resource.where(role_id: role.id) %>
 	    <% resourceNumber = 0 %>
 	    <% resources.each do |resource| %>
 	<tr>
 		<% resourceNumber = resourceNumber+1 %>
 		<td colspan="2"></td>
 	    <td><%=typeNumber.to_s+'.'+roleNumber.to_s+'.'+resourceNumber.to_s %></td>
-	    <td><%=resource.name %></td>
+	    <td><%=resource.qualification %></td>
 	    <td><%= link_to 'Löschen', resource, method: :delete, data: { confirm: 'Sind Sie sicher?' }, :class=> 'btn btn-xs btn-danger' %></td>
 	  </td>
 	</tr>
@@ -112,5 +107,5 @@
   </tbody>
 </table>
 
-<%= link_to 'Edit', edit_work_breakdown_structure_path(@work_breakdown_structure) %> |
-<%= link_to 'Back', work_breakdown_structures_path %>
+<%= link_to 'Edit', edit_resource_breakdown_structure_path(@resource_breakdown_structure) %> |
+<%= link_to 'Back', resource_breakdown_structures_path %>
