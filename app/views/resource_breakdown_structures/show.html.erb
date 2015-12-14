@@ -73,27 +73,33 @@
 	    <td></td>
 	    <td class="warning"><%=typeNumber.to_s+'.'+roleNumber.to_s %></td>
 	    <td class="warning"><%=role.name %></td>
-	    <td><% @resource = Resource.new %> </td>
-	    	
+	  
+	   		<% @resource = Resource.new %>  	
 	    	<% resources = Resource.where(role_id: role.id) %>
 	    	<% resourceNumber = 0 %>
-	    	<% resourceCounter = 0 %>
-	    	<% resources.each do |resource| %>
-	    	<% if resource.role_id = role.id
-	    		resourceCounter = resourceCounter+1	    		
-	    		end %>
-	    	<% if resourceCounter = 1 %>
+	    	<% puts "-------------" %>
+	    	<% puts role.resources.size %>	  
+	    	<% if resources.size == 1 %>
+	    		<% resources.each do |resource| %>
 	    		<td><%=resource.qualification %></td>
+	    		<td><%=resource.experience %></td>
+				<td><%=resource.quantitiy %></td>
+				<% end %>
+				
 	    	<% else %>
-	    		<tr>
+	    	<% resources.each do |resource| %>
+				<tr>
 					<% resourceNumber = resourceNumber+1 %>
-					<td colspan="4"></td>
+					<td colspan="2"></td>
 				    <td><%=typeNumber.to_s+'.'+roleNumber.to_s+'.'+resourceNumber.to_s %></td>
 				    <td><%=resource.qualification %></td>
+				    <td><%=resource.experience %></td>
+				    <td><%=resource.quantitiy %></td>
 				    <td><%= link_to 'Löschen', resource, method: :delete, data: { confirm: 'Sind Sie sicher?' }, :class=> 'btn btn-xs btn-danger' %></td>
 	  				
 				</tr>
-        	<% end %>
+			<% end %>
+        	
 	    <td><%= link_to 'Löschen', role, method: :delete, data: { confirm: 'Sind Sie sicher?' }, :class=> 'btn btn-xs btn-danger' %></td>
 	</tr>
 	    
