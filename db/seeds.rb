@@ -52,6 +52,6 @@ Type.create(id: 2, name: 'Extern', rbs_id: 1)
 Role.create(id: 4, name: 'Datenbankentwickler', type_id: 2)
 Resource.create(id: 4, qualification: 'Level 200', experience: '', quantitiy: '2', role_id: 4)
 Resource.create(id: 5, qualification: 'Level 300', experience: '>3 Jahre', quantitiy: '2', role_id: 4)
-Role.create(id: 5, name: 'Softwareentwickler', type_id: 3)
+Role.create(id: 5, name: 'Softwareentwickler', type_id: 2)
 
 puts "Seed abgeschlossen!"

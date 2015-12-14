@@ -28,7 +28,7 @@ class ResourcesController < ApplicationController
 
     respond_to do |format|
       if @resource.save
-        format.html { redirect_to @resource, notice: 'Resource was successfully created.' }
+        format.html { redirect_to '/resource_breakdown_structures/'+Type.find_by(id: Role.find_by(id: @resource.role_id).type_id).rbs_id.to_s, notice: 'Resource was successfully created.' }
         format.json { render :show, status: :created, location: @resource }
       else
         format.html { render :new }
@@ -56,7 +56,7 @@ class ResourcesController < ApplicationController
   def destroy
     @resource.destroy
     respond_to do |format|
-      format.html { redirect_to resources_url, notice: 'Resource was successfully destroyed.' }
+      format.html { redirect_to '/resource_breakdown_structures/'+Type.find_by(id: Role.find_by(id: @resource.role_id).type_id).rbs_id.to_s, notice: 'Resource was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
