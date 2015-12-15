@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @workpackage.name %>
+</p>
+
+<p>
+  <strong>Subtask:</strong>
+  <%= @workpackage.subtask_id %>
+</p>
+
+<%= link_to 'Edit', edit_workpackage_path(@workpackage) %> |
+<%= link_to 'Back', workpackages_path %>

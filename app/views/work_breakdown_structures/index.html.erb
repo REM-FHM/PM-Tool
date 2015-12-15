@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Work Breakdown Structures</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>P</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @work_breakdown_structures.each do |work_breakdown_structure| %>
+      <tr>
+        <td><%= work_breakdown_structure.p_id %></td>
+        <td><%= link_to 'Show', work_breakdown_structure %></td>
+        <td><%= link_to 'Edit', edit_work_breakdown_structure_path(work_breakdown_structure) %></td>
+        <td><%= link_to 'Destroy', work_breakdown_structure, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Work breakdown structure', new_work_breakdown_structure_path %>

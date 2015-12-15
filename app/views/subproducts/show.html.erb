@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @subproduct.name %>
+</p>
+
+<p>
+  <strong>Pbs:</strong>
+  <%= @subproduct.pbs_id %>
+</p>
+
+<%= link_to 'Edit', edit_subproduct_path(@subproduct) %> |
+<%= link_to 'Back', subproducts_path %>

@@ -1,0 +1,21 @@
+<%= form_for(@resource_breakdown_structure) do |f| %>
+  <% if @resource_breakdown_structure.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@resource_breakdown_structure.errors.count, "error") %> prohibited this resource_breakdown_structure from being saved:</h2>
+
+      <ul>
+      <% @resource_breakdown_structure.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :p_id %><br>
+    <%= f.number_field :p_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @resource.role_id %>
+</p>
+
+<p>
+  <strong>Qualification:</strong>
+  <%= @resource.qualification %>
+</p>
+
+<p>
+  <strong>Experience:</strong>
+  <%= @resource.experience %>
+</p>
+
+<p>
+  <strong>Quantitiy:</strong>
+  <%= @resource.quantitiy %>
+</p>
+
+<%= link_to 'Edit', edit_resource_path(@resource) %> |
+<%= link_to 'Back', resources_path %>

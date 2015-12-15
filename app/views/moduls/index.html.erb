@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Moduls</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Subproduct</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @moduls.each do |modul| %>
+      <tr>
+        <td><%= modul.name %></td>
+        <td><%= modul.subproduct_id %></td>
+        <td><%= link_to 'Show', modul %></td>
+        <td><%= link_to 'Edit', edit_modul_path(modul) %></td>
+        <td><%= link_to 'Destroy', modul, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Modul', new_modul_path %>

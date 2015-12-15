@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @modul.name %>
+</p>
+
+<p>
+  <strong>Subproduct:</strong>
+  <%= @modul.subproduct_id %>
+</p>
+
+<%= link_to 'Edit', edit_modul_path(@modul) %> |
+<%= link_to 'Back', moduls_path %>
