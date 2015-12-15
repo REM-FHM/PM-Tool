@@ -78,9 +78,7 @@
 	  
 	   		<% @resource = Resource.new %>  	
 	    	<% resources = Resource.where(role_id: role.id) %>
-	    	<% resourceNumber = 0 %>
-	    	<% puts "-------------" %>
-	    	<% puts role.resources.size %>	  
+	    	<% resourceNumber = 0 %>	  
 	    	<% if resources.size == 1 %>
 	    		<% resources.each do |resource| %>
 	    		<td><%=resource.qualification %></td>
