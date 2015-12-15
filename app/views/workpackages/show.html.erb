@@ -1,18 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Wpnumber:</strong>
-  <%= @workpackage.wpNumber %>
+  <strong>Name:</strong>
+  <%= @workpackage.name %>
 </p>
 
 <p>
-  <strong>Wpname:</strong>
-  <%= @workpackage.wpName %>
-</p>
-
-<p>
-  <strong>St:</strong>
-  <%= @workpackage.st_id %>
+  <strong>Subtask:</strong>
+  <%= @workpackage.subtask_id %>
 </p>
 
 <%= link_to 'Edit', edit_workpackage_path(@workpackage) %> |

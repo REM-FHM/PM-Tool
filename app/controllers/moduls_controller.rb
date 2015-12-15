@@ -28,7 +28,7 @@ class ModulsController < ApplicationController
 
     respond_to do |format|
       if @modul.save
-        format.html { redirect_to @modul, notice: 'Modul was successfully created.' }
+        format.html { redirect_to '/product_breakdown_structures/'+Subproduct.find_by(id: @modul.subproduct_id).pbs_id.to_s, notice: 'Modul was successfully created.' }
         format.json { render :show, status: :created, location: @modul }
       else
         format.html { render :new }
@@ -56,7 +56,7 @@ class ModulsController < ApplicationController
   def destroy
     @modul.destroy
     respond_to do |format|
-      format.html { redirect_to moduls_url, notice: 'Modul was successfully destroyed.' }
+      format.html { redirect_to '/product_breakdown_structures/'+Subproduct.find_by(id: @modul.subproduct_id).pbs_id.to_s, notice: 'Modul was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,6 @@ class ModulsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def modul_params
-      params.require(:modul).permit(:mName, :mNumber, :sp_id)
+      params.require(:modul).permit(:name, :subproduct_id)
     end
 end

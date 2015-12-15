@@ -28,7 +28,7 @@ class SubproductsController < ApplicationController
 
     respond_to do |format|
       if @subproduct.save
-        format.html { redirect_to @subproduct, notice: 'Subproduct was successfully created.' }
+        format.html { redirect_to '/product_breakdown_structures/'+@subproduct.pbs_id.to_s, notice: 'Subproduct was successfully created.' }
         format.json { render :show, status: :created, location: @subproduct }
       else
         format.html { render :new }
@@ -56,7 +56,7 @@ class SubproductsController < ApplicationController
   def destroy
     @subproduct.destroy
     respond_to do |format|
-      format.html { redirect_to subproducts_url, notice: 'Subproduct was successfully destroyed.' }
+      format.html { redirect_to '/product_breakdown_structures/'+@subproduct.pbs_id.to_s, notice: 'Subproduct was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,6 @@ class SubproductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subproduct_params
-      params.require(:subproduct).permit(:spName, :spNumber, :pbs_id)
+      params.require(:subproduct).permit(:name, :pbs_id)
     end
 end

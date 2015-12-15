@@ -28,7 +28,7 @@ class SubtasksController < ApplicationController
 
     respond_to do |format|
       if @subtask.save
-        format.html { redirect_to @subtask, notice: 'Subtask was successfully created.' }
+        format.html { redirect_to '/work_breakdown_structures/'+Task.find_by(id: @subtask.task_id).wbs_id.to_s, notice: 'Subtask was successfully created.' }
         format.json { render :show, status: :created, location: @subtask }
       else
         format.html { render :new }
@@ -56,7 +56,7 @@ class SubtasksController < ApplicationController
   def destroy
     @subtask.destroy
     respond_to do |format|
-      format.html { redirect_to subtasks_url, notice: 'Subtask was successfully destroyed.' }
+      format.html { redirect_to '/work_breakdown_structures/'+Task.find_by(id: @subtask.task_id).wbs_id.to_s, notice: 'Subtask was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,6 @@ class SubtasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subtask_params
-      params.require(:subtask).permit(:stNumber, :stName, :t_id)
+      params.require(:subtask).permit(:name, :task_id)
     end
 end

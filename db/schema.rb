@@ -11,22 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151209130027) do
+ActiveRecord::Schema.define(version: 20151213204246) do
 
   create_table "components", force: :cascade do |t|
-    t.string   "cName"
-    t.integer  "cNumber"
-    t.integer  "m_id"
+    t.string   "name"
+    t.integer  "modul_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "moduls", force: :cascade do |t|
-    t.string   "mName"
-    t.integer  "mNumber"
-    t.integer  "sp_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name"
+    t.integer  "subproduct_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "product_breakdown_structures", force: :cascade do |t|
@@ -48,50 +46,44 @@ ActiveRecord::Schema.define(version: 20151209130027) do
   end
 
   create_table "resources", force: :cascade do |t|
-    t.integer  "reNumber"
-    t.string   "reQualification"
-    t.string   "reExperience"
-    t.decimal  "reQuantity"
-    t.integer  "ro_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "role_id"
+    t.string   "qualification"
+    t.string   "experience"
+    t.decimal  "quantitiy"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "roles", force: :cascade do |t|
-    t.integer  "roNumber"
-    t.string   "roName"
-    t.integer  "t_id"
+    t.string   "name"
+    t.integer  "type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "subproducts", force: :cascade do |t|
-    t.string   "spName"
-    t.integer  "spNumber"
+    t.string   "name"
     t.integer  "pbs_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "subtasks", force: :cascade do |t|
-    t.integer  "stNumber"
-    t.string   "stName"
-    t.integer  "t_id"
+    t.string   "name"
+    t.integer  "task_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.integer  "tNumber"
-    t.string   "tName"
+    t.string   "name"
     t.integer  "wbs_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "types", force: :cascade do |t|
-    t.integer  "tNumber"
-    t.string   "tName"
+    t.string   "name"
     t.integer  "rbs_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -104,9 +96,8 @@ ActiveRecord::Schema.define(version: 20151209130027) do
   end
 
   create_table "workpackages", force: :cascade do |t|
-    t.integer  "wpNumber"
-    t.string   "wpName"
-    t.integer  "st_id"
+    t.string   "name"
+    t.integer  "subtask_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

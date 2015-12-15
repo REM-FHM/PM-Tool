@@ -1,18 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Stnumber:</strong>
-  <%= @subtask.stNumber %>
+  <strong>Name:</strong>
+  <%= @subtask.name %>
 </p>
 
 <p>
-  <strong>Stname:</strong>
-  <%= @subtask.stName %>
-</p>
-
-<p>
-  <strong>T:</strong>
-  <%= @subtask.t_id %>
+  <strong>Task:</strong>
+  <%= @subtask.task_id %>
 </p>
 
 <%= link_to 'Edit', edit_subtask_path(@subtask) %> |

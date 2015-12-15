@@ -5,9 +5,8 @@
 <table>
   <thead>
     <tr>
-      <th>Wpnumber</th>
-      <th>Wpname</th>
-      <th>St</th>
+      <th>Name</th>
+      <th>Subtask</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,9 +14,8 @@
   <tbody>
     <% @workpackages.each do |workpackage| %>
       <tr>
-        <td><%= workpackage.wpNumber %></td>
-        <td><%= workpackage.wpName %></td>
-        <td><%= workpackage.st_id %></td>
+        <td><%= workpackage.name %></td>
+        <td><%= workpackage.subtask_id %></td>
         <td><%= link_to 'Show', workpackage %></td>
         <td><%= link_to 'Edit', edit_workpackage_path(workpackage) %></td>
         <td><%= link_to 'Destroy', workpackage, method: :delete, data: { confirm: 'Are you sure?' } %></td>

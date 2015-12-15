@@ -28,7 +28,7 @@ class RolesController < ApplicationController
 
     respond_to do |format|
       if @role.save
-        format.html { redirect_to @role, notice: 'Role was successfully created.' }
+        format.html { redirect_to '/resource_breakdown_structures/'+Type.find_by(id: @role.type_id).rbs_id.to_s, notice: 'Role was successfully created.' }
         format.json { render :show, status: :created, location: @role }
       else
         format.html { render :new }
@@ -56,7 +56,7 @@ class RolesController < ApplicationController
   def destroy
     @role.destroy
     respond_to do |format|
-      format.html { redirect_to roles_url, notice: 'Role was successfully destroyed.' }
+      format.html { redirect_to '/resource_breakdown_structures/'+Type.find_by(id: @role.type_id).rbs_id.to_s, notice: 'Role was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,6 @@ class RolesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def role_params
-      params.require(:role).permit(:roNumber, :roName, :t_id)
+      params.require(:role).permit(:name, :type_id)
     end
 end

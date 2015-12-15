@@ -28,7 +28,7 @@ class TypesController < ApplicationController
 
     respond_to do |format|
       if @type.save
-        format.html { redirect_to @type, notice: 'Type was successfully created.' }
+        format.html { redirect_to '/resource_breakdown_structures/'+@type.rbs_id.to_s, notice: 'Type was successfully created.' }
         format.json { render :show, status: :created, location: @type }
       else
         format.html { render :new }
@@ -56,7 +56,7 @@ class TypesController < ApplicationController
   def destroy
     @type.destroy
     respond_to do |format|
-      format.html { redirect_to types_url, notice: 'Type was successfully destroyed.' }
+      format.html { redirect_to '/resource_breakdown_structures/'+@type.rbs_id.to_s, notice: 'Type was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,6 @@ class TypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def type_params
-      params.require(:type).permit(:tNumber, :tName, :rbs_id)
+      params.require(:type).permit(:name, :rbs_id)
     end
 end

@@ -18,7 +18,7 @@ class TypesControllerTest < ActionController::TestCase
 
   test "should create type" do
     assert_difference('Type.count') do
-      post :create, type: { rbs_id: @type.rbs_id, tName: @type.tName, tNumber: @type.tNumber }
+      post :create, type: { name: @type.name, rbs_id: @type.rbs_id }
     end
 
     assert_redirected_to type_path(assigns(:type))
@@ -35,7 +35,7 @@ class TypesControllerTest < ActionController::TestCase
   end
 
   test "should update type" do
-    patch :update, id: @type, type: { rbs_id: @type.rbs_id, tName: @type.tName, tNumber: @type.tNumber }
+    patch :update, id: @type, type: { name: @type.name, rbs_id: @type.rbs_id }
     assert_redirected_to type_path(assigns(:type))
   end
 

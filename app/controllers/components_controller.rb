@@ -28,7 +28,7 @@ class ComponentsController < ApplicationController
 
     respond_to do |format|
       if @component.save
-        format.html { redirect_to @component, notice: 'Component was successfully created.' }
+        format.html { redirect_to '/product_breakdown_structures/'+Subproduct.find_by(id: Modul.find_by(id: @component.modul_id).subproduct_id).pbs_id.to_s, notice: 'Komponente erfolgreich angelegt.' }
         format.json { render :show, status: :created, location: @component }
       else
         format.html { render :new }
@@ -56,7 +56,7 @@ class ComponentsController < ApplicationController
   def destroy
     @component.destroy
     respond_to do |format|
-      format.html { redirect_to components_url, notice: 'Component was successfully destroyed.' }
+      format.html { redirect_to '/product_breakdown_structures/'+Subproduct.find_by(id: Modul.find_by(id: @component.modul_id).subproduct_id).pbs_id.to_s, notice: 'Komponente erfolgreich gelöscht.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,6 @@ class ComponentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def component_params
-      params.require(:component).permit(:cName, :cNumber, :m_id)
+      params.require(:component).permit(:name, :modul_id)
     end
 end

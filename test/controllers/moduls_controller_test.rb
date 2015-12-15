@@ -18,7 +18,7 @@ class ModulsControllerTest < ActionController::TestCase
 
   test "should create modul" do
     assert_difference('Modul.count') do
-      post :create, modul: { mName: @modul.mName, mNumber: @modul.mNumber, sp_id: @modul.sp_id }
+      post :create, modul: { name: @modul.name, subproduct_id: @modul.subproduct_id }
     end
 
     assert_redirected_to modul_path(assigns(:modul))
@@ -35,7 +35,7 @@ class ModulsControllerTest < ActionController::TestCase
   end
 
   test "should update modul" do
-    patch :update, id: @modul, modul: { mName: @modul.mName, mNumber: @modul.mNumber, sp_id: @modul.sp_id }
+    patch :update, id: @modul, modul: { name: @modul.name, subproduct_id: @modul.subproduct_id }
     assert_redirected_to modul_path(assigns(:modul))
   end
 

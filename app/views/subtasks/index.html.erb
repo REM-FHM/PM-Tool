@@ -5,9 +5,8 @@
 <table>
   <thead>
     <tr>
-      <th>Stnumber</th>
-      <th>Stname</th>
-      <th>T</th>
+      <th>Name</th>
+      <th>Task</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,9 +14,8 @@
   <tbody>
     <% @subtasks.each do |subtask| %>
       <tr>
-        <td><%= subtask.stNumber %></td>
-        <td><%= subtask.stName %></td>
-        <td><%= subtask.t_id %></td>
+        <td><%= subtask.name %></td>
+        <td><%= subtask.task_id %></td>
         <td><%= link_to 'Show', subtask %></td>
         <td><%= link_to 'Edit', edit_subtask_path(subtask) %></td>
         <td><%= link_to 'Destroy', subtask, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,1 +1,1 @@
-json.extract! @subproduct, :id, :spName, :spNumber, :pbs_id, :created_at, :updated_at
+json.extract! @subproduct, :id, :name, :pbs_id, :created_at, :updated_at

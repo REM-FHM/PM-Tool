@@ -1,3 +1,3 @@
 class Workpackage < ActiveRecord::Base
-	belongs_to :subtask
+	belongs_to :workpackage
 end
