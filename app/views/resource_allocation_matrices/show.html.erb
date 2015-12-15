@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>P:</strong>
+  <%= @resource_allocation_matrix.p_id %>
+</p>
+
+<p>
+  <strong>Workpackage:</strong>
+  <%= @resource_allocation_matrix.workpackage_id %>
+</p>
+
+<p>
+  <strong>Component:</strong>
+  <%= @resource_allocation_matrix.component_id %>
+</p>
+
+<p>
+  <strong>Resource:</strong>
+  <%= @resource_allocation_matrix.resource_id %>
+</p>
+
+<%= link_to 'Edit', edit_resource_allocation_matrix_path(@resource_allocation_matrix) %> |
+<%= link_to 'Back', resource_allocation_matrices_path %>

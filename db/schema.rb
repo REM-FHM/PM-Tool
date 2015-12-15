@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151213204246) do
+ActiveRecord::Schema.define(version: 20151215110731) do
 
   create_table "components", force: :cascade do |t|
     t.string   "name"
@@ -37,6 +37,15 @@ ActiveRecord::Schema.define(version: 20151213204246) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "resource_allocation_matrices", force: :cascade do |t|
+    t.integer  "p_id"
+    t.integer  "workpackage_id"
+    t.integer  "component_id"
+    t.integer  "resource_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "resource_breakdown_structures", force: :cascade do |t|
