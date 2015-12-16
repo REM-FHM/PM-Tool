@@ -2,6 +2,9 @@
 <%project = Project.find_by_id(@resource_breakdown_structure.p_id) %>
 <h1><%= project.name+'-RBS' %></h1>
 
+<%= link_to 'Edit', edit_resource_breakdown_structure_path(@resource_breakdown_structure) %> |
+<%= link_to 'Back', projects_path %>
+
 <table class="table">
   <thead>
     <tr>
@@ -19,24 +22,7 @@
   </tbody>
   <tr class="success">
 	    <td><%=project.name %></td>
-	    <td><% @type = Type.new %>
-	    	<div class = "form-inline">
-	    		<%= form_for(@type) do |f| %>
-  				<%= f.hidden_field :rbs_id, :value => @resource_breakdown_structure.id %> 
-  				<div class="form-group">
-	  				<div class="field">
-	    				<%= f.text_field :name, :class => "form-control input-sm"%>
-	  				</div>
-  				</div>
-	  			<div class="form-group">
-	  				<div class="actions">
-	  					<%= f.submit "Anlegen", class: "btn btn-xs btn-success" %>
-	  				</div>
-  				</div>
-				<% end %>
-			</div>
-	    </td>
-	    <td colspan="5"></td>
+	    <td colspan="6"></td>
 	</tr>
 	<% types = Type.where(rbs_id: @resource_breakdown_structure.id) %>
 	<% typeNumber = 0 %>
@@ -45,25 +31,7 @@
 		<% typeNumber = typeNumber+1 %>
 	    <td><%=typeNumber %></td>
 	    <td><%=type.name %></td>
-	    <td><% @role = Role.new %>
-	    	<div class = "form-inline">
-	    		<%= form_for(@role) do |f| %>
-  				<%= f.hidden_field :type_id, :value => type.id %> 
-  				<div class="form-group">
-	  				<div class="field">
-	    				<%= f.text_field :name, :class => "form-control input-sm"%>
-	  				</div>
-  				</div>
-	  			<div class="form-group">
-	  				<div class="actions">
-	  					<%= f.submit "Anlegen", class: "btn btn-xs btn-success" %>
-	  				</div>
-  				</div>
-				<% end %>
-			</div>
-	    </td>
-	    <td colspan="3"></td>
-	    <td><%= link_to 'Löschen', type, method: :delete, data: { confirm: 'Sind Sie sicher?' }, :class=> 'btn btn-xs btn-danger' %></td>
+	    <td colspan="5"></td>
 	</tr>
 	<% roles = Role.where(type_id: type.id) %>
 	<% roleNumber = 0 %>
@@ -73,30 +41,7 @@
 	    <td></td>
 	    <td><%=typeNumber.to_s+'.'+roleNumber.to_s %></td>
 	    <td><%=role.name %></td>
-	    <td colspan="3"></td>
-	    <td><%= link_to 'Löschen', role, method: :delete, data: { confirm: 'Sind Sie sicher?' }, :class=> 'btn btn-xs btn-danger' %></td>
-	</tr>
-	<tr>
-		<td colspan="3"></td>
-		<td><% @resource = Resource.new %>
-	    	<div class = "form-inline">
-	    		<%= form_for(@resource) do |f| %>
-  				<%= f.hidden_field :role_id, :value => role.id %> 
-  				<div class="form-group">
-	  				<div class="field">
-	    				<%= f.text_field :qualification, :class => "form-control input-sm"%>
-	    				<td><%= f.text_field :experience, :class => "form-control input-sm"%></td>
-	    				<td><%= f.number_field :quantitiy, :class => "form-control input-sm"%></td>
-	  				</div>
-  				</div>
-	  			<div class="form-group">
-	  				<div class="actions">
-	  					<td><%= f.submit "Anlegen", class: "btn btn-xs btn-success" %></td>
-	  				</div>
-  				</div>
-				<% end %>
-			</div>
-		</td>
+	    <td colspan="4"></td>
 	</tr>
 	    <% resources = Resource.where(role_id: role.id) %>
 	    <% resourceNumber = 0 %>
@@ -108,7 +53,7 @@
 	    <td><%=resource.qualification %></td>
 	    <td><%=resource.experience %></td>
 	    <td><%=resource.quantitiy.to_i %></td>
-	    <td><%= link_to 'Löschen', resource, method: :delete, data: { confirm: 'Sind Sie sicher?' }, :class=> 'btn btn-xs btn-danger' %></td>
+	    <td></td>
 	  </td>
 	</tr>	
 	<% end %>
@@ -116,6 +61,3 @@
 	<% end %>
   </tbody>
 </table>
-
-<%= link_to 'Edit', edit_resource_breakdown_structure_path(@resource_breakdown_structure) %> |
-<%= link_to 'Back', resource_breakdown_structures_path %>
