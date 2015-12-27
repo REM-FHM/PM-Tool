@@ -1,110 +1,105 @@
 <p id="notice"><%= notice %></p>
 <%project = Project.find_by_id(@work_breakdown_structure.p_id) %>
+<%= link_to 'Zurück', work_breakdown_structure_path, :class=> 'btn btn-sm btn-primary'%>
 <h1><%= project.name+'-WBS' %></h1>
-
-<%= link_to 'Anzeigen', @work_breakdown_structure %>
-
 <table class="table">
-  <thead>
-    <tr>
-      <th>Gesamtaufgabe</th>
-      <th>Aufgabe</th>
-      <th>Teilaufgabe</th>
-      <th>Arbeitspaket</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-
-  </tbody>
-  <tr class="success">
-	    <td><%=project.name %></td>
-	    <td><% @task = Task.new %>
-	    	<div class = "form-inline">
-	    		<%= form_for(@task) do |f| %>
-  				<%= f.hidden_field :wbs_id, :value => @work_breakdown_structure.id %> 
-  				<div class="form-group">
-	  				<div class="field">
-	    				<%= f.text_field :name, :class => "form-control input-sm"%>
+	<thead>
+    	<tr>
+      		<th>Gesamtaufgabe</th>
+		    <th>Aufgabe</th>
+		    <th>Teilaufgabe</th>
+		    <th>Arbeitspaket</th>
+		    <th></th>
+		</tr>
+  	</thead>
+  	<tbody>
+  		<tr class="success">
+			<td id="middle"><%=project.name %></td>
+			<td><% @task = Task.new %>
+		  		<div class = "form-inline">
+			   		<%= form_for(@task) do |f| %>
+		  			<%= f.hidden_field :wbs_id, :value => @work_breakdown_structure.id %> 
+		  			<div class="form-group">
+						<div class="field" id="field">
+			   				<%= f.text_field :name, :class => "form-control input-sm"%>
+						</div>
+		  			</div>
+					<div class="form-group">
+						<div class="actions" id="field">
+							<%= f.submit "Anlegen", class: "btn btn-xs btn-success" %>
+						</div>
+		  			</div>
+					<% end %>
+				</div>
+			</td>
+			<td colspan="3"></td>
+  		</tr>
+		<% tasks = Task.where(wbs_id: @work_breakdown_structure.id) %>
+		<% taskNumber = 0 %>
+		<% tasks.each do |task| %>
+		<tr class="info">
+			<% taskNumber = taskNumber+1 %>
+		    <td id="middle"><%=taskNumber %></td>
+		    <td id="middle"><%=task.name %></td>
+		    <td><% @subtask = Subtask.new %>
+		    	<div class = "form-inline">
+		    		<%= form_for(@subtask) do |f| %>
+	  				<%= f.hidden_field :task_id, :value => task.id %> 
+	  				<div class="form-group">
+		  				<div class="field" id="field">
+		    				<%= f.text_field :name, :class => "form-control input-sm"%>
+		  				</div>
 	  				</div>
-  				</div>
-	  			<div class="form-group">
-	  				<div class="actions">
-	  					<%= f.submit "Anlegen", class: "btn btn-xs btn-success" %>
+	  				<div class="form-group">
+		  				<div class="actions" id="field">
+		  					<%= f.submit "Anlegen", class: "btn btn-xs btn-success" %>
+		  				</div>
+  					</div>
+					<% end %>
+				</div>
+	    	</td>
+	    	<td colspan="1"></td>
+	    	<td id="middle"><%= link_to 'Löschen', task, method: :delete, data: { confirm: 'Sind Sie sicher?' }, :class=> 'btn btn-xs btn-danger' %></td>
+		</tr>
+		<% subtasks = Subtask.where(task_id: task.id) %>
+		<% subtaskNumber = 0 %>
+		<% subtasks.each do |subtask| %>
+		<tr class="warning">
+			<% subtaskNumber = subtaskNumber+1 %>
+		    <td></td>
+		    <td id="middle"><%=taskNumber.to_s+'.'+subtaskNumber.to_s %></td>
+		    <td id="middle"><%=subtask.name %></td>
+		    <td><% @workpackage = Workpackage.new %>
+		    	<div class = "form-inline">
+		    		<%= form_for(@workpackage) do |f| %>
+	  				<%= f.hidden_field :subtask_id, :value => subtask.id %> 
+	  				<div class="form-group">
+		  				<div class="field" id="field">
+		    				<%= f.text_field :name, :class => "form-control input-sm"%>
+		  				</div>
 	  				</div>
-  				</div>
-				<% end %>
-			</div>
-	    </td>
-	    <td colspan="3"></td>
-	</tr>
-	<% tasks = Task.where(wbs_id: @work_breakdown_structure.id) %>
-	<% taskNumber = 0 %>
-	<% tasks.each do |task| %>
-	<tr class="info">
-		<% taskNumber = taskNumber+1 %>
-	    <td><%=taskNumber %></td>
-	    <td><%=task.name %></td>
-	    <td><% @subtask = Subtask.new %>
-	    	<div class = "form-inline">
-	    		<%= form_for(@subtask) do |f| %>
-  				<%= f.hidden_field :task_id, :value => task.id %> 
-  				<div class="form-group">
-	  				<div class="field">
-	    				<%= f.text_field :name, :class => "form-control input-sm"%>
+		  			<div class="form-group">
+		  				<div class="actions" id="field">
+		  					<%= f.submit "Anlegen", class: "btn btn-xs btn-success" %>
+		  				</div>
 	  				</div>
-  				</div>
-	  			<div class="form-group">
-	  				<div class="actions">
-	  					<%= f.submit "Anlegen", class: "btn btn-xs btn-success" %>
-	  				</div>
-  				</div>
-				<% end %>
-			</div>
-	    </td>
-	    <td colspan="1"></td>
-	    <td><%= link_to 'Löschen', task, method: :delete, data: { confirm: 'Sind Sie sicher?' }, :class=> 'btn btn-xs btn-danger' %></td>
-	</tr>
-	<% subtasks = Subtask.where(task_id: task.id) %>
-	<% subtaskNumber = 0 %>
-	<% subtasks.each do |subtask| %>
-	<tr class="warning">
-		<% subtaskNumber = subtaskNumber+1 %>
-	    <td></td>
-	    <td><%=taskNumber.to_s+'.'+subtaskNumber.to_s %></td>
-	    <td><%=subtask.name %></td>
-	    <td><% @workpackage = Workpackage.new %>
-	    	<div class = "form-inline">
-	    		<%= form_for(@workpackage) do |f| %>
-  				<%= f.hidden_field :subtask_id, :value => subtask.id %> 
-  				<div class="form-group">
-	  				<div class="field">
-	    				<%= f.text_field :name, :class => "form-control input-sm"%>
-	  				</div>
-  				</div>
-	  			<div class="form-group">
-	  				<div class="actions">
-	  					<%= f.submit "Anlegen", class: "btn btn-xs btn-success" %>
-	  				</div>
-  				</div>
-				<% end %>
-			</div>
-		</td>
-	    <td><%= link_to 'Löschen', subtask, method: :delete, data: { confirm: 'Sind Sie sicher?' }, :class=> 'btn btn-xs btn-danger' %></td>
-	</tr>
+					<% end %>
+				</div>
+			</td>
+		    <td id="middle"><%= link_to 'Löschen', subtask, method: :delete, data: { confirm: 'Sind Sie sicher?' }, :class=> 'btn btn-xs btn-danger' %></td>
+		</tr>
 	    <% workpackages = Workpackage.where(subtask_id: subtask.id) %>
 	    <% workpackageNumber = 0 %>
 	    <% workpackages.each do |workpackage| %>
-	<tr>
-		<% workpackageNumber = workpackageNumber+1 %>
-		<td colspan="2"></td>
-	    <td><%=taskNumber.to_s+'.'+subtaskNumber.to_s+'.'+workpackageNumber.to_s %></td>
-	    <td><%=workpackage.name %></td>
-	    <td><%= link_to 'Löschen', workpackage, method: :delete, data: { confirm: 'Sind Sie sicher?' }, :class=> 'btn btn-xs btn-danger' %></td>
-	  </td>
-	</tr>
+		<tr>
+			<% workpackageNumber = workpackageNumber+1 %>
+			<td colspan="2"></td>
+		    <td><%=taskNumber.to_s+'.'+subtaskNumber.to_s+'.'+workpackageNumber.to_s %></td>
+		    <td><%=workpackage.name %></td>
+		    <td><%= link_to 'Löschen', workpackage, method: :delete, data: { confirm: 'Sind Sie sicher?' }, :class=> 'btn btn-xs btn-danger' %></td>
+		</tr>
 	<% end %>
 	<% end %>
 	<% end %>
-  </tbody>
+  	</tbody>
 </table>
