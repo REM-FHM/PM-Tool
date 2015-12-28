@@ -1,9 +1,10 @@
 <p id="notice"><%= notice %></p>
 <%project = Project.find_by_id(@work_breakdown_structure.p_id) %>
-<h1><%= project.name+'-WBS' %></h1>
-
-<%= link_to 'Edit', edit_work_breakdown_structure_path(@work_breakdown_structure) %>
-<%= link_to 'Back', projects_path %>
+<h1>
+	<%= project.name+'-WBS' %>
+	<%= link_to 'Bearbeiten', edit_work_breakdown_structure_path(@work_breakdown_structure), :id=> 'btn', :class=> 'btn btn-sm btn-primary pull-right'%>
+	<%= link_to 'Strukturen', projects_path, :id=>'btn', :class=> 'btn btn-sm btn-primary pull-right'%>
+</h1>
 
 <table class="table">
   <thead>
