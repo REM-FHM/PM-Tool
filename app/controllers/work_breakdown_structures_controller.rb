@@ -19,6 +19,7 @@ class WorkBreakdownStructuresController < ApplicationController
 
   # GET /work_breakdown_structures/1/edit
   def edit
+    work_breakdown_chart
   end
 
   # POST /work_breakdown_structures
@@ -59,6 +60,34 @@ class WorkBreakdownStructuresController < ApplicationController
       format.html { redirect_to work_breakdown_structures_url, notice: 'Work breakdown structure was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def work_breakdown_chart
+    data_table = GoogleVisualr::DataTable.new
+    data_table.new_column('string', 'Name')
+    data_table.new_column('string', 'Vorgänger')
+    data_table.new_column('string', 'Paket')
+    project = Project.find_by_id(@work_breakdown_structure.p_id)
+    data_table.add_rows([[project.name,'','Gesamtaufgabe']])
+
+    tasks = Task.where(wbs_id: @work_breakdown_structure.id)
+    tasks.each do |task|
+      data_table.add_rows([[task.name,project.name,'Aufgabe']])
+
+    subtasks = Subtask.where(Subtask.find_by(id: @task.wbs_id): task.id)
+    subtasks.each do |subtask|
+      data_table.add_rows([[subtask.name,task.name,'Teilaufgabe']])
+    
+
+    workpackages = Workpackage.where(Task.find_by(id: Subtask.find_by(id: @workpackage.subtask_id).task_id): subtask.id)
+    workpackages.each do |workpackage|
+      data_table.add_rows([[workpackage.name,subtask.name,'Aufgabe']])
+    
+    options = {allowHtml:true, color:'#ffedf7'}
+    @wbs_chart = GoogleVisualr::Interactive::OrgChart.new(data_table, options)
+  end
+  end
+  end
   end
 
   private
