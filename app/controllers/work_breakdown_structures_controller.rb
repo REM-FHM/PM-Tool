@@ -72,7 +72,9 @@ class WorkBreakdownStructuresController < ApplicationController
     data_table.add_rows([[project.name,'','Gesamtaufgabe']])
     tasks = Task.where(wbs_id: @work_breakdown_structure.id)
     tasks.each do |task|
-      data_table.add_rows([[task.name,project.name,'Aufgabe']])
+      #<div style="background-color:#ff00ff">
+      data_table.add_rows([[task.name, project.name,'Aufgabe']])
+      #data_table.setRowProperty(3, 'style', 'background: #FF0000');
       subtasks = Subtask.where(task_id: task.id)
       subtasks.each do |subtask|
         data_table.add_rows([[subtask.name,task.name,'Teilaufgabe']])
