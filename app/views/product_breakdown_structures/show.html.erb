@@ -2,6 +2,9 @@
 <%project = Project.find_by_id(@product_breakdown_structure.p_id) %>
 <h1><%= project.name+'-PBS' %></h1>
 
+<%= link_to 'Edit', edit_product_breakdown_structure_path(@product_breakdown_structure) %> |
+<%= link_to 'Back', projects_path %>
+
 <table class="table">
   <thead>
     <tr>
@@ -13,28 +16,9 @@
     </tr>
   </thead>
   <tbody>
-
-  </tbody>
   <tr class="success">
 	    <td><%=project.name %></td>
-	    <td><% @subproduct = Subproduct.new %>
-	    	<div class = "form-inline">
-	    		<%= form_for(@subproduct) do |f| %>
-  				<%= f.hidden_field :pbs_id, :value => @product_breakdown_structure.id %> 
-  				<div class="form-group">
-	  				<div class="field">
-	    				<%= f.text_field :name, :class => "form-control input-sm"%>
-	  				</div>
-  				</div>
-	  			<div class="form-group">
-	  				<div class="actions">
-	  					<%= f.submit "Anlegen", class: "btn btn-xs btn-success" %>
-	  				</div>
-  				</div>
-				<% end %>
-			</div>
-	    </td>
-	    <td colspan="3"></td>
+	    <td colspan="5"></td>
 	</tr>
 	<% subproducts = Subproduct.where(pbs_id: @product_breakdown_structure.id) %>
 	<% subproductNumber = 0 %>
@@ -43,25 +27,7 @@
 		<% subproductNumber = subproductNumber+1 %>
 	    <td><%=subproductNumber %></td>
 	    <td><%=subproduct.name %></td>
-	    <td><% @modul = Modul.new %>
-	    	<div class = "form-inline">
-	    		<%= form_for(@modul) do |f| %>
-  				<%= f.hidden_field :subproduct_id, :value => subproduct.id %> 
-  				<div class="form-group">
-	  				<div class="field">
-	    				<%= f.text_field :name, :class => "form-control input-sm"%>
-	  				</div>
-  				</div>
-	  			<div class="form-group">
-	  				<div class="actions">
-	  					<%= f.submit "Anlegen", class: "btn btn-xs btn-success" %>
-	  				</div>
-  				</div>
-				<% end %>
-			</div>
-	    </td>
-	    <td colspan="1"></td>
-	    <td><%= link_to 'Löschen', subproduct, method: :delete, data: { confirm: 'Sind Sie sicher?' }, :class=> 'btn btn-xs btn-danger' %></td>
+	    <td colspan="4"></td>
 	</tr>
 	<% moduls = Modul.where(subproduct_id: subproduct.id) %>
 	<% modulNumber = 0 %>
@@ -71,24 +37,7 @@
 	    <td></td>
 	    <td><%=subproductNumber.to_s+'.'+modulNumber.to_s %></td>
 	    <td><%=modul.name %></td>
-	    <td><% @component = Component.new %>
-	    	<div class = "form-inline">
-	    		<%= form_for(@component) do |f| %>
-  				<%= f.hidden_field :modul_id, :value => modul.id %> 
-  				<div class="form-group">
-	  				<div class="field">
-	    				<%= f.text_field :name, :class => "form-control input-sm"%>
-	  				</div>
-  				</div>
-	  			<div class="form-group">
-	  				<div class="actions">
-	  					<%= f.submit "Anlegen", class: "btn btn-xs btn-success" %>
-	  				</div>
-  				</div>
-				<% end %>
-			</div>
-		</td>
-	    <td><%= link_to 'Löschen', modul, method: :delete, data: { confirm: 'Sind Sie sicher?' }, :class=> 'btn btn-xs btn-danger' %></td>
+	    <td colspan="2"></td>
 	</tr>
 	    <% components = Component.where(modul_id: modul.id) %>
 	    <% componentNumber = 0 %>
@@ -98,7 +47,7 @@
 		<td colspan="2"></td>
 	    <td><%=subproductNumber.to_s+'.'+modulNumber.to_s+'.'+componentNumber.to_s %></td>
 	    <td><%=component.name %></td>
-	    <td><%= link_to 'Löschen', component, method: :delete, data: { confirm: 'Sind Sie sicher?' }, :class=> 'btn btn-xs btn-danger' %></td>
+	    <td></td>
 	  </td>
 	</tr>
 	<% end %>
@@ -106,6 +55,3 @@
 	<% end %>
   </tbody>
 </table>
-
-<%= link_to 'Edit', edit_product_breakdown_structure_path(@product_breakdown_structure) %> |
-<%= link_to 'Back', product_breakdown_structures_path %>

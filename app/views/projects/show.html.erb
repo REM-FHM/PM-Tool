@@ -8,6 +8,7 @@
       <td><%= link_to 'PBS', ProductBreakdownStructure.find_by(p_id: @project.id) %></td>
       <td><%= link_to 'WBS', WorkBreakdownStructure.find_by(p_id: @project.id) %></td>
       <td><%= link_to 'RBS', ResourceBreakdownStructure.find_by(p_id: @project.id) %></td>
+      <td><%= link_to 'RAM', ResourceAllocationMatrix.find_by(p_id: @project.id) %></td>
     </tr>
   </tbody>
 </table>
