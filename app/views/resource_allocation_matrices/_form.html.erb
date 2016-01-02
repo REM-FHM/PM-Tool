@@ -1,0 +1,21 @@
+<%= form_for(@resource_allocation_matrix) do |f| %>
+  <% if @resource_allocation_matrix.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@resource_allocation_matrix.errors.count, "error") %> prohibited this resource_allocation_matrix from being saved:</h2>
+
+      <ul>
+      <% @resource_allocation_matrix.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :p_id %><br>
+    <%= f.number_field :p_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

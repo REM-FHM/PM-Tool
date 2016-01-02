@@ -29,7 +29,7 @@ class WorkBreakdownStructuresController < ApplicationController
 
     respond_to do |format|
       if @work_breakdown_structure.save
-        format.html { redirect_to @work_breakdown_structure, notice: 'Work breakdown structure was successfully created.' }
+        format.html { redirect_to @work_breakdown_structure}
         format.json { render :show, status: :created, location: @work_breakdown_structure }
       else
         format.html { render :new }

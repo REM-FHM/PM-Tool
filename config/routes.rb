@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :resource_allocation_matrices
   resources :resources
   resources :roles
   resources :types

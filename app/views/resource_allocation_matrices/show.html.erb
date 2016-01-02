@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+<%project = Project.find_by_id(@resource_allocation_matrix.p_id) %>
+<h1>
+	<%= project.name+'-RAM' %>
+	<%= link_to 'Bearbeiten', edit_resource_allocation_matrix_path(@resource_allocation_matrix), :id=> 'btn', :class=> 'btn btn-sm btn-primary pull-right'%>
+	<%= link_to 'Strukturen', projects_path, :id=>'btn', :class=> 'btn btn-sm btn-primary pull-right'%>
+</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Gesamtaufgabe</th>
+      <th>Aufgabe</th>
+      <th>Teilaufgabe</th>
+      <th>Arbeitspaket</th>
+      <th>Einsatzmittel</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<tr class="success">
+	    <td><%=project.name %></td>
+	    <td colspan="4"></td>
+	</tr>
+	<% tasks = Task.where(wbs_id: @resource_allocation_matrix.id) %>
+	<% taskNumber = 0 %>
+	<% tasks.each do |task| %>
+	<tr class="info">
+		<% taskNumber = taskNumber+1 %>
+	    <td><%=taskNumber %></td>
+	    <td><%=task.name %></td>
+	    <td colspan="3"></td>
+	</tr>
+	<% subtasks = Subtask.where(task_id: task.id) %>
+	<% subtaskNumber = 0 %>
+	<% subtasks.each do |subtask| %>
+	<tr class="warning">
+		<% subtaskNumber = subtaskNumber+1 %>
+	    <td></td>
+	    <td><%=taskNumber.to_s+'.'+subtaskNumber.to_s %></td>
+	    <td><%=subtask.name %></td>
+	    <td colspan="2"></td>
+	</tr>
+	    <% workpackages = Workpackage.where(subtask_id: subtask.id) %>
+	    <% workpackageNumber = 0 %>
+	    <% workpackages.each do |workpackage| %>
+	<tr>
+		<% workpackageNumber = workpackageNumber+1 %>
+		<td colspan="2"></td>
+	    <td><%=taskNumber.to_s+'.'+subtaskNumber.to_s+'.'+workpackageNumber.to_s %></td>
+	    <td><%=workpackage.name %></td>
+	    <td>
+	    	<div class="controls">
+		    	<% @role = Role.new %>
+		    	<%= form_for(@role) do |f| %>
+		    	<%= f.collection_select :type_id, Role.order(:name),:id,:name, include_blank: true %>
+		    	<% end %>
+		    </div>
+		</td>
+	</tr>
+	<% end %>
+	<% end %>
+	<% end %>
+  </tbody>
+</table>
