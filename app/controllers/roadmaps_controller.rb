@@ -7,9 +7,25 @@ class RoadmapsController < ApplicationController
     @roadmaps = Roadmap.all
   end
 
+  def timeline
+    data_table = GoogleVisualr::DataTable.new
+    data_table.new_column('string', 'Name' )
+    data_table.new_column('date', 'Start' )
+    data_table.new_column('date', 'End' )
+
+    milestones = Milestone.where(roadmap_id: @roadmap.id)
+    milestones = milestones.sort_by &:endtime
+    milestones.each do |milestone|
+    data_table.add_row([ Workpackage.find(milestone.workpackage_id).name, Date.current()+milestone.endtime, Date.current()+milestone.endtime+1 ])
+    end
+    option = {height: 500}
+    @timeline = GoogleVisualr::Interactive::Timeline.new(data_table, option)
+  end
+
   # GET /roadmaps/1
   # GET /roadmaps/1.json
   def show
+    timeline
   end
 
   # GET /roadmaps/new
