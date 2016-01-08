@@ -28,6 +28,10 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
+        ProductBreakdownStructure.new(p_id: @project.id).save
+        ResourceBreakdownStructure.new(p_id: @project.id).save
+        WorkBreakdownStructure.new(p_id: @project.id).save
+        ResourceAllocationMatrix.new(p_id: @project.id).save
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render :show, status: :created, location: @project }
       else
