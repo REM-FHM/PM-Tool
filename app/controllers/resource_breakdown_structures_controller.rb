@@ -1,5 +1,5 @@
 class ResourceBreakdownStructuresController < ApplicationController
-  before_action :set_resource_breakdown_structure, only: [:show, :edit, :update, :destroy]
+  before_action :set_resource_breakdown_structure, only: [:show, :edit, :update, :destroy, :chart]
 
   # GET /resource_breakdown_structures
   # GET /resource_breakdown_structures.json
@@ -10,6 +10,10 @@ class ResourceBreakdownStructuresController < ApplicationController
   # GET /resource_breakdown_structures/1
   # GET /resource_breakdown_structures/1.json
   def show
+  end
+
+  def chart
+    resource_breakdown_chart
   end
 
   # GET /resource_breakdown_structures/new
@@ -59,6 +63,33 @@ class ResourceBreakdownStructuresController < ApplicationController
       format.html { redirect_to resource_breakdown_structures_url, notice: 'Resource breakdown structure was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def resource_breakdown_chart
+    data_table = GoogleVisualr::DataTable.new
+    data_table.new_column('string', 'Name')
+    data_table.new_column('string', 'Vorgänger')
+    data_table.new_column('string', 'Paket')
+    
+    project = Project.find_by_id(@resource_breakdown_structure.p_id)
+    data_table.add_rows([[project.name,'','Projekt']])
+    types = Type.where(rbs_id: @resource_breakdown_structure.id)
+    types.each do |type|
+      #<div style="background-color:#ff00ff">
+      data_table.add_rows([[type.name, project.name,'Art']])
+      #data_table.setRowProperty(3, 'style', 'background: #FF0000');
+      roles = Role.where(type_id: type.id)
+      roles.each do |role|
+        data_table.add_rows([[role.name,type.name,'Rolle']])
+        resources = Resource.where(role_id: role.id)
+        resources.each do |resource|
+          data_table.add_rows([[resource.qualification + '<br>' + resource.experience + '<br>' + resource.quantitiy.to_s,role.name,'Ressource']])
+      
+        end
+      end
+    end
+    options = {allowHtml:true, tooltip: {isHtml: true}}
+    @rbs_chart = GoogleVisualr::Interactive::OrgChart.new(data_table, options)
   end
 
   private

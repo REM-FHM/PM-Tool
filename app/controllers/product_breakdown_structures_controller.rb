@@ -1,5 +1,5 @@
 class ProductBreakdownStructuresController < ApplicationController
-  before_action :set_product_breakdown_structure, only: [:show, :edit, :update, :destroy]
+  before_action :set_product_breakdown_structure, only: [:show, :edit, :update, :destroy, :chart]
 
   # GET /product_breakdown_structures
   # GET /product_breakdown_structures.json
@@ -12,6 +12,9 @@ class ProductBreakdownStructuresController < ApplicationController
   def show
   end
 
+  def chart
+    product_breakdown_chart
+  end
   # GET /product_breakdown_structures/new
   def new
     @product_breakdown_structure = ProductBreakdownStructure.new
@@ -59,6 +62,32 @@ class ProductBreakdownStructuresController < ApplicationController
       format.html { redirect_to product_breakdown_structures_url, notice: 'Product breakdown structure was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def product_breakdown_chart
+    data_table = GoogleVisualr::DataTable.new
+    data_table.new_column('string', 'Name')
+    data_table.new_column('string', 'Vorgänger')
+    data_table.new_column('string', 'Paket')
+    
+    project = Project.find_by_id(@product_breakdown_structure.p_id)
+    data_table.add_rows([[project.name,'','Produkt']])
+    subproducts = Subproduct.where(pbs_id: @product_breakdown_structure.id)
+    subproducts.each do |subproduct|
+      #<div style="background-color:#ff00ff">
+      data_table.add_rows([[subproduct.name, project.name,'Teilprodukt']])
+      #data_table.setRowProperty(3, 'style', 'background: #FF0000');
+      moduls = Modul.where(subproduct_id: subproduct.id)
+      moduls.each do |modul|
+        data_table.add_rows([[modul.name,subproduct.name,'Modul']])
+        components = Component.where(modul_id: modul.id)
+        components.each do |component|
+          data_table.add_rows([[component.name,modul.name,'Komponente']])
+        end
+      end
+    end
+    options = {allowHtml:true, tooltip: {isHtml: true}}
+    @pbs_chart = GoogleVisualr::Interactive::OrgChart.new(data_table, options)
   end
 
   private

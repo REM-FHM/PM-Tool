@@ -1,9 +1,11 @@
 <p id="notice"><%= notice %></p>
 <%project = Project.find_by_id(@resource_breakdown_structure.p_id) %>
-<h1><%= project.name+'-RBS' %></h1>
-
-<%= link_to 'Edit', edit_resource_breakdown_structure_path(@resource_breakdown_structure) %> |
-<%= link_to 'Back', projects_path %>
+<h1>
+	<%= project.name+'-RBS' %>
+	<%= link_to 'Projekt', project_path(@resource_breakdown_structure), :id=>'btn', :class=> 'btn btn-sm btn-danger pull-right'%>
+	<%= link_to 'Bearbeiten', edit_resource_breakdown_structure_path(@resource_breakdown_structure), :id=> 'btn', :class=> 'btn btn-sm btn-success pull-right'%>
+	<%= link_to 'Chart', chart_resource_breakdown_structure_path(@resource_breakdown_structure), :id=>'btn', :class=> 'btn btn-sm btn-primary pull-right'%>
+</h1>
 
 <table class="table">
   <thead>

@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+<%project = Project.find_by_id(@resource_breakdown_structure.p_id) %>
+<h1>
+	<%= project.name+'-RBS Chart' %>
+	<%= link_to 'Zurück', resource_breakdown_structure_path, :id=>'btn', :class=> 'btn btn-sm btn-danger pull-right'%>
+</h1>
+      
+<div id='rbs_chart'></div>
+  <%= render_chart @rbs_chart, 'rbs_chart' %>

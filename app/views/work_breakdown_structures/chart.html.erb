@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+<%project = Project.find_by_id(@work_breakdown_structure.p_id) %>
+<h1>
+	<%= project.name+'-WBS Chart' %>
+	<%= link_to 'Zurück', work_breakdown_structure_path, :id=>'btn', :class=> 'btn btn-sm btn-danger pull-right'%>
+</h1>
+      
+<div id='wbs_chart'></div>
+  <%= render_chart @wbs_chart, 'wbs_chart' %>
