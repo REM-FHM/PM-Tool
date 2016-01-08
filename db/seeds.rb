@@ -54,6 +54,16 @@ Resource.create(id: 4, qualification: 'Level 200', experience: '', quantitiy: '2
 Resource.create(id: 5, qualification: 'Level 300', experience: '>3 Jahre', quantitiy: '2', role_id: 4)
 Role.create(id: 5, name: 'Softwareentwickler', type_id: 2)
 
+puts "Roadmap wird eingelesen"
+Roadmap.create(id: 1, p_id: 1)
+Milestone.create(id: 1, roadmap_id: 1, workpackage_id: 1, endtime: 10)
+Milestone.create(id: 2, roadmap_id: 1, workpackage_id: 2, endtime: 30)
+Milestone.create(id: 3, roadmap_id: 1, workpackage_id: 3, endtime: 40)
+Milestone.create(id: 4, roadmap_id: 1, workpackage_id: 4, endtime: 50)
+Milestone.create(id: 5, roadmap_id: 1, workpackage_id: 5, endtime: 5)
+Milestone.create(id: 6, roadmap_id: 1, workpackage_id: 6, endtime: 10)
+
+
 puts "ResourceAllocationMatrix wird angelegt"
 ResourceAllocationMatrix.create(id: 1, p_id: 1)
 puts "Seed abgeschlossen!"

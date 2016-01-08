@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+<%project = Project.find_by_id(@roadmap.p_id) %>
+<h1><%= project.name+'-Roadmap' %></h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Arbeitspaket</th>
+      <th>Endzeitpunkt</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  	<% milestones = Milestone.where(roadmap_id: @roadmap.id) %>
+  	<% milestones = milestones.sort_by &:endtime %>
+    <% milestones.each do |milestone| %>
+      <tr>
+        <td><%= Workpackage.find(milestone.workpackage_id).name%></td>
+        <td><%= milestone.endtime %></td>
+        <td><%= link_to 'Edit', edit_milestone_path(milestone) %></td>
+        <td><%= link_to 'Destroy', milestone, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_roadmap_path(@roadmap) %> |
+<%= link_to 'Back', roadmaps_path %>

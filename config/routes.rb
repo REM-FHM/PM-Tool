@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :milestones
+  resources :roadmaps
   resources :resource_allocation_matrices
   resources :resources
   resources :roles

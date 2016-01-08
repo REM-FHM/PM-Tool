@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Roadmap:</strong>
+  <%= @milestone.roadmap_id %>
+</p>
+
+<p>
+  <strong>Workpackage:</strong>
+  <%= @milestone.workpackage_id %>
+</p>
+
+<p>
+  <strong>Endtime:</strong>
+  <%= @milestone.endtime %>
+</p>
+
+<%= link_to 'Edit', edit_milestone_path(@milestone) %> |
+<%= link_to 'Back', milestones_path %>

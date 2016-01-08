@@ -11,13 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151230095305) do
+ActiveRecord::Schema.define(version: 20160108120727) do
 
   create_table "components", force: :cascade do |t|
     t.string   "name"
     t.integer  "modul_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "milestones", force: :cascade do |t|
+    t.integer  "roadmap_id"
+    t.integer  "workpackage_id"
+    t.integer  "endtime"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "moduls", force: :cascade do |t|
@@ -58,6 +66,12 @@ ActiveRecord::Schema.define(version: 20151230095305) do
     t.decimal  "quantitiy"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "roadmaps", force: :cascade do |t|
+    t.integer  "p_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "roles", force: :cascade do |t|
