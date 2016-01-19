@@ -1,0 +1,25 @@
+<%= form_for(@expert_form) do |f| %>
+  <% if @expert_form.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@expert_form.errors.count, "error") %> prohibited this expert_form from being saved:</h2>
+
+      <ul>
+      <% @expert_form.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :round_id %><br>
+    <%= f.number_field :round_id %>
+  </div>
+  <div class="field">
+    <%= f.label :expertName %><br>
+    <%= f.text_field :expertName %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  workpackage_id: 1
+  duration: 1
+
+two:
+  workpackage_id: 1
+  duration: 1

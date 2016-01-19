@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Formtemplate:</strong>
+  <%= @estimation_template.formTemplate_id %>
+</p>
+
+<p>
+  <strong>Workpackage:</strong>
+  <%= @estimation_template.workpackage_id %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @estimation_template.comment %>
+</p>
+
+<%= link_to 'Edit', edit_estimation_template_path(@estimation_template) %> |
+<%= link_to 'Back', estimation_templates_path %>
