@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Roadmaps</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>P</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @roadmaps.each do |roadmap| %>
+      <tr>
+        <td><%= roadmap.p_id %></td>
+        <td><%= link_to 'Show', roadmap %></td>
+        <td><%= link_to 'Edit', edit_roadmap_path(roadmap) %></td>
+        <td><%= link_to 'Destroy', roadmap, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Roadmap', new_roadmap_path %>
