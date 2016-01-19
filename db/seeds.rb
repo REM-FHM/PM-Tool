@@ -57,3 +57,13 @@ Role.create(id: 5, name: 'Softwareentwickler', type_id: 2)
 puts "ResourceAllocationMatrix wird angelegt"
 ResourceAllocationMatrix.create(id: 1, p_id: 1)
 puts "Seed abgeschlossen!"
+
+DelphiEstimation.create(id: 1, p_id: 1)
+Round.create(id: 1, delphiEstimation_id: 1, count: 1, closed: true)
+Round.create(id: 2, delphiEstimation_id: 1, count: 2, closed: true)
+Round.create(id: 3, delphiEstimation_id: 1, count: 3, closed: false)
+Round.create(id: 4, delphiEstimation_id: 2, count: 1, closed: false)
+ExpertForm.create(id: 1, expertName: 'Jan', round_id: 1)
+ExpertForm.create(id: 2, expertName: 'Tobias', round_id: 1)
+ExpertForm.create(id: 3, expertName: 'Lukas', round_id: 2)
+ExpertForm.create(id: 4, expertName: 'Dieter', round_id: 3)

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Delphiestimation:</strong>
+  <%= @round.delphiEstimation_id %>
+</p>
+
+<p>
+  <strong>Count:</strong>
+  <%= @round.count %>
+</p>
+
+<p>
+  <strong>Closed:</strong>
+  <%= @round.closed %>
+</p>
+
+<%= link_to 'Edit', edit_round_path(@round) %> |
+<%= link_to 'Back', rounds_path %>
