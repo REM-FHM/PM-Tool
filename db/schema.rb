@@ -11,11 +11,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151230095305) do
+ActiveRecord::Schema.define(version: 20160119154558) do
 
   create_table "components", force: :cascade do |t|
     t.string   "name"
     t.integer  "modul_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "delphi_estimations", force: :cascade do |t|
+    t.integer  "p_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "estimation_templates", force: :cascade do |t|
+    t.integer  "formTemplate_id"
+    t.integer  "workpackage_id"
+    t.string   "comment"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "estimations", force: :cascade do |t|
+    t.integer  "workpackage_id"
+    t.integer  "duration"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "expert_forms", force: :cascade do |t|
+    t.integer  "round_id"
+    t.string   "expertName"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "form_templates", force: :cascade do |t|
+    t.integer  "round_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -65,6 +99,14 @@ ActiveRecord::Schema.define(version: 20151230095305) do
     t.integer  "type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "rounds", force: :cascade do |t|
+    t.integer  "delphiEstimation_id"
+    t.integer  "count"
+    t.boolean  "closed"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "subproducts", force: :cascade do |t|
