@@ -6,18 +6,19 @@
   <thead>
     <tr>
       <th>Arbeitspaket</th>
-      <th>Zeitpunkt</th>
+      <th>Datum</th>
       <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
   	<% milestones = Milestone.where(roadmap_id: @roadmap.id) %>
-  	<% milestones = milestones.sort_by &:endtime %>
+  	<% milestones = milestones.sort_by &:date %>
     <% milestones.each do |milestone| %>
       <tr>
-        <td><%= Workpackage.find(milestone.workpackage_id).name%></td>
-        <td><%= milestone.endtime %></td>
+        <td><%= Component.find(milestone.component_id).name%></td>
+
+        <td><%= milestone.date.to_date.strftime("%d.%m.%Y") %></td>
         <td><%= link_to 'Edit', edit_milestone_path(milestone) %></td>
         <td><%= link_to 'Destroy', milestone, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

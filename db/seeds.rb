@@ -56,12 +56,13 @@ Role.create(id: 5, name: 'Softwareentwickler', type_id: 2)
 
 puts "Roadmap wird eingelesen"
 Roadmap.create(id: 1, p_id: 1)
-Milestone.create(id: 1, roadmap_id: 1, workpackage_id: 1, endtime: 10)
-Milestone.create(id: 2, roadmap_id: 1, workpackage_id: 2, endtime: 30)
-Milestone.create(id: 3, roadmap_id: 1, workpackage_id: 3, endtime: 40)
-Milestone.create(id: 4, roadmap_id: 1, workpackage_id: 4, endtime: 50)
-Milestone.create(id: 5, roadmap_id: 1, workpackage_id: 5, endtime: 5)
-Milestone.create(id: 6, roadmap_id: 1, workpackage_id: 6, endtime: 10)
+Milestone.create(id: 1, roadmap_id: 1, component_id: 1, date: DateTime.new(2016, 2, 1))
+Milestone.create(id: 2, roadmap_id: 1, component_id: 2, date: DateTime.new(2016, 2, 3))
+Milestone.create(id: 3, roadmap_id: 1, component_id: 3, date: DateTime.new(2016, 2, 7))
+Milestone.create(id: 4, roadmap_id: 1, component_id: 4, date: DateTime.new(2016, 2, 8))
+Milestone.create(id: 5, roadmap_id: 1, component_id: 5, date: DateTime.new(2016, 2, 8))
+Milestone.create(id: 6, roadmap_id: 1, component_id: 6, date: DateTime.new(2016, 2, 14))
+Milestone.create(id: 7, roadmap_id: 1, component_id: 7, date: DateTime.new(2016, 2, 18))
 
 
 puts "ResourceAllocationMatrix wird angelegt"

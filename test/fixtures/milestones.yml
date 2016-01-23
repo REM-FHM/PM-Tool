@@ -2,10 +2,10 @@
 
 one:
   roadmap_id: 1
-  workpackage_id: 1
-  endtime: 1
+  component_id: 1
+  date: 2016-01-23 14:34:26
 
 two:
   roadmap_id: 1
-  workpackage_id: 1
-  endtime: 1
+  component_id: 1
+  date: 2016-01-23 14:34:26

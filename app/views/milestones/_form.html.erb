@@ -12,12 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :workpackage_id %><br>
-    <%= f.number_field :workpackage_id %>
+    <%= f.label :roadmap_id %><br>
+    <%= f.number_field :roadmap_id %>
   </div>
   <div class="field">
-    <%= f.label :endtime %><br>
-    <%= f.number_field :endtime %>
+    <%= f.label :component_id %><br>
+    <%= f.number_field :component_id %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.datetime_select :date %>
   </div>
   <div class="actions">
     <%= f.submit %>

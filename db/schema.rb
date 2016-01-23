@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160119154558) do
+ActiveRecord::Schema.define(version: 20160123133426) do
 
   create_table "components", force: :cascade do |t|
     t.string   "name"
@@ -56,10 +56,10 @@ ActiveRecord::Schema.define(version: 20160119154558) do
 
   create_table "milestones", force: :cascade do |t|
     t.integer  "roadmap_id"
-    t.integer  "workpackage_id"
-    t.integer  "endtime"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.integer  "component_id"
+    t.datetime "date"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "moduls", force: :cascade do |t|

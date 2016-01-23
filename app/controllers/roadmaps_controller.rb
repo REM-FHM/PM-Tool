@@ -14,9 +14,9 @@ class RoadmapsController < ApplicationController
     data_table.new_column('date', 'End' )
 
     milestones = Milestone.where(roadmap_id: @roadmap.id)
-    milestones = milestones.sort_by &:endtime
+    milestones = milestones.sort_by &:date
     milestones.each do |milestone|
-    data_table.add_row([ Workpackage.find(milestone.workpackage_id).name, Date.current()+milestone.endtime, Date.current()+milestone.endtime+1 ])
+    data_table.add_row([ Component.find(milestone.component_id).name, milestone.date.to_date, milestone.date.to_date+1 ])
     end
     option = {height: 500}
     @timeline = GoogleVisualr::Interactive::Timeline.new(data_table, option)
