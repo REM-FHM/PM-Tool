@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<%project = Project.find_by_id(@delphi_estimation.p_id) %>
+<% project = Project.find_by_id(@delphi_estimation.p_id) %>
 <h1><%='Delphi-Breitbandschätzung für '+project.name%></h1>
 <% rounds = Round.where(delphiEstimation_id: @delphi_estimation.id) %>
 <table class="table">
@@ -12,8 +12,10 @@
   </thead>
 
   <tbody>
+    <% count = 0 %>
     <% rounds.each do |round| %>
       <tr class="<%= if round.closed then "danger" elsif  !round.closed then "success" end%>">
+        <% count = round.count %>
       	<td><%= round.count %></td>
         <td><%= ExpertForm.where(round_id: round.id).count %></td>
         <td><%= link_to 'Show', round %></td>
@@ -23,6 +25,12 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to 'Edit', edit_delphi_estimation_path(@delphi_estimation) %> |
-<%= link_to 'Back', delphi_estimations_path %>
+<% @round = Round.new %>
+<%= form_for(@round) do |f| %>
+    <%= f.hidden_field :delphiEstimation_id, :value => @delphi_estimation.id %>
+    <%= f.hidden_field :count, :value => count+1 %>
+    <%= f.hidden_field :closed, :value => false %>
+  <div class="actions">
+    <%= f.submit "Neue Runde anlegen"%>
+  </div>
+<% end %>

@@ -28,7 +28,24 @@ class RoundsController < ApplicationController
 
     respond_to do |format|
       if @round.save
-        format.html { redirect_to @round, notice: 'Round was successfully created.' }
+
+        @formTemplate = FormTemplate.new(round_id: @round.id)
+        @formTemplate.save
+        delphiEstimation = DelphiEstimation.find_by_id(@round.delphiEstimation_id)
+        project = Project.find_by_id(delphiEstimation.p_id)
+        wbs = WorkBreakdownStructure.find_by p_id: project.id
+        tasks = Task.where(wbs_id: wbs.id)
+        tasks.each do |task|
+          subtasks = Subtask.where(task_id: task.id)
+          subtasks.each do |subtask|
+            workpackages = Workpackage.where(subtask_id: subtask.id)
+            workpackages.each do |workpackage|
+              EstimationTemplate.new(formTemplate_id: @formTemplate.id, workpackage_id: workpackage.id, comment: "").save
+            end
+          end
+        end
+
+        format.html { redirect_to @formTemplate, notice: 'Round was successfully created.' }
         format.json { render :show, status: :created, location: @round }
       else
         format.html { render :new }

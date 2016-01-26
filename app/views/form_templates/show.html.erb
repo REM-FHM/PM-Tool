@@ -1,9 +1,21 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Round:</strong>
-  <%= @form_template.round_id %>
-</p>
+<h1><%= 'Vorlage für Runde '+@form_template.round.count.to_s %></h1>
+<% estimationTemplates = EstimationTemplate.where(formTemplate_id: @form_template.id) %>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Arbeitspaket</th>
+			<th>Kommentar</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% estimationTemplates.each do |estimationTemplate| %>
+		<tr>
+			<td><%= Workpackage.find_by_id(estimationTemplate.workpackage_id).name %></td>
+			<td><%= estimationTemplate.comment %></td>
+		</tr>
+		<% end %>
+	</tbody>
 
 <%= link_to 'Edit', edit_form_template_path(@form_template) %> |
 <%= link_to 'Back', form_templates_path %>
