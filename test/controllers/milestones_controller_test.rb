@@ -18,7 +18,7 @@ class MilestonesControllerTest < ActionController::TestCase
 
   test "should create milestone" do
     assert_difference('Milestone.count') do
-      post :create, milestone: { endtime: @milestone.endtime, roadmap_id: @milestone.roadmap_id, workpackage_id: @milestone.workpackage_id }
+      post :create, milestone: { component_id: @milestone.component_id, date: @milestone.date, roadmap_id: @milestone.roadmap_id }
     end
 
     assert_redirected_to milestone_path(assigns(:milestone))
@@ -35,7 +35,7 @@ class MilestonesControllerTest < ActionController::TestCase
   end
 
   test "should update milestone" do
-    patch :update, id: @milestone, milestone: { endtime: @milestone.endtime, roadmap_id: @milestone.roadmap_id, workpackage_id: @milestone.workpackage_id }
+    patch :update, id: @milestone, milestone: { component_id: @milestone.component_id, date: @milestone.date, roadmap_id: @milestone.roadmap_id }
     assert_redirected_to milestone_path(assigns(:milestone))
   end
 
