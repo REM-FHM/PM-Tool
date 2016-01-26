@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 <h1><%= 'Vorlage für Runde '+@form_template.round.count.to_s %></h1>
 <% estimationTemplates = EstimationTemplate.where(formTemplate_id: @form_template.id) %>
 <table class="table">
@@ -6,6 +6,7 @@
 		<tr>
 			<th>Arbeitspaket</th>
 			<th>Kommentar</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -13,9 +14,10 @@
 		<tr>
 			<td><%= Workpackage.find_by_id(estimationTemplate.workpackage_id).name %></td>
 			<td><%= estimationTemplate.comment %></td>
+			<td><%= link_to 'Edit', edit_estimation_template_path(estimationTemplate) %></td>
 		</tr>
 		<% end %>
 	</tbody>
+</table>
+<%= link_to 'Zurück zur Rundenübersicht', DelphiEstimation.find_by_id(Round.find_by_id(@form_template.round).delphiEstimation_id), class: "btn btn-xs btn-success" %>
 
-<%= link_to 'Edit', edit_form_template_path(@form_template) %> |
-<%= link_to 'Back', form_templates_path %>

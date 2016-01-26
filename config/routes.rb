@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
+  resources :estimations
   resources :milestones
   resources :roadmaps
-  resources :estimations
   resources :expert_forms
   resources :estimation_templates
   resources :form_templates

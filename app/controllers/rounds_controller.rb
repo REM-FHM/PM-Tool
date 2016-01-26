@@ -58,8 +58,8 @@ class RoundsController < ApplicationController
   # PATCH/PUT /rounds/1.json
   def update
     respond_to do |format|
-      if @round.update(round_params)
-        format.html { redirect_to @round, notice: 'Round was successfully updated.' }
+      if @round.update(:closed => true)
+        format.html { redirect_to DelphiEstimation.find_by_id(@round.delphiEstimation_id), notice: 'Round was successfully closed.' }
         format.json { render :show, status: :ok, location: @round }
       else
         format.html { render :edit }
@@ -68,12 +68,21 @@ class RoundsController < ApplicationController
     end
   end
 
+  def destroy
+    @round.destroy
+    respond_to do |format|
+      format.html { redirect_to DelphiEstimation.find_by_id(@round.delphiEstimation_id), notice: 'Round was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+
   # DELETE /rounds/1
   # DELETE /rounds/1.json
   def destroy
     @round.destroy
     respond_to do |format|
-      format.html { redirect_to rounds_url, notice: 'Round was successfully destroyed.' }
+      format.html { redirect_to DelphiEstimation.find_by_id(@round.delphiEstimation_id), notice: 'Round was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -18,7 +18,7 @@ class EstimationsControllerTest < ActionController::TestCase
 
   test "should create estimation" do
     assert_difference('Estimation.count') do
-      post :create, estimation: { duration: @estimation.duration, workpackage_id: @estimation.workpackage_id }
+      post :create, estimation: { duration: @estimation.duration, expert_form_id: @estimation.expert_form_id, workpackage_id: @estimation.workpackage_id }
     end
 
     assert_redirected_to estimation_path(assigns(:estimation))
@@ -35,7 +35,7 @@ class EstimationsControllerTest < ActionController::TestCase
   end
 
   test "should update estimation" do
-    patch :update, id: @estimation, estimation: { duration: @estimation.duration, workpackage_id: @estimation.workpackage_id }
+    patch :update, id: @estimation, estimation: { duration: @estimation.duration, expert_form_id: @estimation.expert_form_id, workpackage_id: @estimation.workpackage_id }
     assert_redirected_to estimation_path(assigns(:estimation))
   end
 

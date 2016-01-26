@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160123133426) do
+ActiveRecord::Schema.define(version: 20160126152926) do
 
   create_table "components", force: :cascade do |t|
     t.string   "name"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20160123133426) do
   end
 
   create_table "estimations", force: :cascade do |t|
+    t.integer  "expert_form_id"
     t.integer  "workpackage_id"
     t.integer  "duration"
     t.datetime "created_at",     null: false
