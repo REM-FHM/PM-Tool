@@ -13,18 +13,21 @@
 
   <tbody>
     <% count = 0 %>
+    <% lastRoundclosed = true %>
     <% rounds.each do |round| %>
       <tr class="<%= if round.closed then "danger" elsif  !round.closed then "success" end%>">
         <% count = round.count %>
+        <% lastRoundclosed = round.closed %>
       	<td><%= round.count %></td>
         <td><%= ExpertForm.where(round_id: round.id).count %></td>
         <td><%= link_to 'Show', round %></td>
         <td><%= link_to 'Destroy', round, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Runde Schließen', round, method: :put, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= if !round.closed then link_to 'Runde Schließen', round, method: :put, data: { confirm: 'Are you sure?' } end%></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<% if lastRoundclosed then %>
 <% @round = Round.new %>
 <%= form_for(@round) do |f| %>
     <%= f.hidden_field :delphiEstimation_id, :value => @delphi_estimation.id %>
@@ -33,4 +36,5 @@
   <div class="actions">
     <%= f.submit "Neue Runde anlegen"%>
   </div>
+  <%end%>
 <% end %>
