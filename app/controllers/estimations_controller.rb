@@ -69,6 +69,6 @@ class EstimationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def estimation_params
-      params.require(:estimation).permit(:workpackage_id, :duration)
+      params.require(:estimation).permit(:expert_form_id, :workpackage_id, :duration)
     end
 end
