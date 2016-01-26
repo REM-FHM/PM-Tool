@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 <% project = Project.find_by_id(@delphi_estimation.p_id) %>
 <h1><%='Delphi-Breitbandschätzung für '+project.name%></h1>
 <% rounds = Round.where(delphiEstimation_id: @delphi_estimation.id) %>
