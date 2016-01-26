@@ -19,8 +19,8 @@
       	<td><%= round.count %></td>
         <td><%= ExpertForm.where(round_id: round.id).count %></td>
         <td><%= link_to 'Show', round %></td>
-        <td><%= link_to 'Edit', edit_round_path(round) %></td>
         <td><%= link_to 'Destroy', round, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Runde schließen', round, method: :close, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

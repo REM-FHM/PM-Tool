@@ -68,6 +68,19 @@ class RoundsController < ApplicationController
     end
   end
 
+    def close
+    respond_to do |format|
+      @round.closed = true
+      if @round.update()
+        format.html { redirect_to DelphiEstimation.find_by_id(@round.delphiEstimation_id), notice: 'Round was successfully closed.' }
+        format.json { render :show, status: :ok, location: @round }
+      else
+        format.html { render :edit }
+        format.json { render json: @round.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # DELETE /rounds/1
   # DELETE /rounds/1.json
   def destroy
