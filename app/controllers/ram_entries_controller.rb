@@ -42,7 +42,7 @@ class RamEntriesController < ApplicationController
   def update
     respond_to do |format|
       if @ram_entry.update(ram_entry_params)
-        format.html { redirect_to @ram_entry, notice: 'Ram entry was successfully updated.' }
+        format.html { redirect_to ResourceAllocationMatrix.find_by_id(@ram_entry.ram_id), notice: 'Ram entry was successfully updated.' }
         format.json { render :show, status: :ok, location: @ram_entry }
       else
         format.html { render :edit }
