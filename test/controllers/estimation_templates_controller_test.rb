@@ -18,7 +18,7 @@ class EstimationTemplatesControllerTest < ActionController::TestCase
 
   test "should create estimation_template" do
     assert_difference('EstimationTemplate.count') do
-      post :create, estimation_template: { comment: @estimation_template.comment, formTemplate_id: @estimation_template.formTemplate_id, workpackage_id: @estimation_template.workpackage_id }
+      post :create, estimation_template: { comment: @estimation_template.comment, form_template_id: @estimation_template.form_template_id, workpackage_id: @estimation_template.workpackage_id }
     end
 
     assert_redirected_to estimation_template_path(assigns(:estimation_template))
@@ -35,7 +35,7 @@ class EstimationTemplatesControllerTest < ActionController::TestCase
   end
 
   test "should update estimation_template" do
-    patch :update, id: @estimation_template, estimation_template: { comment: @estimation_template.comment, formTemplate_id: @estimation_template.formTemplate_id, workpackage_id: @estimation_template.workpackage_id }
+    patch :update, id: @estimation_template, estimation_template: { comment: @estimation_template.comment, form_template_id: @estimation_template.form_template_id, workpackage_id: @estimation_template.workpackage_id }
     assert_redirected_to estimation_template_path(assigns(:estimation_template))
   end
 

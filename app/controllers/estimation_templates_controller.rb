@@ -42,7 +42,7 @@ class EstimationTemplatesController < ApplicationController
   def update
     respond_to do |format|
       if @estimation_template.update(estimation_template_params)
-        format.html { redirect_to FormTemplate.find_by_id(@estimation_template.formTemplate_id), notice: 'Estimation template was successfully updated.' }
+        format.html { redirect_to @estimation_template, notice: 'Estimation template was successfully updated.' }
         format.json { render :show, status: :ok, location: @estimation_template }
       else
         format.html { render :edit }
@@ -69,6 +69,6 @@ class EstimationTemplatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def estimation_template_params
-      params.require(:estimation_template).permit(:formTemplate_id, :workpackage_id, :comment)
+      params.require(:estimation_template).permit(:form_template_id, :workpackage_id, :comment)
     end
 end

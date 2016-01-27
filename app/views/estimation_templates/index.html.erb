@@ -1,11 +1,11 @@
-
+<p id="notice"><%= notice %></p>
 
 <h1>Listing Estimation Templates</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Formtemplate</th>
+      <th>Form template</th>
       <th>Workpackage</th>
       <th>Comment</th>
       <th colspan="3"></th>
@@ -15,7 +15,7 @@
   <tbody>
     <% @estimation_templates.each do |estimation_template| %>
       <tr>
-        <td><%= estimation_template.formTemplate_id %></td>
+        <td><%= estimation_template.form_template_id %></td>
         <td><%= estimation_template.workpackage_id %></td>
         <td><%= estimation_template.comment %></td>
         <td><%= link_to 'Show', estimation_template %></td>

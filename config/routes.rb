@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
+  resources :estimation_templates
   resources :estimations
   resources :milestones
   resources :roadmaps
   resources :expert_forms
-  resources :estimation_templates
   resources :form_templates
   resources :rounds
   resources :delphi_estimations
