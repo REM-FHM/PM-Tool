@@ -56,4 +56,18 @@ Role.create(id: 5, name: 'Softwareentwickler', type_id: 2)
 
 puts "ResourceAllocationMatrix wird angelegt"
 ResourceAllocationMatrix.create(id: 1, p_id: 1)
+
+RamEntry.create(id: 1, ram_id: 1, workpackage_id: 1, component_id: 1, resource_id: 1)
+RamEntry.create(id: 2, ram_id: 1, workpackage_id: 2, component_id: 2, resource_id: 2)
+RamEntry.create(id: 3, ram_id: 1, workpackage_id: 3, component_id: 3, resource_id: 3)
+RamEntry.create(id: 4, ram_id: 1, workpackage_id: 4, component_id: 3, resource_id: 3)
+RamEntry.create(id: 5, ram_id: 1, workpackage_id: 5, component_id: 3, resource_id: 3)
+RamEntry.create(id: 6, ram_id: 1, workpackage_id: 6, component_id: 3, resource_id: 3)
+
 puts "Seed abgeschlossen!"
+
+
+
+
+
+

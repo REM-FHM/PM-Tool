@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Ram Entries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ram</th>
+      <th>Workpackage</th>
+      <th>Component</th>
+      <th>Resource</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ram_entries.each do |ram_entry| %>
+      <tr>
+        <td><%= ram_entry.ram_id %></td>
+        <td><%= ram_entry.workpackage_id %></td>
+        <td><%= ram_entry.component_id %></td>
+        <td><%= ram_entry.resource_id %></td>
+        <td><%= link_to 'Show', ram_entry %></td>
+        <td><%= link_to 'Edit', edit_ram_entry_path(ram_entry) %></td>
+        <td><%= link_to 'Destroy', ram_entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ram entry', new_ram_entry_path %>

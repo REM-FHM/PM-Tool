@@ -14,21 +14,22 @@
       <th>Teilaufgabe</th>
       <th>Arbeitspaket</th>
       <th>Einsatzmittel</th>
+      <th>Komponente</th>
     </tr>
   </thead>
   <tbody>
   	<tr class="success">
 	    <td><%=project.name %></td>
-	    <td colspan="4"></td>
+	    <td colspan="5"></td>
 	</tr>
-	<% tasks = Task.where(wbs_id: @resource_allocation_matrix.id) %>
+	<% tasks = Task.where(wbs_id: WorkBreakdownStructure.find_by_id(@resource_allocation_matrix.p_id).id) %>
 	<% taskNumber = 0 %>
 	<% tasks.each do |task| %>
 	<tr class="info">
 		<% taskNumber = taskNumber+1 %>
 	    <td><%=taskNumber %></td>
 	    <td><%=task.name %></td>
-	    <td colspan="3"></td>
+	    <td colspan="4"></td>
 	</tr>
 	<% subtasks = Subtask.where(task_id: task.id) %>
 	<% subtaskNumber = 0 %>
@@ -38,7 +39,7 @@
 	    <td></td>
 	    <td><%=taskNumber.to_s+'.'+subtaskNumber.to_s %></td>
 	    <td><%=subtask.name %></td>
-	    <td colspan="2"></td>
+	    <td colspan="3"></td>
 	</tr>
 	    <% workpackages = Workpackage.where(subtask_id: subtask.id) %>
 	    <% workpackageNumber = 0 %>
@@ -48,17 +49,18 @@
 		<td colspan="2"></td>
 	    <td><%=taskNumber.to_s+'.'+subtaskNumber.to_s+'.'+workpackageNumber.to_s %></td>
 	    <td><%=workpackage.name %></td>
-	    <td>
-	    	<div class="controls">
-		    	<% @role = Role.new %>
-		    	<%= form_for(@role) do |f| %>
-		    	<%= f.collection_select :type_id, Role.order(:name),:id,:name, include_blank: true %>
-		    	<% end %>
-		    </div>
-		</td>
+	 	<td>
+	 		<div class="field">
+	 			<%= @ram_entry = RamEntry.new %>
+	 			<%= form_for(@ram_entry) do |f| %>
+	 			<%= f.collection_select :component_id, Component.order(:name),:id,:name, include_blank: true %>
+	 		    <% end %>
+	 		 </div>
+	 	</td>
 	</tr>
 	<% end %>
 	<% end %>
 	<% end %>
   </tbody>
 </table>
+
