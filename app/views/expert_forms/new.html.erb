@@ -1,5 +1,26 @@
-<h1>New Expert Form</h1>
+<h1>Neue Schätzung</h1>
 
-<%= render 'form' %>
+<%= form_for(@expert_form) do |f| %>
+  <% if @expert_form.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@expert_form.errors.count, "error") %> prohibited this expert_form from being saved:</h2>
+
+      <ul>
+      <% @expert_form.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ <%= f.hidden_field :round_id, :value => @expert_form.round_id %>
+  <div class="field">
+    <%= f.label :expertName %><br>
+    <%= f.text_field :expertName %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
 
 <%= link_to 'Back', expert_forms_path %>

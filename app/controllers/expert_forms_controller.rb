@@ -14,7 +14,7 @@ class ExpertFormsController < ApplicationController
 
   # GET /expert_forms/new
   def new
-    @expert_form = ExpertForm.new
+    @expert_form = ExpertForm.new(round_id: params[:round_id])
   end
 
   # GET /expert_forms/1/edit
