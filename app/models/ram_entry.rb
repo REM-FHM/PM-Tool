@@ -1,5 +1,5 @@
 class RamEntry < ActiveRecord::Base
+	belongs_to :workpackage
 	has_one :resource
 	has_one :component
-	has_one :workpackage
 end
