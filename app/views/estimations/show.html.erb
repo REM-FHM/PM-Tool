@@ -1,0 +1,19 @@
+
+
+<p>
+  <strong>Expert form:</strong>
+  <%= @estimation.expert_form_id %>
+</p>
+
+<p>
+  <strong>Workpackage:</strong>
+  <%= @estimation.workpackage_id %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @estimation.duration %>
+</p>
+
+<%= link_to 'Edit', edit_estimation_path(@estimation) %> |
+<%= link_to 'Back', estimations_path %>

@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <h1><%= @project.name %></h1>
 
@@ -9,6 +9,8 @@
       <td><%= link_to 'WBS', WorkBreakdownStructure.find_by(p_id: @project.id) %></td>
       <td><%= link_to 'RBS', ResourceBreakdownStructure.find_by(p_id: @project.id) %></td>
       <td><%= link_to 'RAM', ResourceAllocationMatrix.find_by(p_id: @project.id) %></td>
+      <td><%= link_to 'Roadmap', Roadmap.find_by(p_id: @project.id) %></td>
+      <td><%= link_to 'Delphi', DelphiEstimation.find_by(p_id: @project.id) %></td>
     </tr>
   </tbody>
 </table>

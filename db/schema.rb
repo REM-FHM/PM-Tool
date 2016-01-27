@@ -11,13 +11,56 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160108181201) do
+ActiveRecord::Schema.define(version: 20160127163157) do
 
   create_table "components", force: :cascade do |t|
     t.string   "name"
     t.integer  "modul_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "delphi_estimations", force: :cascade do |t|
+    t.integer  "p_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "estimation_templates", force: :cascade do |t|
+    t.integer  "form_template_id"
+    t.integer  "workpackage_id"
+    t.string   "comment"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  create_table "estimations", force: :cascade do |t|
+    t.integer  "expert_form_id"
+    t.integer  "workpackage_id"
+    t.integer  "duration"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "expert_forms", force: :cascade do |t|
+    t.integer  "round_id"
+    t.string   "expertName"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "form_templates", force: :cascade do |t|
+    t.integer  "round_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "milestones", force: :cascade do |t|
+    t.integer  "roadmap_id"
+    t.integer  "component_id"
+    t.datetime "date"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "moduls", force: :cascade do |t|
@@ -69,11 +112,25 @@ ActiveRecord::Schema.define(version: 20160108181201) do
     t.datetime "updated_at",    null: false
   end
 
+  create_table "roadmaps", force: :cascade do |t|
+    t.integer  "p_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string   "name"
     t.integer  "type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "rounds", force: :cascade do |t|
+    t.integer  "delphiEstimation_id"
+    t.integer  "count"
+    t.boolean  "closed"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "subproducts", force: :cascade do |t|

@@ -1,0 +1,5 @@
+<% project = Project.find_by_id(DelphiEstimation.find_by_id(@round.delphiEstimation_id).p_id) %>
+<h1><%="Runde "+@round.count.to_s+" von Projekt: "+project.name%></h1>
+
+
+<%= link_to 'Back', rounds_path %>

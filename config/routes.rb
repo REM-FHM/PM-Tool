@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
   resources :ram_entries
+  resources :estimation_templates
+  resources :estimations
+  resources :milestones
+  resources :roadmaps
+  resources :expert_forms
+  resources :form_templates
+  resources :rounds
+  resources :delphi_estimations
   resources :resource_allocation_matrices
   resources :resources
   resources :roles

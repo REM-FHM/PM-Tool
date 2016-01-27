@@ -54,9 +54,19 @@ Resource.create(id: 4, qualification: 'Level 200', experience: '', quantitiy: '2
 Resource.create(id: 5, qualification: 'Level 300', experience: '>3 Jahre', quantitiy: '2', role_id: 4)
 Role.create(id: 5, name: 'Softwareentwickler', type_id: 2)
 
+puts "Roadmap wird eingelesen"
+Roadmap.create(id: 1, p_id: 1)
+Milestone.create(id: 1, roadmap_id: 1, component_id: 1, date: DateTime.new(2016, 2, 1))
+Milestone.create(id: 2, roadmap_id: 1, component_id: 2, date: DateTime.new(2016, 2, 3))
+Milestone.create(id: 3, roadmap_id: 1, component_id: 3, date: DateTime.new(2016, 2, 7))
+Milestone.create(id: 4, roadmap_id: 1, component_id: 4, date: DateTime.new(2016, 2, 8))
+Milestone.create(id: 5, roadmap_id: 1, component_id: 5, date: DateTime.new(2016, 2, 8))
+Milestone.create(id: 6, roadmap_id: 1, component_id: 6, date: DateTime.new(2016, 2, 14))
+Milestone.create(id: 7, roadmap_id: 1, component_id: 7, date: DateTime.new(2016, 2, 18))
+
+
 puts "ResourceAllocationMatrix wird angelegt"
 ResourceAllocationMatrix.create(id: 1, p_id: 1)
-
 RamEntry.create(id: 1, ram_id: 1, workpackage_id: 1, component_id: 1, resource_id: 1)
 RamEntry.create(id: 2, ram_id: 1, workpackage_id: 2, component_id: 2, resource_id: 2)
 RamEntry.create(id: 3, ram_id: 1, workpackage_id: 3, component_id: 3, resource_id: 3)
@@ -64,10 +74,14 @@ RamEntry.create(id: 4, ram_id: 1, workpackage_id: 4, component_id: 3, resource_i
 RamEntry.create(id: 5, ram_id: 1, workpackage_id: 5, component_id: 3, resource_id: 3)
 RamEntry.create(id: 6, ram_id: 1, workpackage_id: 6, component_id: 3, resource_id: 3)
 
+DelphiEstimation.create(id: 1, p_id: 1)
+Round.create(id: 1, delphiEstimation_id: 1, count: 1, closed: true)
+Round.create(id: 2, delphiEstimation_id: 1, count: 2, closed: true)
+Round.create(id: 3, delphiEstimation_id: 1, count: 3, closed: false)
+Round.create(id: 4, delphiEstimation_id: 2, count: 1, closed: false)
+ExpertForm.create(id: 1, expertName: 'Jan', round_id: 1)
+ExpertForm.create(id: 2, expertName: 'Tobias', round_id: 1)
+ExpertForm.create(id: 3, expertName: 'Lukas', round_id: 2)
+ExpertForm.create(id: 4, expertName: 'Dieter', round_id: 3)
+
 puts "Seed abgeschlossen!"
-
-
-
-
-
-

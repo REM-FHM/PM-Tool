@@ -1,0 +1,19 @@
+
+
+<p>
+  <strong>Roadmap:</strong>
+  <%= @milestone.roadmap_id %>
+</p>
+
+<p>
+  <strong>Component:</strong>
+  <%= @milestone.component_id %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @milestone.date %>
+</p>
+
+<%= link_to 'Edit', edit_milestone_path(@milestone) %> |
+<%= link_to 'Back', milestones_path %>

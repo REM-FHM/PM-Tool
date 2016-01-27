@@ -1,0 +1,31 @@
+
+
+<h1>Listing Estimations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Expert form</th>
+      <th>Workpackage</th>
+      <th>Duration</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @estimations.each do |estimation| %>
+      <tr>
+        <td><%= estimation.expert_form_id %></td>
+        <td><%= estimation.workpackage_id %></td>
+        <td><%= estimation.duration %></td>
+        <td><%= link_to 'Show', estimation %></td>
+        <td><%= link_to 'Edit', edit_estimation_path(estimation) %></td>
+        <td><%= link_to 'Destroy', estimation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Estimation', new_estimation_path %>

@@ -1,0 +1,29 @@
+<%= form_for(@estimation) do |f| %>
+  <% if @estimation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@estimation.errors.count, "error") %> prohibited this estimation from being saved:</h2>
+
+      <ul>
+      <% @estimation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :expert_form_id %><br>
+    <%= f.number_field :expert_form_id %>
+  </div>
+  <div class="field">
+    <%= f.label :workpackage_id %><br>
+    <%= f.number_field :workpackage_id %>
+  </div>
+  <div class="field">
+    <%= f.label :duration %><br>
+    <%= f.number_field :duration %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
