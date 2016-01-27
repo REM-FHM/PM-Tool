@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160126152926) do
+ActiveRecord::Schema.define(version: 20160127163157) do
 
   create_table "components", force: :cascade do |t|
     t.string   "name"
@@ -27,11 +27,11 @@ ActiveRecord::Schema.define(version: 20160126152926) do
   end
 
   create_table "estimation_templates", force: :cascade do |t|
-    t.integer  "formTemplate_id"
+    t.integer  "form_template_id"
     t.integer  "workpackage_id"
     t.string   "comment"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "estimations", force: :cascade do |t|

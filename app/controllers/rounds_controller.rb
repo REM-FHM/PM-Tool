@@ -40,7 +40,7 @@ class RoundsController < ApplicationController
           subtasks.each do |subtask|
             workpackages = Workpackage.where(subtask_id: subtask.id)
             workpackages.each do |workpackage|
-              EstimationTemplate.new(formTemplate_id: @formTemplate.id, workpackage_id: workpackage.id, comment: "").save
+              EstimationTemplate.new(form_template_id: @formTemplate.id, workpackage_id: workpackage.id, comment: "").save
             end
           end
         end
