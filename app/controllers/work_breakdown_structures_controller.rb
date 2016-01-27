@@ -1,5 +1,5 @@
 class WorkBreakdownStructuresController < ApplicationController
-  before_action :set_work_breakdown_structure, only: [:show, :edit, :update, :destroy]
+  before_action :set_work_breakdown_structure, only: [:show, :edit, :update, :destroy, :chart]
 
   # GET /work_breakdown_structures
   # GET /work_breakdown_structures.json
@@ -12,6 +12,11 @@ class WorkBreakdownStructuresController < ApplicationController
   def show
   end
 
+ # GET /work_breakdown_structures/1/chart
+  def chart
+    work_breakdown_chart
+  end
+
   # GET /work_breakdown_structures/new
   def new
     @work_breakdown_structure = WorkBreakdownStructure.new
@@ -19,7 +24,6 @@ class WorkBreakdownStructuresController < ApplicationController
 
   # GET /work_breakdown_structures/1/edit
   def edit
-    work_breakdown_chart
   end
 
   # POST /work_breakdown_structures
@@ -84,7 +88,7 @@ class WorkBreakdownStructuresController < ApplicationController
         end
       end
     end
-    options = {allowHtml:true, color:'#ffedf7'}
+    options = {allowHtml:true, tooltip: {isHtml: true}}
     @wbs_chart = GoogleVisualr::Interactive::OrgChart.new(data_table, options)
   end
 

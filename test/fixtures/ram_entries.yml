@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ram_id: 1
+  workpackage_id: 1
+  component_id: 1
+  resource_id: 1
+
+two:
+  ram_id: 1
+  workpackage_id: 1
+  component_id: 1
+  resource_id: 1

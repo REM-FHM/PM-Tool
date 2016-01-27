@@ -67,7 +67,12 @@ Milestone.create(id: 7, roadmap_id: 1, component_id: 7, date: DateTime.new(2016,
 
 puts "ResourceAllocationMatrix wird angelegt"
 ResourceAllocationMatrix.create(id: 1, p_id: 1)
-puts "Seed abgeschlossen!"
+RamEntry.create(id: 1, ram_id: 1, workpackage_id: 1, component_id: 1, resource_id: 1)
+RamEntry.create(id: 2, ram_id: 1, workpackage_id: 2, component_id: 2, resource_id: 2)
+RamEntry.create(id: 3, ram_id: 1, workpackage_id: 3, component_id: 3, resource_id: 3)
+RamEntry.create(id: 4, ram_id: 1, workpackage_id: 4, component_id: 3, resource_id: 3)
+RamEntry.create(id: 5, ram_id: 1, workpackage_id: 5, component_id: 3, resource_id: 3)
+RamEntry.create(id: 6, ram_id: 1, workpackage_id: 6, component_id: 3, resource_id: 3)
 
 DelphiEstimation.create(id: 1, p_id: 1)
 Round.create(id: 1, delphiEstimation_id: 1, count: 1, closed: true)
@@ -78,3 +83,5 @@ ExpertForm.create(id: 1, expertName: 'Jan', round_id: 1)
 ExpertForm.create(id: 2, expertName: 'Tobias', round_id: 1)
 ExpertForm.create(id: 3, expertName: 'Lukas', round_id: 2)
 ExpertForm.create(id: 4, expertName: 'Dieter', round_id: 3)
+
+puts "Seed abgeschlossen!"

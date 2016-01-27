@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+<%project = Project.find_by_id(@product_breakdown_structure.p_id) %>
+<h1>
+	<%= project.name+'-PBS Chart' %>
+	<%= link_to 'Zurück', product_breakdown_structure_path, :id=>'btn', :class=> 'btn btn-sm btn-danger pull-right'%>
+</h1>
+      
+<div id='pbs_chart'></div>
+  <%= render_chart @pbs_chart, 'pbs_chart' %>

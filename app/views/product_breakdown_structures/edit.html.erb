@@ -1,8 +1,9 @@
 
 <%project = Project.find_by_id(@product_breakdown_structure.p_id) %>
-<h1><%= project.name+'-PBS' %></h1>
-
-<%= link_to 'Anzeigen', @product_breakdown_structure %>
+<h1>
+	<%= project.name+'-PBS' %>
+	<%= link_to 'Zurück', product_breakdown_structure_path, :id=>'btn', :class=> 'btn btn-sm btn-danger pull-right'%>
+</h1>
 
 <table class="table">
   <thead>
@@ -108,5 +109,3 @@
 	<% end %>
   </tbody>
 </table>
-
-

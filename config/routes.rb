@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :ram_entries
   resources :estimation_templates
   resources :estimations
   resources :milestones
@@ -21,6 +22,10 @@ Rails.application.routes.draw do
   resources :product_breakdown_structures
   resources :work_breakdown_structures
   resources :projects
+
+  get '/work_breakdown_structures/:id/chart' => 'work_breakdown_structures#chart', as: 'chart_work_breakdown_structure'
+  get '/product_breakdown_structures/:id/chart' => 'product_breakdown_structures#chart', as: 'chart_product_breakdown_structure'
+  get '/resource_breakdown_structures/:id/chart' => 'resource_breakdown_structures#chart', as: 'chart_resource_breakdown_structure'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
