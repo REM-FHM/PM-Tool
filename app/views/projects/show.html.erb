@@ -4,17 +4,100 @@
   <%= "Projekt: " + @project.name %>
   <%= link_to 'Projekt löschen', @project, method: :delete, data: { confirm: 'Are you sure?' }, :id=> 'btn', :class=> 'btn btn-sm btn-danger pull-right'%>
 </h1>
+<div class="row">
+      <div class="col-md-6">
+        <div class="bs-component">
+          <div class="list-group">
 
-<table class="table">
-  <tbody>
-    <tr>
-      <td><%= link_to 'PBS', ProductBreakdownStructure.find_by(p_id: @project.id) %></td>
-      <td><%= link_to 'WBS', WorkBreakdownStructure.find_by(p_id: @project.id) %></td>
-      <td><%= link_to 'RBS', ResourceBreakdownStructure.find_by(p_id: @project.id) %></td>
-      <td><%= link_to 'RAM', ResourceAllocationMatrix.find_by(p_id: @project.id) %></td>
-      <td><%= link_to 'Roadmap', Roadmap.find_by(p_id: @project.id) %></td>
-      <td><%= link_to 'Delphi', DelphiEstimation.find_by(p_id: @project.id) %></td>
-    </tr>
-  </tbody>
-</table>
+            <div class="list-group-separator"></div>
+            <%= link_to ProductBreakdownStructure.find_by(p_id: @project.id) do %>
+            <div class="list-group-item">
+              <div class="row-picture">
+                <img class="circle" src="http://lorempixel.com/56/56/people/6" alt="icon">
+              </div>
+              <div class="row-content">
+                <h4 class="list-group-item-heading">Product Breakdown Structure</h4>
+                <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
+              </div>
+            </div>
+            <% end %>
+            <div class="list-group-separator"></div>
 
+            <%= link_to WorkBreakdownStructure.find_by(p_id: @project.id) do %>
+            <div class="list-group-item">
+              <div class="row-picture">
+                <img class="circle" src="http://lorempixel.com/56/56/people/6" alt="icon">
+              </div>
+              <div class="row-content">
+                <h4 class="list-group-item-heading">Work Breakdown Structure</h4>
+                <p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
+              </div>
+            </div>
+            <% end %>
+            <div class="list-group-separator"></div>
+
+            <%= link_to ResourceBreakdownStructure.find_by(p_id: @project.id) do %>
+            <div class="list-group-item">
+              <div class="row-picture">
+                <img class="circle" src="http://lorempixel.com/56/56/people/6" alt="icon">
+              </div>
+              <div class="row-content">
+                <h4 class="list-group-item-heading">Resource Breakdown Structure</h4>
+
+                <p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
+              </div>
+            </div>
+            <% end %>
+            <div class="list-group-separator"></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="bs-component">
+          <div class="list-group">
+
+            <div class="list-group-separator"></div>
+            <%= link_to ResourceAllocationMatrix.find_by(p_id: @project.id) do %></td>
+            <div class="list-group-item">
+              <div class="row-picture">
+                <img class="circle" src="http://lorempixel.com/56/56/people/6" alt="icon">
+              </div>
+              <div class="row-content">
+                <h4 class="list-group-item-heading">Resource Allocation Matrix</h4>
+                <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus.</p>
+              </div>
+            </div>
+            <% end %>
+            <div class="list-group-separator"></div>
+
+            <%= link_to Roadmap.find_by(p_id: @project.id) do %></td>
+            <div class="list-group-item">
+              <div class="row-picture">
+                <img class="circle" src="http://lorempixel.com/56/56/people/6" alt="icon">
+              </div>
+              <div class="row-content">
+                <h4 class="list-group-item-heading">Aufwandsschätzung</h4>
+                <p class="list-group-item-text">Aufwandsschätzung mit der Breitband-Delphi-Methode</p>
+              </div>
+            </div>
+            <% end %>
+            <div class="list-group-separator"></div>
+
+
+      <td><%= link_to DelphiEstimation.find_by(p_id: @project.id) do %></td>
+            <div class="list-group-item">
+              <div class="row-picture">
+                <img class="circle" src="http://lorempixel.com/56/56/people/6" alt="icon">
+              </div>
+              <div class="row-content">
+                <h4 class="list-group-item-heading">Roadmap</h4>
+                <p class="list-group-item-text">Zur Grobplanung eine Roadmap mit Meilensteinen</p>
+              </div>
+            </div>
+            <% end %>
+            <div class="list-group-separator"></div>
+          </div>
+        </div>
+      </div>
+    </div>

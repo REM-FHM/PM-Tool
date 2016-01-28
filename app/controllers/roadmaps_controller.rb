@@ -15,10 +15,13 @@ class RoadmapsController < ApplicationController
 
     milestones = Milestone.where(roadmap_id: @roadmap.id)
     milestones = milestones.sort_by &:date
+    rows = 0
     milestones.each do |milestone|
     data_table.add_row([ Component.find(milestone.component_id).name, milestone.date.to_date, milestone.date.to_date+1 ])
+    rows = rows+1
     end
-    option = {height: 500}
+    height = rows * 50 + 40;
+    option = {height: height}
     @timeline = GoogleVisualr::Interactive::Timeline.new(data_table, option)
   end
 
