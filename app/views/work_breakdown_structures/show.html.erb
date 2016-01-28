@@ -18,14 +18,14 @@
     </tr>
   </thead>
   <tbody>
-  	<tr class="success">
+  	<tr id="uno">
 	    <td><%=project.name %></td>
 	    <td colspan="4"></td>
 	</tr>
 	<% tasks = Task.where(wbs_id: @work_breakdown_structure.id) %>
 	<% taskNumber = 0 %>
 	<% tasks.each do |task| %>
-	<tr class="info">
+	<tr id="dos">
 		<% taskNumber = taskNumber+1 %>
 	    <td><%=taskNumber %></td>
 	    <td><%=task.name %></td>
@@ -34,7 +34,7 @@
 	<% subtasks = Subtask.where(task_id: task.id) %>
 	<% subtaskNumber = 0 %>
 	<% subtasks.each do |subtask| %>
-	<tr class="warning">
+	<tr id="tres">
 		<% subtaskNumber = subtaskNumber+1 %>
 	    <td></td>
 	    <td><%=taskNumber.to_s+'.'+subtaskNumber.to_s %></td>

@@ -21,14 +21,14 @@
   <tbody>
 
   </tbody>
-  <tr class="success">
+  <tr id="uno">
 	    <td><%=project.name %></td>
 	    <td colspan="6"></td>
 	</tr>
 	<% types = Type.where(rbs_id: @resource_breakdown_structure.id) %>
 	<% typeNumber = 0 %>
 	<% types.each do |type| %>
-	<tr class="info">
+	<tr id="dos">
 		<% typeNumber = typeNumber+1 %>
 	    <td><%=typeNumber %></td>
 	    <td><%=type.name %></td>
@@ -37,7 +37,7 @@
 	<% roles = Role.where(type_id: type.id) %>
 	<% roleNumber = 0 %>
 	<% roles.each do |role| %>
-	<tr class="warning">
+	<tr id="tres">
 		<% roleNumber = roleNumber+1 %>
 	    <td></td>
 	    <td><%=typeNumber.to_s+'.'+roleNumber.to_s %></td>

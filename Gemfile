@@ -31,6 +31,8 @@ gem 'less-rails'
 
 gem 'railroady'
 
+gem 'bootstrap-material-design'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
