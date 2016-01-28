@@ -8,7 +8,7 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Arbeitspaket</th>
+      <th>Komponente</th>
       <th>Datum</th>
       <th colspan="2"></th>
     </tr>
@@ -17,15 +17,62 @@
   <tbody>
   	<% milestones = Milestone.where(roadmap_id: @roadmap.id) %>
   	<% milestones = milestones.sort_by &:date %>
+    <% usedComponents = Array.new %>
     <% milestones.each do |milestone| %>
+    <% usedComponents.push(Component.find_by_id(milestone.component_id)) %>
       <tr>
-        <td><%= Component.find(milestone.component_id).name%></td>
-
-        <td><%= milestone.date.to_date.strftime("%d.%m.%Y") %></td>
-        <td><%= link_to 'Edit', edit_milestone_path(milestone) %></td>
-        <td><%= link_to 'Destroy', milestone, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td id="middle"><%= Component.find(milestone.component_id).name%></td>
+        <td id="middle"><%= milestone.date.to_date.strftime("%d.%m.%Y") %></td>
+        <td><%= link_to 'Bearbeiten', edit_milestone_path(milestone), class: "btn btn-xs btn-success" %></td>
+        <td><%= link_to 'Löschen', milestone, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %></td>
       </tr>
     <% end %>
+      <tr>
+        
+          <% allComponents = Array.new %>
+          <% pbs = ProductBreakdownStructure.find_by p_id: project.id %>
+          <% subproducts = Subproduct.where(pbs_id: pbs.id) %>
+          <% subproducts.each do |subproduct| %>
+            <% moduls = Modul.where(subproduct_id: subproduct.id) %>
+              <% moduls.each do |modul| %>
+                <% components = Component.where(modul_id: modul.id) %>
+                <% components.each do |component| %>
+                  <% allComponents.push(component) %>
+                <% end %>
+              <% end %>
+          <% end %>
+          <% unusedComponents = Array.new %>
+          <% allComponents.each do |allComponent| %>
+            <% if !usedComponents.include?(allComponent) %>
+              <% unusedComponents.push(allComponent) %>
+            <% end %>
+          <% end %>
+          <% if !unusedComponents.empty? %>
+          <% @milestone = Milestone.new %>
+        <%= form_for(@milestone) do |f| %>
+          <%= f.hidden_field :roadmap_id, :value => @roadmap.id %> 
+          <td id="middle"><%= f.collection_select :component_id, unusedComponents, :id, :name, include_blank: false %>
+          </td>
+          <td id="middle">
+            <div class="form-group">
+              <div class="field">
+              <%= f.date_select :date, :order => [:day, :month, :year], :use_two_digit_numbers => true %>
+              </div>
+            </div>
+          </td>
+          <td id="middle">
+            <div class="form-group">
+              <div class="actions">
+                <%= f.submit "Neu Anlegen", class: "btn btn-xs btn-success" %>
+              <div class="form-group">
+            <div class="actions">
+          </td>
+          <% end %>
+          <% else %>
+          <td class="danger text-center" colspan="4" >Es können keine weiteren Meilensteine angelegt werden, da keine freien Komponenten zur Auswahl stehen.</td>
+          <% end %>
+      </tr>
+
   </tbody>
 </table>
 

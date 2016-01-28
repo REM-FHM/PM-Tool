@@ -1,29 +1,12 @@
-
-
-<h1>
-      Projekte
-      <%= link_to 'Neues Projekt', new_project_path, :id=>'btn', :class=> 'btn btn-sm btn-success pull-right'%>
-</h1>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @projects.each do |project| %>
-      <tr>
-        <td><%= link_to project.name, project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-
+<div class="danger text-center">
+  <h1>Wilkommen im REM-Projektmanagement-Tool</h1>
+  <br>
+  <br>
+  <div>
+    <p class="lead">Bestehende Projekte finden Sie oben rechts im Menü.</p>
+    <p class="lead">Oder möchten sie ein <%= link_to 'neues Projekt', new_project_path, :id=>'btn', :class=> 'btn btn-sm btn-success'%> anlegen?</p>
+    <p class="lead">Viel Erfolg mit Ihrem Projekt wünscht Ihnen das REM-Team.</p>
+    <br>
+    <p class="text-success lead">Riegel | Erfkämper | Mußenbrock</p>
+  </div>
+</div>
