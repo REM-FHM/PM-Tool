@@ -1,6 +1,69 @@
-<h1>Editing Resource Allocation Matrix</h1>
+<%project = Project.find_by_id(@resource_allocation_matrix.p_id) %>
+<h1>
+	<%= project.name+'-RAM' %>
+	<%= link_to 'Zurück', resource_allocation_matrix_path, :id=>'btn', :class=> 'btn btn-sm btn-danger pull-right'%>
+</h1>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @resource_allocation_matrix %> |
-<%= link_to 'Back', resource_allocation_matrices_path %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Gesamtaufgabe</th>
+      <th>Aufgabe</th>
+      <th>Teilaufgabe</th>
+      <th>Arbeitspaket</th>
+      <th>Einsatzmittel</th>
+      <th>Komponente</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<tr class="success">
+	    <td><%=project.name %></td>
+	    <td colspan="5"></td>
+	</tr>
+	<% tasks = Task.where(wbs_id: WorkBreakdownStructure.find_by_id(@resource_allocation_matrix.p_id).id) %>
+	<% taskNumber = 0 %>
+	<% tasks.each do |task| %>
+	<tr class="info">
+		<% taskNumber = taskNumber+1 %>
+	    <td><%=taskNumber %></td>
+	    <td><%=task.name %></td>
+	    <td colspan="4"></td>
+	</tr>
+	<% subtasks = Subtask.where(task_id: task.id) %>
+	<% subtaskNumber = 0 %>
+	<% subtasks.each do |subtask| %>
+	<tr class="warning">
+		<% subtaskNumber = subtaskNumber+1 %>
+	    <td></td>
+	    <td><%=taskNumber.to_s+'.'+subtaskNumber.to_s %></td>
+	    <td><%=subtask.name %></td>
+	    <td colspan="3"></td>
+	</tr>
+	    <% workpackages = Workpackage.where(subtask_id: subtask.id) %>
+	    <% workpackageNumber = 0 %>
+	    <% workpackages.each do |workpackage| %>
+	<tr>
+		<% workpackageNumber = workpackageNumber+1 %>
+		<td colspan="2"></td>
+	    <td><%=taskNumber.to_s+'.'+subtaskNumber.to_s+'.'+workpackageNumber.to_s %></td>
+	    <td><%=workpackage.name %></td>
+	 	<td>
+	 		<div class="field">
+	 			<% @ram_entry = RamEntry.find_by workpackage_id: workpackage.id %>
+	 			<%= form_for(@ram_entry) do |f| %>
+	 			<%= f.collection_select :resource_id, Resource.order(:qualification),:id,:qualification, include_blank: true %>
+	 		 </div>
+	 	</td>
+	 	<td>
+	 		<div class="field">
+	 			<%= f.collection_select :component_id, Component.order(:name),:id,:name, include_blank: true %>
+	 			<%= f.submit "Speichern", class: "btn btn-xs btn-success" %>
+	 		    <% end %>
+	 		 </div>
+	 	</td>
+	</tr>
+	<% end %>
+	<% end %>
+	<% end %>
+  </tbody>
+</table>
