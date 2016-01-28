@@ -28,7 +28,13 @@ class WorkpackagesController < ApplicationController
 
     respond_to do |format|
       if @workpackage.save
-        RamEntry.new(workpackage_id: @workpackage.id, ram_id: ResourceAllocationMatrix.find_by(p_id: Project.find_by_id(WorkBreakdownStructure.find_by_id(Task.find_by_id(Subtask.find_by_id(@workpackage.subtask_id).id).id).p_id).id).id).save
+        subtask = Subtask.find_by_id(@workpackage.subtask_id)
+        task = Task.find_by_id(subtask.task_id)
+        wbs = WorkBreakdownStructure.find_by_id(task.wbs_id)
+        project = Project.find_by_id(wbs.p_id)
+        ram = ResourceAllocationMatrix.find_by(p_id: project.id)
+
+        RamEntry.new(workpackage_id: @workpackage.id, ram_id: ram.id).save
         format.html { redirect_to '/work_breakdown_structures/'+Task.find_by(id: Subtask.find_by(id: @workpackage.subtask_id).task_id).wbs_id.to_s+'/edit', notice: 'Workpackage was successfully created.' }
         format.json { render :show, status: :created, location: @workpackage }
       else

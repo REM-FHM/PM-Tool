@@ -28,7 +28,7 @@ class ModulsController < ApplicationController
 
     respond_to do |format|
       if @modul.save
-        format.html { redirect_to '/product_breakdown_structures/'+Subproduct.find_by(id: @modul.subproduct_id).pbs_id.to_s, notice: 'Modul was successfully created.' }
+        format.html { redirect_to '/product_breakdown_structures/'+Subproduct.find_by(id: @modul.subproduct_id).pbs_id.to_s+'/edit', notice: 'Modul was successfully created.' }
         format.json { render :show, status: :created, location: @modul }
       else
         format.html { render :new }
