@@ -28,6 +28,11 @@ class ExpertFormsController < ApplicationController
 
     respond_to do |format|
       if @expert_form.save
+        formTemplate = FormTemplate.find_by round_id: @expert_form.round_id
+        estimationTemplates = EstimationTemplate.where(form_template_id: formTemplate.id)
+        estimationTemplates.each do |estimationTemplate|
+          Estimation.new(expert_form_id: @expert_form.id, workpackage_id: estimationTemplate.workpackage_id, duration: 0).save
+        end
         format.html { redirect_to @expert_form, notice: 'Expert form was successfully created.' }
         format.json { render :show, status: :created, location: @expert_form }
       else

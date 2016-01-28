@@ -42,7 +42,7 @@ class EstimationsController < ApplicationController
   def update
     respond_to do |format|
       if @estimation.update(estimation_params)
-        format.html { redirect_to @estimation, notice: 'Estimation was successfully updated.' }
+        format.html { redirect_to ExpertForm.find_by_id(@estimation.expert_form_id), notice: 'Estimation was successfully updated.' }
         format.json { render :show, status: :ok, location: @estimation }
       else
         format.html { render :edit }

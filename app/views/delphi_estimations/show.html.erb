@@ -19,9 +19,10 @@
         <% count = round.count %>
         <% lastRoundclosed = round.closed %>
       	<td><%= round.count %></td>
-        <td><%= ExpertForm.where(round_id: round.id).count %></td>
+        <% expertFormCount = ExpertForm.where(round_id: round.id).count %>
+        <td><%= expertFormCount %></td>
         <td><%= if !round.closed then link_to 'Schätzung abgeben', new_expert_form_path(:round_id => round.id) else link_to 'Runde anzeigen', round end%></td>
-        <td><%= if !round.closed then link_to 'Runde Schließen', round, method: :put, data: { confirm: 'Sind Sie sicher?' } end%></td>
+        <td><%= if !round.closed and expertFormCount > 0 then link_to 'Runde Schließen', round, method: :put, data: { confirm: 'Sind Sie sicher?' } end%></td>
         <td><%= if !round.closed then link_to 'Runde Löschen', round, method: :delete, data: { confirm: 'Are you sure?' } end%></td>
       </tr>
     <% end %>

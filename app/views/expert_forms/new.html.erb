@@ -1,4 +1,4 @@
-<h1>Neue Schätzung</h1>
+<h2>Bitte tragen Sie Ihren Namen ein</h2>
 
 <%= form_for(@expert_form) do |f| %>
   <% if @expert_form.errors.any? %>
@@ -12,15 +12,20 @@
       </ul>
     </div>
   <% end %>
+  <div class = "form-inline">
+          <div class="form-group">
  <%= f.hidden_field :round_id, :value => @expert_form.round_id %>
   <div class="field">
-    <%= f.label :expertName %><br>
     <%= f.text_field :expertName %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+</div>
+
+  <div class="form-group">
+    <div class="actions">
+    <%= f.submit "Weiter zur Schätzung", class: "btn btn-xs btn-success" %>
+    </div>
   </div>
+</div>
 <% end %>
 
-
-<%= link_to 'Back', expert_forms_path %>
+<%= link_to 'Zurück zur Rundenübersicht', expert_forms_path, class: "btn btn-xs btn-success" %>
