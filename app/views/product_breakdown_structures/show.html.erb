@@ -18,14 +18,14 @@
     </tr>
   </thead>
   <tbody>
-  <tr class="success">
+  <tr id="uno">
 	    <td><%=project.name %></td>
 	    <td colspan="5"></td>
 	</tr>
 	<% subproducts = Subproduct.where(pbs_id: @product_breakdown_structure.id) %>
 	<% subproductNumber = 0 %>
 	<% subproducts.each do |subproduct| %>
-	<tr class="info">
+	<tr id="dos">
 		<% subproductNumber = subproductNumber+1 %>
 	    <td><%=subproductNumber %></td>
 	    <td><%=subproduct.name %></td>
@@ -34,7 +34,7 @@
 	<% moduls = Modul.where(subproduct_id: subproduct.id) %>
 	<% modulNumber = 0 %>
 	<% moduls.each do |modul| %>
-	<tr class="warning">
+	<tr id="tres">
 		<% modulNumber = modulNumber+1 %>
 	    <td></td>
 	    <td><%=subproductNumber.to_s+'.'+modulNumber.to_s %></td>

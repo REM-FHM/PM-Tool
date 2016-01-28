@@ -16,7 +16,7 @@
 		</tr>
   	</thead>
   	<tbody>
-  		<tr class="success">
+  		<tr id="uno">
 			<td id="middle"><%=project.name %></td>
 			<td><% @task = Task.new %>
 		  		<div class = "form-inline">
@@ -24,7 +24,7 @@
 		  			<%= f.hidden_field :wbs_id, :value => @work_breakdown_structure.id %> 
 		  			<div class="form-group">
 						<div class="field" id="field">
-			   				<%= f.text_field :name, :class => "form-control input-sm"%>
+			   				<%= f.text_field :name, :class => "form-control input-sm", :placeholder => "Neue Aufgabe"%>
 						</div>
 		  			</div>
 					<div class="form-group">
@@ -40,7 +40,7 @@
 		<% tasks = Task.where(wbs_id: @work_breakdown_structure.id) %>
 		<% taskNumber = 0 %>
 		<% tasks.each do |task| %>
-		<tr class="info">
+		<tr id="dos">
 			<% taskNumber = taskNumber+1 %>
 		    <td id="middle"><%=taskNumber %></td>
 		    <td id="middle"><%=task.name %></td>
@@ -50,7 +50,7 @@
 	  				<%= f.hidden_field :task_id, :value => task.id %> 
 	  				<div class="form-group">
 		  				<div class="field" id="field">
-		    				<%= f.text_field :name, :class => "form-control input-sm"%>
+		    				<%= f.text_field :name, :class => "form-control input-sm", :placeholder => "Neue Teilaufgabe"%>
 		  				</div>
 	  				</div>
 	  				<div class="form-group">
@@ -67,7 +67,7 @@
 		<% subtasks = Subtask.where(task_id: task.id) %>
 		<% subtaskNumber = 0 %>
 		<% subtasks.each do |subtask| %>
-		<tr class="warning">
+		<tr id="tres">
 			<% subtaskNumber = subtaskNumber+1 %>
 		    <td></td>
 		    <td id="middle"><%=taskNumber.to_s+'.'+subtaskNumber.to_s %></td>
@@ -78,7 +78,7 @@
 	  				<%= f.hidden_field :subtask_id, :value => subtask.id %> 
 	  				<div class="form-group">
 		  				<div class="field" id="field">
-		    				<%= f.text_field :name, :class => "form-control input-sm"%>
+		    				<%= f.text_field :name, :class => "form-control input-sm", :placeholder => "Neues Arbeitspaket"%>
 		  				</div>
 	  				</div>
 		  			<div class="form-group">

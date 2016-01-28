@@ -88,7 +88,7 @@ class ResourceBreakdownStructuresController < ApplicationController
         end
       end
     end
-    options = {allowHtml:true, tooltip: {isHtml: true}}
+    options = {allowHtml:true, tooltip: {isHtml: true}, size:'large'}
     @rbs_chart = GoogleVisualr::Interactive::OrgChart.new(data_table, options)
   end
 

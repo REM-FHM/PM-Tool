@@ -20,8 +20,20 @@ table {
 	margin: 3px;
 }
 
+#uno {
+    background-color: #DCEDC8;
+}
+
+#dos {
+    background-color: #B2EBF2;
+}
+
+#tres {
+    background-color: #FFF9C4;
+}
+
 .google-visualization-orgchart-node {
-background: #FBF4AE !important;
+background: #C5CAE9 !important;
     border: 0px solid #DDDAB9 !important;
     border-radius: 4px 4px 4px 4px;
     box-shadow: 0 0 5px #F2F2F2, 0 -1px 1px #FFFFFF inset;
@@ -29,3 +41,4 @@ background: #FBF4AE !important;
     padding-top: 15px !important;
     width: 165px !important;
     }
+
