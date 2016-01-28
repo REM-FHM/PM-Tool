@@ -13,7 +13,7 @@
             <%= link_to ProductBreakdownStructure.find_by(p_id: @project.id) do %>
             <div class="list-group-item">
               <div class="row-picture">
-                <img class="circle" src="http://lorempixel.com/56/56/people/6" alt="icon">
+                <%= image_tag("Logo.png", class: "circle") %>
               </div>
               <div class="row-content">
                 <h4 class="list-group-item-heading">Product Breakdown Structure</h4>
@@ -26,7 +26,7 @@
             <%= link_to WorkBreakdownStructure.find_by(p_id: @project.id) do %>
             <div class="list-group-item">
               <div class="row-picture">
-                <img class="circle" src="http://lorempixel.com/56/56/people/6" alt="icon">
+                <%= image_tag("Logo.png", class: "circle") %>
               </div>
               <div class="row-content">
                 <h4 class="list-group-item-heading">Work Breakdown Structure</h4>
@@ -39,7 +39,7 @@
             <%= link_to ResourceBreakdownStructure.find_by(p_id: @project.id) do %>
             <div class="list-group-item">
               <div class="row-picture">
-                <img class="circle" src="http://lorempixel.com/56/56/people/6" alt="icon">
+                <%= image_tag("Logo.png", class: "circle") %>
               </div>
               <div class="row-content">
                 <h4 class="list-group-item-heading">Resource Breakdown Structure</h4>
@@ -61,7 +61,7 @@
             <%= link_to ResourceAllocationMatrix.find_by(p_id: @project.id) do %></td>
             <div class="list-group-item">
               <div class="row-picture">
-                <img class="circle" src="http://lorempixel.com/56/56/people/6" alt="icon">
+                <%= image_tag("Logo.png", class: "circle") %>
               </div>
               <div class="row-content">
                 <h4 class="list-group-item-heading">Resource Allocation Matrix</h4>
@@ -71,32 +71,32 @@
             <% end %>
             <div class="list-group-separator"></div>
 
-            <%= link_to Roadmap.find_by(p_id: @project.id) do %></td>
+      <td><%= link_to DelphiEstimation.find_by(p_id: @project.id) do %></td>
             <div class="list-group-item">
               <div class="row-picture">
-                <img class="circle" src="http://lorempixel.com/56/56/people/6" alt="icon">
+                <%= image_tag("Logo.png", class: "circle") %>
               </div>
               <div class="row-content">
                 <h4 class="list-group-item-heading">Aufwandsschätzung</h4>
+                <p class="list-group-item-text">Zur Grobplanung eine Roadmap mit Meilensteinen</p>
+              </div>
+            </div>
+            <% end %>
+            <div class="list-group-separator"></div>
+
+            <%= link_to Roadmap.find_by(p_id: @project.id) do %></td>
+            <div class="list-group-item">
+              <div class="row-picture">
+                <%= image_tag("Logo.png", class: "circle") %>
+              </div>
+              <div class="row-content">
+                <h4 class="list-group-item-heading">Roadmap</h4>
                 <p class="list-group-item-text">Aufwandsschätzung mit der Breitband-Delphi-Methode</p>
               </div>
             </div>
             <% end %>
             <div class="list-group-separator"></div>
 
-
-      <td><%= link_to DelphiEstimation.find_by(p_id: @project.id) do %></td>
-            <div class="list-group-item">
-              <div class="row-picture">
-                <img class="circle" src="http://lorempixel.com/56/56/people/6" alt="icon">
-              </div>
-              <div class="row-content">
-                <h4 class="list-group-item-heading">Roadmap</h4>
-                <p class="list-group-item-text">Zur Grobplanung eine Roadmap mit Meilensteinen</p>
-              </div>
-            </div>
-            <% end %>
-            <div class="list-group-separator"></div>
           </div>
         </div>
       </div>
