@@ -1,5 +1,49 @@
 <% project = Project.find_by_id(DelphiEstimation.find_by_id(@round.delphiEstimation_id).p_id) %>
 <h1><%="Runde "+@round.count.to_s+" von Projekt: "+project.name%></h1>
+<% expertForms = ExpertForm.where(round_id: @round) %>
+<% estimationTemplates = EstimationTemplate.where(form_template_id: (FormTemplate.find_by round_id: @round.id)) %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Arbeitspakete</th>
+      <% expertForms.each do |expertForm| %>
+      <th><%= expertForm.expertName %></th>
+      <% end %>
+      <th>Mittelwert</th>
+      <th>Minimum</th>
+      <th>Maximum</th>
+      <th>Spannweite</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<% estimationTemplates.each do |estimationTemplate| %>
+  	<% sum = 0.0 %>
+  	<% count = 0.0 %>
+  	<% max = -1 %>
+  	<% min = -1 %>
+  	<% workpackage = Workpackage.find_by_id(estimationTemplate.workpackage_id) %>
+		<tr>
+			<td><%= workpackage.name %></td>
+			<% expertForms.each do |expertForm| %>
+				<% estimations = Estimation.where(expert_form_id: expertForm.id) %>
+				<% estimations.each do |estimation| %>
+	      			<% if estimation.workpackage_id == workpackage.id%>
+	      			<% count=count+1 %>
+	      			<% sum = sum + estimation.duration %>
+	      			<td><%= estimation.duration %></td>
+	      			<% if estimation.duration > max then max = estimation.duration end%>
+	      			<% if estimation.duration < min || min == -1 then min = estimation.duration end%>
+	      			<% end %> 
+	      		<% end %>
+      		<% end %>
 
+      		<td><%= (sum/count).round(2) %></td>
+      		<td><%= min %></td>
+      		<td><%= max %></td>
+      		<td><%= max-min %></td>
+      		</tr>
+      		<% end %>
+  </tbody>
+</table>
 
-<%= link_to 'Back', rounds_path %>
+<%= link_to 'Zurück zur Rundenübersicht', DelphiEstimation.find_by_id(@round.delphiEstimation_id), class: "btn btn-xs btn-danger" %>
