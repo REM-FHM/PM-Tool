@@ -28,7 +28,7 @@ class ComponentsController < ApplicationController
 
     respond_to do |format|
       if @component.save
-        format.html { redirect_to '/product_breakdown_structures/'+Subproduct.find_by(id: Modul.find_by(id: @component.modul_id).subproduct_id).pbs_id.to_s, notice: 'Komponente erfolgreich angelegt.' }
+        format.html { redirect_to '/product_breakdown_structures/'+Subproduct.find_by(id: Modul.find_by(id: @component.modul_id).subproduct_id).pbs_id.to_s+'/edit', notice: 'Komponente erfolgreich angelegt.' }
         format.json { render :show, status: :created, location: @component }
       else
         format.html { render :new }

@@ -1,5 +1,24 @@
-<h1>New Project</h1>
+<h1>
+	 Neues Projekt anlegen
+</h1>
 
-<%= render 'form' %>
+<%= form_for(@project) do |f| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
-<%= link_to 'Back', projects_path %>
+      <ul>
+      <% @project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field" id="new">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, :class => "form-control", placeholder:"Name vom Projekt eintragen" %>
+  </div>  
+  <%= f.submit "Projekt erstellen", class: "btn btn-sm btn-success" %>
+<% end %>
+
