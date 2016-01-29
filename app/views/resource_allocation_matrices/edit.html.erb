@@ -4,6 +4,32 @@
 	<%= link_to 'Zurück', resource_allocation_matrix_path, :id=>'btn', :class=> 'btn btn-sm btn-danger pull-right'%>
 </h1>
 
+<% projectResources = Array.new %>
+<% rbs = ResourceBreakdownStructure.find_by p_id: project.id %>
+<% types = Type.where(rbs_id: rbs.id) %>
+<% types.each do |type| %>
+	<% role = Role.where(type_id: type.id) %>
+	<% role.each do |role| %>
+	  <% resources = Resource.where(role_id: role.id) %>
+	  <% resources.each do |resource| %>
+	    <% projectResources.push(resource) %>
+	  <% end %>
+	<% end %>
+<% end %>
+
+<% projectComponents = Array.new %>
+<% pbs = ProductBreakdownStructure.find_by p_id: project.id %>
+<% subproducts = Subproduct.where(pbs_id: pbs.id) %>
+<% subproducts.each do |subproduct| %>
+	<% moduls = Modul.where(subproduct_id: subproduct.id) %>
+	<% moduls.each do |modul| %>
+	  <% components = Component.where(modul_id: modul.id) %>
+	  <% components.each do |component| %>
+	    <% projectComponents.push(component) %>
+	  <% end %>
+	<% end %>
+<% end %>
+
 <table class="table">
   <thead>
     <tr>
@@ -51,12 +77,12 @@
 	 		<div class="field">
 	 			<% @ram_entry = RamEntry.find_by workpackage_id: workpackage.id %>
 	 			<%= form_for(@ram_entry) do |f| %>
-	 			<%= f.collection_select :resource_id, Resource.order(:qualification),:id,:qualification, include_blank: true %>
+	 			<%= f.collection_select :resource_id, projectResources,:id,:qualification, include_blank: true %>
 	 		 </div>
 	 	</td>
 	 	<td id="middle">
 	 		<div class="field">
-	 			<%= f.collection_select :component_id, Component.order(:name),:id,:name, include_blank: true %>
+	 			<%= f.collection_select :component_id, projectComponents,:id,:name, include_blank: true %>
 	 			<%= f.submit "Speichern", class: "btn btn-xs btn-success" %>
 	 		    <% end %>
 	 		 </div>
