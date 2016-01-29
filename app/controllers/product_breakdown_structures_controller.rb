@@ -31,7 +31,7 @@ class ProductBreakdownStructuresController < ApplicationController
 
     respond_to do |format|
       if @product_breakdown_structure.save
-        format.html { redirect_to @product_breakdown_structure, notice: 'Product breakdown structure was successfully created.' }
+        format.html { redirect_to @product_breakdown_structure, notice: 'Product Breakdown Structure wurde erfolgreich angelegt' }
         format.json { render :show, status: :created, location: @product_breakdown_structure }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class ProductBreakdownStructuresController < ApplicationController
   def update
     respond_to do |format|
       if @product_breakdown_structure.update(product_breakdown_structure_params)
-        format.html { redirect_to @product_breakdown_structure, notice: 'Product breakdown structure was successfully updated.' }
+        format.html { redirect_to @product_breakdown_structure, notice: 'Product Breakdown Structure wurde erfolgreich aktualisiert' }
         format.json { render :show, status: :ok, location: @product_breakdown_structure }
       else
         format.html { render :edit }
@@ -59,7 +59,7 @@ class ProductBreakdownStructuresController < ApplicationController
   def destroy
     @product_breakdown_structure.destroy
     respond_to do |format|
-      format.html { redirect_to product_breakdown_structures_url, notice: 'Product breakdown structure was successfully destroyed.' }
+      format.html { redirect_to product_breakdown_structures_url, notice: 'Product Breakdown Structure wurde erfolgreich gelöscht' }
       format.json { head :no_content }
     end
   end

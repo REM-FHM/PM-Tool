@@ -47,7 +47,7 @@ class RoadmapsController < ApplicationController
 
     respond_to do |format|
       if @roadmap.save
-        format.html { redirect_to @roadmap, notice: 'Roadmap was successfully created.' }
+        format.html { redirect_to @roadmap, notice: 'Roadmap wurde erfolgreich angelegt' }
         format.json { render :show, status: :created, location: @roadmap }
       else
         format.html { render :new }
@@ -61,7 +61,7 @@ class RoadmapsController < ApplicationController
   def update
     respond_to do |format|
       if @roadmap.update(roadmap_params)
-        format.html { redirect_to @roadmap, notice: 'Roadmap was successfully updated.' }
+        format.html { redirect_to @roadmap, notice: 'Roadmap wurde erfolgreich aktualisiert' }
         format.json { render :show, status: :ok, location: @roadmap }
       else
         format.html { render :edit }
@@ -75,7 +75,7 @@ class RoadmapsController < ApplicationController
   def destroy
     @roadmap.destroy
     respond_to do |format|
-      format.html { redirect_to roadmaps_url, notice: 'Roadmap was successfully destroyed.' }
+      format.html { redirect_to roadmaps_url, notice: 'Roadmap wurde erfolgreich gelöscht' }
       format.json { head :no_content }
     end
   end

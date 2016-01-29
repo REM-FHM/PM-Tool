@@ -28,7 +28,7 @@ class DelphiEstimationsController < ApplicationController
 
     respond_to do |format|
       if @delphi_estimation.save
-        format.html { redirect_to @delphi_estimation, notice: 'Delphi estimation was successfully created.' }
+        format.html { redirect_to @delphi_estimation, notice: 'Delphi-Breitband-Schätzung wurde erfolgreich angelegt' }
         format.json { render :show, status: :created, location: @delphi_estimation }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class DelphiEstimationsController < ApplicationController
   def update
     respond_to do |format|
       if @delphi_estimation.update(delphi_estimation_params)
-        format.html { redirect_to @delphi_estimation, notice: 'Delphi estimation was successfully updated.' }
+        format.html { redirect_to @delphi_estimation, notice: 'Delphi-Breitband-Schätzung wurde erfolgreich aktualisiert.' }
         format.json { render :show, status: :ok, location: @delphi_estimation }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class DelphiEstimationsController < ApplicationController
   def destroy
     @delphi_estimation.destroy
     respond_to do |format|
-      format.html { redirect_to delphi_estimations_url, notice: 'Delphi estimation was successfully destroyed.' }
+      format.html { redirect_to delphi_estimations_url, notice: 'Delphi-Breitband-Schätzung wurde erfolgreich gelöscht.' }
       format.json { head :no_content }
     end
   end

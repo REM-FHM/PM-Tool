@@ -28,7 +28,7 @@ class RolesController < ApplicationController
 
     respond_to do |format|
       if @role.save
-        format.html { redirect_to '/resource_breakdown_structures/'+Type.find_by(id: @role.type_id).rbs_id.to_s, notice: 'Role was successfully created.' }
+        format.html { redirect_to '/resource_breakdown_structures/'+Type.find_by(id: @role.type_id).rbs_id.to_s, notice: 'Rolle wurde erfolgreich angelegt' }
         format.json { render :show, status: :created, location: @role }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class RolesController < ApplicationController
   def update
     respond_to do |format|
       if @role.update(role_params)
-        format.html { redirect_to @role, notice: 'Role was successfully updated.' }
+        format.html { redirect_to @role, notice: 'Rolle wurde erfolgreich aktualisiert' }
         format.json { render :show, status: :ok, location: @role }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class RolesController < ApplicationController
   def destroy
     @role.destroy
     respond_to do |format|
-      format.html { redirect_to '/resource_breakdown_structures/'+Type.find_by(id: @role.type_id).rbs_id.to_s, notice: 'Role was successfully destroyed.' }
+      format.html { redirect_to '/resource_breakdown_structures/'+Type.find_by(id: @role.type_id).rbs_id.to_s, notice: 'Rolle wurde erfolgreich gelöscht' }
       format.json { head :no_content }
     end
   end

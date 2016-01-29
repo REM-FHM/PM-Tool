@@ -28,7 +28,7 @@ class MilestonesController < ApplicationController
 
     respond_to do |format|
       if @milestone.save
-        format.html { redirect_to Roadmap.find_by_id(@milestone.roadmap_id), notice: 'Milestone was successfully created.' }
+        format.html { redirect_to Roadmap.find_by_id(@milestone.roadmap_id), notice: 'Meilenstein wurde erfolgreich angelegt' }
         format.json { render :show, status: :created, location: @milestone }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class MilestonesController < ApplicationController
   def update
     respond_to do |format|
       if @milestone.update(milestone_params)
-        format.html { redirect_to Roadmap.find_by_id(@milestone.roadmap_id), notice: 'Milestone was successfully updated.' }
+        format.html { redirect_to Roadmap.find_by_id(@milestone.roadmap_id), notice: 'Meilenstein wurde erfolgreich aktualisiert' }
         format.json { render :show, status: :ok, location: @milestone }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class MilestonesController < ApplicationController
   def destroy
     @milestone.destroy
     respond_to do |format|
-      format.html { redirect_to Roadmap.find_by_id(@milestone.roadmap_id), notice: 'Milestone was successfully destroyed.' }
+      format.html { redirect_to Roadmap.find_by_id(@milestone.roadmap_id), notice: 'Meilenstein wurde erfolgreich gelöscht' }
       format.json { head :no_content }
     end
   end

@@ -1,6 +1,6 @@
 <h2>
   Bitte tragen Sie Ihren Namen ein
-  <%= link_to 'Zurück zur Rundenübersicht', DelphiEstimation.find_by_id, :id=>'btn', :class=> 'btn btn-sm btn-danger pull-right'%>
+  <%= link_to 'Zurück zur Rundenübersicht', DelphiEstimation.find_by_id(Round.find_by_id(@expert_form.round_id).delphiEstimation_id), :id=>'btn', :class=> 'btn btn-sm btn-danger pull-right'%>
 </h2>
 
 <%= form_for(@expert_form) do |f| %>
@@ -17,7 +17,7 @@
   <% end %>
 
 <div class="field" id="new">
-    <%= f.label :expertName %><br>
+    <br>
     <%= f.text_field :expertName, :class => "form-control", placeholder:"Ihren Namen eintragen" %>
 </div> 
 
