@@ -83,14 +83,14 @@
 	    <td><%= link_to 'Löschen', role, method: :delete, data: { confirm: 'Sind Sie sicher?' }, :class=> 'btn btn-xs btn-danger' %></td>
 	</tr>
 	<tr>
-		<td colspan="3"></td>
+		<td colspan="2"></td>
 		<td id="middle"><% @resource = Resource.new %>
 	    	<div class = "form-inline">
 	    		<%= form_for(@resource) do |f| %>
   				<%= f.hidden_field :role_id, :value => role.id %> 
   				<div class="form-group">
 	  				<div class="field">
-	    				<%= f.text_field :qualification, :class => "form-control input-sm", :placeholder => "Neue Qualifikation"%>
+	    				<td id="middle"><%= f.text_field :qualification, :class => "form-control input-sm", :placeholder => "Neue Qualifikation"%></td>
 	    				<td id="middle"><%= f.text_field :experience, :class => "form-control input-sm", :placeholder => "Neue Erfahrung"%></td>
 	    				<td id="middle"><%= f.number_field :quantitiy, :class => "form-control input-sm", :placeholder => "Neue Vollzeitäquivalenz"%></td>
 	  				</div>

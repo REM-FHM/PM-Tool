@@ -56,7 +56,7 @@ class SubproductsController < ApplicationController
   def destroy
     @subproduct.destroy
     respond_to do |format|
-      format.html { redirect_to '/product_breakdown_structures/'+@subproduct.pbs_id.to_s, notice: 'Teilprodukt wurde erfolgreich gelöscht' }
+      format.html { redirect_to '/product_breakdown_structures/'+@subproduct.pbs_id.to_s+'/edit', notice: 'Teilprodukt wurde erfolgreich gelöscht' }
       format.json { head :no_content }
     end
   end

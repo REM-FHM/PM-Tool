@@ -28,7 +28,7 @@ class ComponentsController < ApplicationController
 
     respond_to do |format|
       if @component.save
-        format.html { redirect_to '/product_breakdown_structures/'+Subproduct.find_by(id: Modul.find_by(id: @component.modul_id).subproduct_id).pbs_id.to_s+'/edit', notice: 'Komponente erfolgreich angelegt.' }
+        format.html { redirect_to '/product_breakdown_structures/'+Subproduct.find_by(id: Modul.find_by(id: @component.modul_id).subproduct_id).pbs_id.to_s+'/edit', notice: 'Komponente erfolgreich angelegt' }
         format.json { render :show, status: :created, location: @component }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class ComponentsController < ApplicationController
   def update
     respond_to do |format|
       if @component.update(component_params)
-        format.html { redirect_to @component, notice: 'Component was successfully updated.' }
+        format.html { redirect_to @component, notice: 'Komponente wurde erfolgreich aktualisiert' }
         format.json { render :show, status: :ok, location: @component }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class ComponentsController < ApplicationController
   def destroy
     @component.destroy
     respond_to do |format|
-      format.html { redirect_to '/product_breakdown_structures/'+Subproduct.find_by(id: Modul.find_by(id: @component.modul_id).subproduct_id).pbs_id.to_s, notice: 'Komponente erfolgreich gelöscht.' }
+      format.html { redirect_to '/product_breakdown_structures/'+Subproduct.find_by(id: Modul.find_by(id: @component.modul_id).subproduct_id).pbs_id.to_s+'/edit', notice: 'Komponente erfolgreich gelöscht' }
       format.json { head :no_content }
     end
   end

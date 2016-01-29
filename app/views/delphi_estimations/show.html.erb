@@ -38,7 +38,7 @@
     <%= f.hidden_field :count, :value => count+1 %>
     <%= f.hidden_field :closed, :value => false %>
   <div class="actions">
-    <%= f.submit "Neue Runde anlegen"%>
+    <%= f.submit "Neue Runde anlegen", :id=> 'btn', :class=> 'btn btn-sm btn-success pull-left'%>
   </div>
   <%end%>
 <% end %>
