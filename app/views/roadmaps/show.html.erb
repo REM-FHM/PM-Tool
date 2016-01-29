@@ -23,8 +23,8 @@
       <tr>
         <td id="middle"><%= Component.find(milestone.component_id).name%></td>
         <td id="middle"><%= milestone.date.to_date.strftime("%d.%m.%Y") %></td>
-        <td><%= link_to 'Bearbeiten', edit_milestone_path(milestone), class: "btn btn-xs btn-success" %></td>
-        <td><%= link_to 'Löschen', milestone, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %></td>
+        <td><%= link_to 'Bearbeiten', edit_milestone_path(milestone), :id=> 'btn', class: "btn btn-sm btn-success" %></td>
+        <td><%= link_to 'Löschen', milestone, method: :delete, data: { confirm: 'Are you sure?' }, :id=> 'btn', class: "btn btn-sm btn-danger" %></td>
       </tr>
     <% end %>
       <tr>
@@ -63,7 +63,7 @@
           <td id="middle">
             <div class="form-group">
               <div class="actions">
-                <%= f.submit "Neu Anlegen", class: "btn btn-xs btn-success" %>
+                <%= f.submit "Neu Anlegen", :id=> 'btn', class: "btn btn-sm btn-success" %>
               <div class="form-group">
             <div class="actions">
           </td>

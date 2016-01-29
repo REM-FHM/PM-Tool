@@ -23,7 +23,7 @@
 	  				</div>
 		  			<div class="form-group">
 		  				<div class="actions">
-		  					<%= f.submit "Speichern", class: "btn btn-xs btn-success" %>
+		  					<%= f.submit "Speichern", :id=> 'btn', class: "btn btn-sm btn-success" %>
 		  				</div>
 	  				</div>
 					<% end %>
@@ -33,5 +33,6 @@
 		<% end %>
 	</tbody>
 </table>
-<%= link_to 'Zurück zur Rundenübersicht', DelphiEstimation.find_by_id(Round.find_by_id(@form_template.round).delphiEstimation_id), class: "btn btn-xs btn-success" %>
+<%= link_to 'Speichern und zur Rundenübersicht', DelphiEstimation.find_by_id(Round.find_by_id(@form_template.round).delphiEstimation_id), :id=> 'btn', class: 'btn btn-sm btn-success pull-left' %>
+
 

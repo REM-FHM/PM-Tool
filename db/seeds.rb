@@ -61,9 +61,6 @@ Milestone.create(id: 2, roadmap_id: 1, component_id: 2, date: DateTime.new(2016,
 Milestone.create(id: 3, roadmap_id: 1, component_id: 3, date: DateTime.new(2016, 2, 7))
 Milestone.create(id: 4, roadmap_id: 1, component_id: 4, date: DateTime.new(2016, 2, 8))
 Milestone.create(id: 5, roadmap_id: 1, component_id: 5, date: DateTime.new(2016, 2, 8))
-Milestone.create(id: 6, roadmap_id: 1, component_id: 6, date: DateTime.new(2016, 2, 14))
-Milestone.create(id: 7, roadmap_id: 1, component_id: 7, date: DateTime.new(2016, 2, 18))
-
 
 puts "ResourceAllocationMatrix wird angelegt"
 ResourceAllocationMatrix.create(id: 1, p_id: 1)
@@ -74,6 +71,7 @@ RamEntry.create(id: 4, ram_id: 1, workpackage_id: 4, component_id: 3, resource_i
 RamEntry.create(id: 5, ram_id: 1, workpackage_id: 5, component_id: 3, resource_id: 3)
 RamEntry.create(id: 6, ram_id: 1, workpackage_id: 6, component_id: 3, resource_id: 3)
 
+puts "DelphiBreitbandSchätzung wird angelegt"
 DelphiEstimation.create(id: 1, p_id: 1)
 Round.create(id: 1, delphiEstimation_id: 1, count: 1, closed: true)
 Round.create(id: 2, delphiEstimation_id: 1, count: 2, closed: true)
