@@ -28,7 +28,7 @@ class ModulsController < ApplicationController
 
     respond_to do |format|
       if @modul.save
-        format.html { redirect_to '/product_breakdown_structures/'+Subproduct.find_by(id: @modul.subproduct_id).pbs_id.to_s+'/edit', notice: 'Modul was successfully created.' }
+        format.html { redirect_to '/product_breakdown_structures/'+Subproduct.find_by(id: @modul.subproduct_id).pbs_id.to_s+'/edit', notice: 'Modul wurde erfolgreich angelegt' }
         format.json { render :show, status: :created, location: @modul }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class ModulsController < ApplicationController
   def update
     respond_to do |format|
       if @modul.update(modul_params)
-        format.html { redirect_to @modul, notice: 'Modul was successfully updated.' }
+        format.html { redirect_to @modul, notice: 'Modul wurde erfolgreich aktualisiert' }
         format.json { render :show, status: :ok, location: @modul }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class ModulsController < ApplicationController
   def destroy
     @modul.destroy
     respond_to do |format|
-      format.html { redirect_to '/product_breakdown_structures/'+Subproduct.find_by(id: @modul.subproduct_id).pbs_id.to_s, notice: 'Modul was successfully destroyed.' }
+      format.html { redirect_to '/product_breakdown_structures/'+Subproduct.find_by(id: @modul.subproduct_id).pbs_id.to_s, notice: 'Modul wurde erfolgreich gelöscht' }
       format.json { head :no_content }
     end
   end

@@ -45,7 +45,7 @@ class RoundsController < ApplicationController
           end
         end
 
-        format.html { redirect_to @formTemplate, notice: 'Round was successfully created.' }
+        format.html { redirect_to @formTemplate, notice: 'Runde wurde erfolgreich angelegt.' }
         format.json { render :show, status: :created, location: @round }
       else
         format.html { render :new }
@@ -59,7 +59,7 @@ class RoundsController < ApplicationController
   def update
     respond_to do |format|
       if @round.update(:closed => true)
-        format.html { redirect_to DelphiEstimation.find_by_id(@round.delphiEstimation_id), notice: 'Round was successfully closed.' }
+        format.html { redirect_to DelphiEstimation.find_by_id(@round.delphiEstimation_id), notice: 'Runde wurde erfolgreich geschlossen' }
         format.json { render :show, status: :ok, location: @round }
       else
         format.html { render :edit }
@@ -71,7 +71,7 @@ class RoundsController < ApplicationController
   def destroy
     @round.destroy
     respond_to do |format|
-      format.html { redirect_to DelphiEstimation.find_by_id(@round.delphiEstimation_id), notice: 'Round was successfully destroyed.' }
+      format.html { redirect_to DelphiEstimation.find_by_id(@round.delphiEstimation_id), notice: 'Round wurde erfolgreich gelöscht' }
       format.json { head :no_content }
     end
   end
@@ -82,7 +82,7 @@ class RoundsController < ApplicationController
   def destroy
     @round.destroy
     respond_to do |format|
-      format.html { redirect_to DelphiEstimation.find_by_id(@round.delphiEstimation_id), notice: 'Round was successfully destroyed.' }
+      format.html { redirect_to DelphiEstimation.find_by_id(@round.delphiEstimation_id), notice: 'Round wurde erfolgreich gelöscht' }
       format.json { head :no_content }
     end
   end

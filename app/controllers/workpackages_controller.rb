@@ -35,7 +35,7 @@ class WorkpackagesController < ApplicationController
         ram = ResourceAllocationMatrix.find_by(p_id: project.id)
 
         RamEntry.new(workpackage_id: @workpackage.id, ram_id: ram.id).save
-        format.html { redirect_to '/work_breakdown_structures/'+Task.find_by(id: Subtask.find_by(id: @workpackage.subtask_id).task_id).wbs_id.to_s+'/edit', notice: 'Workpackage was successfully created.' }
+        format.html { redirect_to '/work_breakdown_structures/'+Task.find_by(id: Subtask.find_by(id: @workpackage.subtask_id).task_id).wbs_id.to_s+'/edit', notice: 'Workpackage wurde erfolgreich angelegt' }
         format.json { render :show, status: :created, location: @workpackage }
       else
         format.html { render :new }
@@ -49,7 +49,7 @@ class WorkpackagesController < ApplicationController
   def update
     respond_to do |format|
       if @workpackage.update(workpackage_params)
-        format.html { redirect_to @workpackage, notice: 'Workpackage was successfully updated.' }
+        format.html { redirect_to @workpackage, notice: 'Workpackage wurde erfolgreich aktualisiert' }
         format.json { render :show, status: :ok, location: @workpackage }
       else
         format.html { render :edit }
@@ -63,7 +63,7 @@ class WorkpackagesController < ApplicationController
   def destroy
     @workpackage.destroy
     respond_to do |format|
-      format.html { redirect_to '/work_breakdown_structures/'+Task.find_by(id: Subtask.find_by(id: @workpackage.subtask_id).task_id).wbs_id.to_s+'/edit', notice: 'Workpackage was successfully destroyed.' }
+      format.html { redirect_to '/work_breakdown_structures/'+Task.find_by(id: Subtask.find_by(id: @workpackage.subtask_id).task_id).wbs_id.to_s+'/edit', notice: 'Workpackage wurde erfolgreich gelöscht' }
       format.json { head :no_content }
     end
   end

@@ -28,7 +28,7 @@ class RamEntriesController < ApplicationController
 
     respond_to do |format|
       if @ram_entry.save
-        format.html { redirect_to @ram_entry, notice: 'Ram entry was successfully created.' }
+        format.html { redirect_to @ram_entry, notice: 'Resource Allocation Matrix Eintrag wurde erfolgreich angelegt' }
         format.json { render :show, status: :created, location: @ram_entry }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class RamEntriesController < ApplicationController
   def update
     respond_to do |format|
       if @ram_entry.update(ram_entry_params)
-        format.html { redirect_to ResourceAllocationMatrix.find_by_id(@ram_entry.ram_id), notice: 'Ram entry was successfully updated.' }
+        format.html { redirect_to ResourceAllocationMatrix.find_by_id(@ram_entry.ram_id), notice: 'Resource Allocation Matrix Eintrag wurde erfolgreich aktualisiert' }
         format.json { render :show, status: :ok, location: @ram_entry }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class RamEntriesController < ApplicationController
   def destroy
     @ram_entry.destroy
     respond_to do |format|
-      format.html { redirect_to ram_entries_url, notice: 'Ram entry was successfully destroyed.' }
+      format.html { redirect_to ram_entries_url, notice: 'Resource Allocation Matrix Eintrag wurde erfolgreich gelöscht' }
       format.json { head :no_content }
     end
   end

@@ -47,7 +47,7 @@ class WorkBreakdownStructuresController < ApplicationController
   def update
     respond_to do |format|
       if @work_breakdown_structure.update(work_breakdown_structure_params)
-        format.html { redirect_to @work_breakdown_structure, notice: 'Work breakdown structure was successfully updated.' }
+        format.html { redirect_to @work_breakdown_structure, notice: 'Work Breakdown Structure wurde erfolgreich aktualisiert' }
         format.json { render :show, status: :ok, location: @work_breakdown_structure }
       else
         format.html { render :edit }
@@ -61,7 +61,7 @@ class WorkBreakdownStructuresController < ApplicationController
   def destroy
     @work_breakdown_structure.destroy
     respond_to do |format|
-      format.html { redirect_to work_breakdown_structures_url, notice: 'Work breakdown structure was successfully destroyed.' }
+      format.html { redirect_to work_breakdown_structures_url, notice: 'Work Breakdown Structure wurde erfolgreich gelöscht' }
       format.json { head :no_content }
     end
   end

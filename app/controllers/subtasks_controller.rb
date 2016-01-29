@@ -28,7 +28,7 @@ class SubtasksController < ApplicationController
 
     respond_to do |format|
       if @subtask.save
-        format.html { redirect_to '/work_breakdown_structures/'+Task.find_by(id: @subtask.task_id).wbs_id.to_s+'/edit', notice: 'Subtask was successfully created.' }
+        format.html { redirect_to '/work_breakdown_structures/'+Task.find_by(id: @subtask.task_id).wbs_id.to_s+'/edit', notice: 'Teilaufgabe wurde erfolgreich angelegt' }
         format.json { render :show, status: :created, location: @subtask }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class SubtasksController < ApplicationController
   def update
     respond_to do |format|
       if @subtask.update(subtask_params)
-        format.html { redirect_to @subtask, notice: 'Subtask was successfully updated.' }
+        format.html { redirect_to @subtask, notice: 'Teilaufgabe wurde erfolgreich aktualisiert' }
         format.json { render :show, status: :ok, location: @subtask }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class SubtasksController < ApplicationController
   def destroy
     @subtask.destroy
     respond_to do |format|
-      format.html { redirect_to '/work_breakdown_structures/'+Task.find_by(id: @subtask.task_id).wbs_id.to_s+'/edit', notice: 'Subtask was successfully destroyed.' }
+      format.html { redirect_to '/work_breakdown_structures/'+Task.find_by(id: @subtask.task_id).wbs_id.to_s+'/edit', notice: 'Teilaufgabe wurde erfolgreich gelöscht' }
       format.json { head :no_content }
     end
   end

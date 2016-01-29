@@ -28,7 +28,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to '/work_breakdown_structures/'+@task.wbs_id.to_s+'/edit', notice: 'Task successfully created.' }
+        format.html { redirect_to '/work_breakdown_structures/'+@task.wbs_id.to_s+'/edit', notice: 'Aufgabe wurde erfolgreich angelegt' }
         format.json { render :show, status: :created, location: @task }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+        format.html { redirect_to @task, notice: 'Aufgabe wurde erfolgreich aktualisiert' }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     respond_to do |format|
-      format.html { redirect_to '/work_breakdown_structures/'+@task.wbs_id.to_s+'/edit', notice: 'Task was successfully destroyed.' }
+      format.html { redirect_to '/work_breakdown_structures/'+@task.wbs_id.to_s+'/edit', notice: 'Aufgabe wurde erfolgreich gelöscht' }
       format.json { head :no_content }
     end
   end

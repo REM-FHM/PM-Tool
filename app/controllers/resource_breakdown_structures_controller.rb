@@ -32,7 +32,7 @@ class ResourceBreakdownStructuresController < ApplicationController
 
     respond_to do |format|
       if @resource_breakdown_structure.save
-        format.html { redirect_to @resource_breakdown_structure, notice: 'Resource breakdown structure was successfully created.' }
+        format.html { redirect_to @resource_breakdown_structure, notice: 'Resource Breakdown Structure wurde erfolgreich angelegt' }
         format.json { render :show, status: :created, location: @resource_breakdown_structure }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class ResourceBreakdownStructuresController < ApplicationController
   def update
     respond_to do |format|
       if @resource_breakdown_structure.update(resource_breakdown_structure_params)
-        format.html { redirect_to @resource_breakdown_structure, notice: 'Resource breakdown structure was successfully updated.' }
+        format.html { redirect_to @resource_breakdown_structure, notice: 'Resource Breakdown Structure wurde erfolgreich aktualisiert' }
         format.json { render :show, status: :ok, location: @resource_breakdown_structure }
       else
         format.html { render :edit }
@@ -60,7 +60,7 @@ class ResourceBreakdownStructuresController < ApplicationController
   def destroy
     @resource_breakdown_structure.destroy
     respond_to do |format|
-      format.html { redirect_to resource_breakdown_structures_url, notice: 'Resource breakdown structure was successfully destroyed.' }
+      format.html { redirect_to resource_breakdown_structures_url, notice: 'Resource Breakdown Structure wurde erfolgreich gelöscht' }
       format.json { head :no_content }
     end
   end

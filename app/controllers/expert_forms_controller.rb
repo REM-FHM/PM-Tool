@@ -33,7 +33,7 @@ class ExpertFormsController < ApplicationController
         estimationTemplates.each do |estimationTemplate|
           Estimation.new(expert_form_id: @expert_form.id, workpackage_id: estimationTemplate.workpackage_id, duration: 0).save
         end
-        format.html { redirect_to @expert_form, notice: 'Expert form was successfully created.' }
+        format.html { redirect_to @expert_form, notice: 'Schätzungsformular wurde erfolgreich angelegt' }
         format.json { render :show, status: :created, location: @expert_form }
       else
         format.html { render :new }
@@ -47,7 +47,7 @@ class ExpertFormsController < ApplicationController
   def update
     respond_to do |format|
       if @expert_form.update(expert_form_params)
-        format.html { redirect_to @expert_form, notice: 'Expert form was successfully updated.' }
+        format.html { redirect_to @expert_form, notice: 'Schätzungsformular wurde erfolgreich aktualisiert' }
         format.json { render :show, status: :ok, location: @expert_form }
       else
         format.html { render :edit }
@@ -61,7 +61,7 @@ class ExpertFormsController < ApplicationController
   def destroy
     @expert_form.destroy
     respond_to do |format|
-      format.html { redirect_to expert_forms_url, notice: 'Expert form was successfully destroyed.' }
+      format.html { redirect_to expert_forms_url, notice: 'Schätzungsformular wurde erfolgreich gelöscht' }
       format.json { head :no_content }
     end
   end

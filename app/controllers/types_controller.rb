@@ -28,7 +28,7 @@ class TypesController < ApplicationController
 
     respond_to do |format|
       if @type.save
-        format.html { redirect_to '/resource_breakdown_structures/'+@type.rbs_id.to_s, notice: 'Type was successfully created.' }
+        format.html { redirect_to '/resource_breakdown_structures/'+@type.rbs_id.to_s, notice: 'Art wurde erfolgreich angelegt' }
         format.json { render :show, status: :created, location: @type }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class TypesController < ApplicationController
   def update
     respond_to do |format|
       if @type.update(type_params)
-        format.html { redirect_to @type, notice: 'Type was successfully updated.' }
+        format.html { redirect_to @type, notice: 'Art wurde erfolgreich aktualisiert' }
         format.json { render :show, status: :ok, location: @type }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class TypesController < ApplicationController
   def destroy
     @type.destroy
     respond_to do |format|
-      format.html { redirect_to '/resource_breakdown_structures/'+@type.rbs_id.to_s, notice: 'Type was successfully destroyed.' }
+      format.html { redirect_to '/resource_breakdown_structures/'+@type.rbs_id.to_s, notice: 'Art wurde erfolgreich gelöscht' }
       format.json { head :no_content }
     end
   end

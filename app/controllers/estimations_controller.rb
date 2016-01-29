@@ -28,7 +28,7 @@ class EstimationsController < ApplicationController
 
     respond_to do |format|
       if @estimation.save
-        format.html { redirect_to @estimation, notice: 'Estimation was successfully created.' }
+        format.html { redirect_to @estimation, notice: 'Schätzung wurde erfolgreich angelegt' }
         format.json { render :show, status: :created, location: @estimation }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class EstimationsController < ApplicationController
   def update
     respond_to do |format|
       if @estimation.update(estimation_params)
-        format.html { redirect_to ExpertForm.find_by_id(@estimation.expert_form_id), notice: 'Estimation was successfully updated.' }
+        format.html { redirect_to ExpertForm.find_by_id(@estimation.expert_form_id), notice: 'Schätzung wurde erfolgreich aktualisiert' }
         format.json { render :show, status: :ok, location: @estimation }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class EstimationsController < ApplicationController
   def destroy
     @estimation.destroy
     respond_to do |format|
-      format.html { redirect_to estimations_url, notice: 'Estimation was successfully destroyed.' }
+      format.html { redirect_to estimations_url, notice: 'Schätzung wurde erfolgreich gelöscht' }
       format.json { head :no_content }
     end
   end

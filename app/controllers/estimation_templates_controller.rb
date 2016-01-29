@@ -28,7 +28,7 @@ class EstimationTemplatesController < ApplicationController
 
     respond_to do |format|
       if @estimation_template.save
-        format.html { redirect_to @estimation_template, notice: 'Estimation template was successfully created.' }
+        format.html { redirect_to @estimation_template, notice: 'Schätzungsvorlage wurde erfolgreich angelegt' }
         format.json { render :show, status: :created, location: @estimation_template }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class EstimationTemplatesController < ApplicationController
   def update
     respond_to do |format|
       if @estimation_template.update(estimation_template_params)
-        format.html { redirect_to FormTemplate.find_by_id(@estimation_template.form_template_id), notice: 'Estimation template was successfully updated.' }
+        format.html { redirect_to FormTemplate.find_by_id(@estimation_template.form_template_id), notice: 'Schätzungsvorlage wurde erfolgreich aktualisiert' }
         format.json { render :show, status: :ok, location: @estimation_template }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class EstimationTemplatesController < ApplicationController
   def destroy
     @estimation_template.destroy
     respond_to do |format|
-      format.html { redirect_to estimation_templates_url, notice: 'Estimation template was successfully destroyed.' }
+      format.html { redirect_to estimation_templates_url, notice: 'Schätzungsvorlage wurde erfolgreich gelöscht' }
       format.json { head :no_content }
     end
   end

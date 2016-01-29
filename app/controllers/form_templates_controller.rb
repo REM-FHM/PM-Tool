@@ -28,7 +28,7 @@ class FormTemplatesController < ApplicationController
 
     respond_to do |format|
       if @form_template.save
-        format.html { redirect_to @form_template, notice: 'Form template was successfully created.' }
+        format.html { redirect_to @form_template, notice: 'Formularvorlage wurde erfolgreich angelegt' }
         format.json { render :show, status: :created, location: @form_template }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class FormTemplatesController < ApplicationController
   def update
     respond_to do |format|
       if @form_template.update(form_template_params)
-        format.html { redirect_to @form_template, notice: 'Form template was successfully updated.' }
+        format.html { redirect_to @form_template, notice: 'Formularvorlage wurde erfolgreich aktualisiert' }
         format.json { render :show, status: :ok, location: @form_template }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class FormTemplatesController < ApplicationController
   def destroy
     @form_template.destroy
     respond_to do |format|
-      format.html { redirect_to form_templates_url, notice: 'Form template was successfully destroyed.' }
+      format.html { redirect_to form_templates_url, notice: 'Formularvorlage wurde erfolgreich gelöscht' }
       format.json { head :no_content }
     end
   end
