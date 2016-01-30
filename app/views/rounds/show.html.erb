@@ -9,10 +9,10 @@
       <% expertForms.each do |expertForm| %>
       <th><%= expertForm.expertName %></th>
       <% end %>
-      <th>Mittelwert</th>
-      <th>Minimum</th>
-      <th>Maximum</th>
-      <th>Spannweite</th>
+      <th class="info">Mittelwert</th>
+      <th class="success">Minimum</th>
+      <th class="danger">Maximum</th>
+      <th class="warning">Spannweite</th>
     </tr>
   </thead>
   <tbody>
@@ -37,10 +37,10 @@
 	      		<% end %>
       		<% end %>
 
-      		<td><%= (sum/count).round(2) %></td>
-      		<td><%= min %></td>
-      		<td><%= max %></td>
-      		<td><%= max-min %></td>
+      		<td class="info"><%= (sum/count).round(2) %></td>
+      		<td class="success"><%= min %></td>
+      		<td class="danger"><%= max %></td>
+      		<td class="warning"><%= max-min %></td>
       		</tr>
       		<% end %>
   </tbody>

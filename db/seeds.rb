@@ -62,7 +62,7 @@ Milestone.create(id: 3, roadmap_id: 1, component_id: 3, date: DateTime.new(2016,
 Milestone.create(id: 4, roadmap_id: 1, component_id: 4, date: DateTime.new(2016, 2, 8))
 Milestone.create(id: 5, roadmap_id: 1, component_id: 5, date: DateTime.new(2016, 2, 8))
 
-puts "ResourceAllocationMatrix wird angelegt"
+puts "ResourceAllocationMatrix wird eingelesen"
 ResourceAllocationMatrix.create(id: 1, p_id: 1)
 RamEntry.create(id: 1, ram_id: 1, workpackage_id: 1, component_id: 1, resource_id: 1)
 RamEntry.create(id: 2, ram_id: 1, workpackage_id: 2, component_id: 2, resource_id: 2)
@@ -71,15 +71,48 @@ RamEntry.create(id: 4, ram_id: 1, workpackage_id: 4, component_id: 3, resource_i
 RamEntry.create(id: 5, ram_id: 1, workpackage_id: 5, component_id: 3, resource_id: 3)
 RamEntry.create(id: 6, ram_id: 1, workpackage_id: 6, component_id: 3, resource_id: 3)
 
-puts "DelphiBreitbandSchätzung wird angelegt"
+puts "DelphiBreitbandSchätzung wird eingelesen"
 DelphiEstimation.create(id: 1, p_id: 1)
+
 Round.create(id: 1, delphiEstimation_id: 1, count: 1, closed: true)
-Round.create(id: 2, delphiEstimation_id: 1, count: 2, closed: true)
-Round.create(id: 3, delphiEstimation_id: 1, count: 3, closed: false)
-Round.create(id: 4, delphiEstimation_id: 2, count: 1, closed: false)
-ExpertForm.create(id: 1, expertName: 'Jan', round_id: 1)
-ExpertForm.create(id: 2, expertName: 'Tobias', round_id: 1)
-ExpertForm.create(id: 3, expertName: 'Lukas', round_id: 2)
-ExpertForm.create(id: 4, expertName: 'Dieter', round_id: 3)
+FormTemplate.create(id: 1, round_id: 1)
+EstimationTemplate.create(id: 1, form_template_id: 1, workpackage_id: 1, comment: "Erste Runde - Kein Kommentar")
+EstimationTemplate.create(id: 2, form_template_id: 1, workpackage_id: 2, comment: "Erste Runde - Kein Kommentar")
+EstimationTemplate.create(id: 3, form_template_id: 1, workpackage_id: 3, comment: "Erste Runde - Kein Kommentar")
+EstimationTemplate.create(id: 4, form_template_id: 1, workpackage_id: 4, comment: "Erste Runde - Kein Kommentar")
+EstimationTemplate.create(id: 5, form_template_id: 1, workpackage_id: 5, comment: "Erste Runde - Kein Kommentar")
+EstimationTemplate.create(id: 6, form_template_id: 1, workpackage_id: 6, comment: "Erste Runde - Kein Kommentar")
+ExpertForm.create(id: 1, round_id: 1, expertName: "Tobias")
+Estimation.create(id: 1, expert_form_id: 1, workpackage_id: 1, duration: 8)
+Estimation.create(id: 2, expert_form_id: 1, workpackage_id: 2, duration: 15)
+Estimation.create(id: 3, expert_form_id: 1, workpackage_id: 3, duration: 6)
+Estimation.create(id: 4, expert_form_id: 1, workpackage_id: 4, duration: 9)
+Estimation.create(id: 5, expert_form_id: 1, workpackage_id: 5, duration: 2)
+Estimation.create(id: 6, expert_form_id: 1, workpackage_id: 6, duration: 1)
+ExpertForm.create(id: 2, round_id: 1, expertName: "Jan")
+Estimation.create(id: 7, expert_form_id: 2, workpackage_id: 1, duration: 9)
+Estimation.create(id: 8, expert_form_id: 2, workpackage_id: 2, duration: 3)
+Estimation.create(id: 9, expert_form_id: 2, workpackage_id: 3, duration: 7)
+Estimation.create(id: 10, expert_form_id: 2, workpackage_id: 4, duration: 8)
+Estimation.create(id: 11, expert_form_id: 2, workpackage_id: 5, duration: 3)
+Estimation.create(id: 12, expert_form_id: 2, workpackage_id: 6, duration: 2)
+ExpertForm.create(id: 3, round_id: 1, expertName: "Lukas")
+Estimation.create(id: 13, expert_form_id: 3, workpackage_id: 1, duration: 10)
+Estimation.create(id: 14, expert_form_id: 3, workpackage_id: 2, duration: 7)
+Estimation.create(id: 15, expert_form_id: 3, workpackage_id: 3, duration: 7)
+Estimation.create(id: 16, expert_form_id: 3, workpackage_id: 4, duration: 9)
+Estimation.create(id: 17, expert_form_id: 3, workpackage_id: 5, duration: 4)
+Estimation.create(id: 18, expert_form_id: 3, workpackage_id: 6, duration: 3)
+
+Round.create(id: 2, delphiEstimation_id: 1, count: 2, closed: false)
+FormTemplate.create(id: 2, round_id: 2)
+EstimationTemplate.create(id: 7, form_template_id: 2, workpackage_id: 1, comment: "")
+EstimationTemplate.create(id: 8, form_template_id: 2, workpackage_id: 2, comment: "Starke Differenzen in letzter Runde")
+EstimationTemplate.create(id: 9, form_template_id: 2, workpackage_id: 3, comment: "")
+EstimationTemplate.create(id: 10, form_template_id: 2, workpackage_id: 4, comment: "")
+EstimationTemplate.create(id: 11, form_template_id: 2, workpackage_id: 5, comment: "")
+EstimationTemplate.create(id: 12, form_template_id: 2, workpackage_id: 6, comment: "")
+
+
 
 puts "Seed abgeschlossen!"
