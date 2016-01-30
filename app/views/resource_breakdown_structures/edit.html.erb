@@ -21,24 +21,22 @@
   </tbody>
   <tr id="uno">
 	    <td><%=project.name %></td>
-	    <td><% @type = Type.new %>
+	    <td colspan="2"><% @type = Type.new %>
 	    	<div class = "form-inline">
 	    		<%= form_for(@type) do |f| %>
   				<%= f.hidden_field :rbs_id, :value => @resource_breakdown_structure.id %> 
   				<div class="form-group">
-	  				<div class="field">
+	  				<div class="field" id="field">
 	    				<%= f.text_field :name, :class => "form-control input-sm", :placeholder => "Neue Art"%>
 	  				</div>
   				</div>
-			</div>
-	    </td>
-	    <td>
-	    	<div class="form-group">
-	  				<div class="actions">
+	    		<div class="form-group">
+	  				<div class="actions" id="field">
 	  					<%= f.submit "Anlegen", class: "btn btn-xs btn-success" %>
 	  				</div>
   				</div>
 				<% end %>
+			</div>
 		</td>
 	    <td colspan="4"></td>
 	</tr>
@@ -49,27 +47,25 @@
 		<% typeNumber = typeNumber+1 %>
 	    <td id="middle"><%=typeNumber %></td>
 	    <td id="middle"><%=type.name %></td>
-	    <td id="middle"><% @role = Role.new %>
+	    <td colspan="2" id="middle"><% @role = Role.new %>
 	    	<div class = "form-inline">
 	    		<%= form_for(@role) do |f| %>
   				<%= f.hidden_field :type_id, :value => type.id %> 
   				<div class="form-group">
-	  				<div class="field">
+	  				<div class="field" id="field">
 	    				<%= f.text_field :name, :class => "form-control input-sm", :placeholder => "Neue Rolle"%>
 	  				</div>
   				</div>
-			</div>
-	    </td>
-	    <td id="middle">
-	    	<div class="form-group">
-	  				<div class="actions">
+	    		<div class="form-group">
+	  				<div class="actions" id="field">
 	  					<%= f.submit "Anlegen", class: "btn btn-xs btn-success" %>
 	  				</div>
   				</div>
 				<% end %>
+			</div>
 		</td>
 	    <td colspan="2"></td>
-	    <td id="middle"><%= link_to 'Löschen', type, method: :delete, data: { confirm: 'Sind Sie sicher?' }, :class=> 'btn btn-xs btn-danger' %></td>
+	    <td id="middle"><%= link_to 'Löschen', type, method: :delete, data: { confirm: 'Sind Sie sicher?' }, :class=> 'btn btn-xs btn-danger pull-right' %></td>
 	</tr>
 	<% roles = Role.where(type_id: type.id) %>
 	<% roleNumber = 0 %>
@@ -80,24 +76,25 @@
 	    <td id="middle"><%=typeNumber.to_s+'.'+roleNumber.to_s %></td>
 	    <td id="middle"><%=role.name %></td>
 	    <td colspan="3"></td>
-	    <td><%= link_to 'Löschen', role, method: :delete, data: { confirm: 'Sind Sie sicher?' }, :class=> 'btn btn-xs btn-danger' %></td>
+	    <td><%= link_to 'Löschen', role, method: :delete, data: { confirm: 'Sind Sie sicher?' }, :class=> 'btn btn-xs btn-danger pull-right' %></td>
 	</tr>
 	<tr>
-		<td colspan="2"></td>
-		<td id="middle"><% @resource = Resource.new %>
-	    	<div class = "form-inline">
+		<td colspan="3"></td>
+		<td colspan="4" id="middle" class="">
+			<% @resource = Resource.new %>
+	    	<div class = "form-inline pull-right">
 	    		<%= form_for(@resource) do |f| %>
   				<%= f.hidden_field :role_id, :value => role.id %> 
   				<div class="form-group">
-	  				<div class="field">
-	    				<td id="middle"><%= f.text_field :qualification, :class => "form-control input-sm", :placeholder => "Neue Qualifikation"%></td>
-	    				<td id="middle"><%= f.text_field :experience, :class => "form-control input-sm", :placeholder => "Neue Erfahrung"%></td>
-	    				<td id="middle"><%= f.number_field :quantitiy, :class => "form-control input-sm", :placeholder => "Neue Vollzeitäquivalenz"%></td>
+	  				<div class="field" id="field">
+	    				<%= f.text_field :qualification, :class => "form-control input-sm", :placeholder => "Neue Qualifikation"%>
+	    				<%= f.text_field :experience, :class => "form-control input-sm", :placeholder => "Neue Erfahrung"%>
+	    				<%= f.number_field :quantitiy, :class => "form-control input-sm", :placeholder => "Neue Vollzeitäquivalenz"%>
 	  				</div>
   				</div>
 	  			<div class="form-group">
-	  				<div class="actions">
-	  					<td><%= f.submit "Anlegen", class: "btn btn-xs btn-success" %></td>
+	  				<div class="actions" id="field">
+						<%= f.submit "Anlegen", class: "btn btn-xs btn-success" %>
 	  				</div>
   				</div>
 				<% end %>
@@ -114,7 +111,7 @@
 	    <td id="middle"><%=resource.qualification %></td>
 	    <td id="middle"><%=resource.experience %></td>
 	    <td id="middle"><%=resource.quantitiy.to_i %></td>
-	    <td id="middle"><%= link_to 'Löschen', resource, method: :delete, data: { confirm: 'Sind Sie sicher?' }, :class=> 'btn btn-xs btn-danger' %></td>
+	    <td class="pull-right" id="middle"><%= link_to 'Löschen', resource, method: :delete, data: { confirm: 'Sind Sie sicher?' }, :class=> 'btn btn-xs btn-danger' %></td>
 	  </td>
 	</tr>	
 	<% end %>
