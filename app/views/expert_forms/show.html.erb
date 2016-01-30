@@ -40,4 +40,4 @@
 	</tbody>
 </table>
 
-<%= link_to 'Schätzung abschließen', DelphiEstimation.find_by_id(Round.find_by_id(@expert_form.round_id).delphiEstimation_id) %>
+<%= link_to 'Schätzung abschließen', DelphiEstimation.find_by_id(Round.find_by_id(@expert_form.round_id).delphiEstimation_id), :id=>'btn' , class: "btn btn-sm btn-success"%>
